@@ -1,2 +1,2 @@
-# SES10Test
-A repository to try git stuff
+# SES10_eResturant
+Software Engineering Studio Group 10's GitHub Repo.

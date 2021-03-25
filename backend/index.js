@@ -23,6 +23,16 @@ app.get("/", (req, res) => {
   res.send("Hello world! Express is here with the help with nodemon.");
 });
 
+try {
+  mongoose.connect(process.env.MONGO_DB_CONNECTION, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  });
+  console.log("MongoDB connected");
+} catch (error) {
+  console.log(error)
+}
+
 app.use((req, res, next) => {
   res.send("Welcome to Express");
 });

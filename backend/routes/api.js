@@ -1,15 +1,15 @@
 const express = require ('express');
 const router = express.Router();
 
-router.get('/login', (req, res, next) => {
+router.get('/aye', (req, res, next) => {
+    res.send('chocolate');
+});
+
+router.get('/register', (req, res, next) => {
 
 });
 
-router.post('/register', (req, res, next) => {
-
-});
-
-router.delete('/dashboard/:id', (req, res, next) => {
+router.get('/dashboard/:id', (req, res, next) => {
 
 })
 

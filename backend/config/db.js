@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
+require("dotenv").config();
 
-const db = "mongodb+srv://admin:SoftwareStudio10@cluster0.92wg5.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const db = process.env.MONGO_DB_CONNECTION;
 
 const connectDB = async () => {
 	try {

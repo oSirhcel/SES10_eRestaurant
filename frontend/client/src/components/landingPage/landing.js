@@ -7,14 +7,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import Header from './components/landingPage/header';
-// import MainFeaturedPost from './MainFeaturedPost';
-// import FeaturedPost from './FeaturedPost';
-// import Main from './Main';
-// import Sidebar from './Sidebar';
-// import Footer from './Footer';
-// import post1 from './blog-post.1.md';
-// import post2 from './blog-post.2.md';
-// import post3 from './blog-post.3.md';
+
 
 const useStyles = makeStyles((theme) => ({
   mainGrid: {

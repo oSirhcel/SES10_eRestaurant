@@ -1,48 +1,9 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import DataTable from './DataGrid'
-
-class App extends React.Component {
-  state = {
-    message: "this is just testing that data can be passed by the components",
-  }
-
-  changeMessage = (a) => {
-    this.setState({ message : a.data.firstName });
-  }
-
-  handleDelete = (rowIndex) => {
-
-  }
-
-  startEditing = (rowIndex) => {
-
-  }
-
-  stopEditing = () => {
-
-  }
-
-  handleChange = () => {
-
-  }
-
-  render() {
+function App() {
     return (
-      <div>
-        <h1> {this.state.message} </h1>
-        <DataTable
-        changeMessage={this.changeMessage}
-        />
+      <div className="App">
+        <h1> Hello, World! </h1>
       </div>
-      
-    )
+    );
   }
-}
-export default App;
-/*
-<h1> {this.state.message} </h1>
-        <DataTable
-        changeMessage={this.changeMessage}
-        />
-        */
+  
+  export default App;

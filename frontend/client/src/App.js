@@ -1,7 +1,9 @@
+import ViewMenu from "./ViewMenu";
+
 function App() {
   return (
     <div className="App">
-      <h1> Hello, World! </h1>
+      <ViewMenu />
     </div>
   );
 }

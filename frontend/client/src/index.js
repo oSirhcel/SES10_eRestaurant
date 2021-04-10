@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import StaticDatePicker from './DatePicker';
-import GridFrame from './View';
+import View from './View';
+import BasicStepper from './Stepper.js';
+import Timeslots from './Timeslots.js'
 
-ReactDOM.render(<GridFrame />, document.getElementById('root'));
+ReactDOM.render(<View />, document.getElementById('root'));
 

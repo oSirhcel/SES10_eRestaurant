@@ -17,6 +17,7 @@ export default function StaticDatePicker() {
         openTo="date"
         value={selectedDate}
         onChange={handleDateChange}
+        disablePast
       />
     </MuiPickersUtilsProvider>
   );

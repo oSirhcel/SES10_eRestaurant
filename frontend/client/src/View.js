@@ -14,7 +14,7 @@ import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import StaticDatePicker from './DatePicker';
+
 import TextField from '@material-ui/core/TextField';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
@@ -24,6 +24,9 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import { mainListItems } from './ListItems';
+
+import StaticDatePicker from './DatePicker';
+import BasicStepper from './Stepper';
 
 const drawerWidth = 240;
 
@@ -92,7 +95,7 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
   },
   container: {
-    paddingTop: theme.spacing(4),
+    paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(4),
   },
   paper: {
@@ -134,7 +137,7 @@ function RadioButtonsGroup() {
     );
   }
 
-export default function GridFrame() {
+export default function View() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -182,37 +185,7 @@ export default function GridFrame() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-            <h1> Book a table </h1>
-          <Grid container spacing={3}>
-            {/* Date Picker */}
-            <Grid item xs={6}>
-              <Paper className={classes.fixedHeight}>
-                <StaticDatePicker/>
-              </Paper>
-            </Grid>
-            {/* Number of People and Time */}
-            <Grid item xs={6}>
-              <Paper className={classes.fixedHeight}>
-              <div className={classes.paper}>
-              <TextField
-                    id="outlined-number"
-                    label="Number of People"
-                    type="number"
-                />                        
-              </div>  
-              
-                <div className={classes.paper}>
-                <RadioButtonsGroup/>                  
-              </div>     
-              <div className={classes.divPaper}>
-                <Button> Show times </Button>                    
-              </div>         
-              </Paper>
-              
-            </Grid>            
-          </Grid>
-          <Box pt={4}>
-          </Box>
+            <BasicStepper />
         </Container>
       </main>
     </div>

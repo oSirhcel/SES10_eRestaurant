@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return ['Book a Table', 'Select Time', 'Add meal order', 'Review Reservation'];
+  return ['Book a Table', 'Select Time', 'Add Meal Order', 'Review Reservation'];
 }
 
 function getStepContent(step) {

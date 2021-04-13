@@ -17,7 +17,7 @@
     },
   }));
 
-  const rows = [
+  const lunch = [
     {time: "11:30AM"},
     {time: "11:45AM"},
     {time: "12:00PM"},
@@ -55,18 +55,43 @@
     {time: "9:30PM"},
   ];
 
-  export default function Timeslots() {
+ const Timeslots = ({session, nextStep, prevStep, handleChange, getTimeChange}) => {
     const classes = useStyles();
-  
-    return (
-      <div className={classes.root}>
-        <Grid container spacing={3}>
-            {dinner.map(row =>(
-            <Grid item xs={6} sm={3}>
-                <Button className={classes.button}>{row.time}</Button>
-            </Grid>
-            ))}
-        </Grid>
-      </div>
-    );
+    if (session == 'lunch') {
+      return (
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+              {lunch.map(row =>(
+              <Grid item xs={6} sm={3}>
+                  <Button 
+                  className={classes.button}
+                  onClick={() => getTimeChange(row.time)}
+                  >{row.time}</Button>
+              </Grid>
+              ))}
+          </Grid>
+          <Button onClick = {() => prevStep()}>Back</Button>
+          <Button onClick = {() => nextStep()}>Next</Button> 
+        </div>
+      );
+    } else {
+      return (
+        <div className={classes.root}>
+          <Grid container spacing={3}>
+              {dinner.map(row =>(
+              <Grid item xs={6} sm={3}>
+                  <Button className={classes.button}
+                  onClick={() => getTimeChange(row.time)}
+                  >{row.time}</Button>
+              </Grid>
+              ))}
+          </Grid>
+          <Button onClick = {() => prevStep()}>Back</Button>
+          <Button onClick = {() => nextStep()}>Next</Button> 
+        </div>
+      );
+    }
+    
   }
+
+  export default Timeslots;

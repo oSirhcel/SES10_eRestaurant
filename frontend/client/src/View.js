@@ -25,8 +25,8 @@ import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import { mainListItems } from './ListItems';
 
-import StaticDatePicker from './DatePicker';
-import BasicStepper from './Stepper';
+import UserForm from './BookingForm.js';
+
 
 const drawerWidth = 240;
 
@@ -119,24 +119,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function RadioButtonsGroup() {
-    const [value, setValue] = React.useState('lunch');
-  
-    const handleChange = (event) => {
-      setValue(event.target.value);
-    };
-  
-    return (
-      <FormControl component="fieldset">
-        <FormLabel component="legend">Time</FormLabel>
-        <RadioGroup aria-label="Time" name="time" value={value} onChange={handleChange}>
-          <FormControlLabel value="lunch" control={<Radio />} label="Lunch" />
-          <FormControlLabel value="dunner" control={<Radio />} label="Dinner" />
-        </RadioGroup>
-      </FormControl>
-    );
-  }
-
 export default function View() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -185,7 +167,7 @@ export default function View() {
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-            <BasicStepper />
+          <UserForm />
         </Container>
       </main>
     </div>

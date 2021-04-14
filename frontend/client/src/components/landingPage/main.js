@@ -3,7 +3,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Header from './components/LandingPage/header';
-import MainFeaturedPost from "./components/LandingPage/feature.js"
+import MainFeaturedPost from "./feature.js"
 const useStyles = makeStyles((theme) => ({ 
     root: {
         marginTop: theme.spacing(3),

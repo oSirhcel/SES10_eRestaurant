@@ -31,7 +31,7 @@ root: {
     position: 'relative',
     padding: theme.spacing(1),
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(50),
+      padding: theme.spacing(35),
       paddingRight: 0,
     },
   },
@@ -43,7 +43,6 @@ export default function MainFeaturedPost(props) {
 
   return (
     <Paper className={classes.mainFeaturedPost} style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/assets/Croissant.jpg'})` }}>
-      {/* Increase the priority of the hero background image */}
       {<img style={{ display: 'none' }} src={post.image} alt={post.imageText} />}
       <div className={classes.overlay} />
       <Grid container>

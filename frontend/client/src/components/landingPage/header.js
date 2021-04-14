@@ -7,6 +7,9 @@ import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles((theme) => ({
+  root: {
+    // backgroundColor: '#ffcc80'
+  },
   toolbar: {
     borderBottom: `2px solid ${theme.palette.divider}`,
     backgroundColor: 'primary',
@@ -30,6 +33,7 @@ export default function Header(props) {
 
   return (
     <React.Fragment>
+      <div className ={classes.root}>
       <Toolbar className={classes.toolbar}>
         <Typography
           component="h2"
@@ -59,6 +63,7 @@ export default function Header(props) {
           </Link>
         ))}
       </Toolbar>
+      </div>
     </React.Fragment>
   );
 }

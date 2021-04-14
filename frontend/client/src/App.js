@@ -4,10 +4,13 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
 import Header from './components/LandingPage/header';
 import MainFeaturedPost from "./components/LandingPage/feature.js"
+import Footer from './components/LandingPage/footer';
 const useStyles = makeStyles((theme) => ({ 
     root: {
         marginTop: theme.spacing(3),
-        minHeight: '150vh',
+        minHeight: '100vh',
+        
+
 
     }
 }));
@@ -15,10 +18,9 @@ const useStyles = makeStyles((theme) => ({
 
 
 const mainFeaturedPost = {
-  title: 'Perfect Crossaints',
-  description:
-    "Experience the signature food of France.",
-  imgText: 'main image description',
+  title: 'The Perfect Crossaint.',
+  description:'Experience the signature food of France at its finest.',
+  imgText: 'crossaint',
   buttonText: 'Book with us',
 };
 
@@ -37,14 +39,15 @@ export default function App(){
     return <div className={classes.root}>
         <React.Fragment>
     <CssBaseline />
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" >
       <Header title="Le Bistrot d'Andre" sections={sections} />
     </Container>
-    <Container maxWidth="false">
     <main>
       <MainFeaturedPost post={mainFeaturedPost} />
       </main>
-  </Container>
+      <Container>
+        <Footer/>
+      </Container>
   </React.Fragment>
     </div>;
 }

@@ -9,15 +9,16 @@ const useStyles = makeStyles((theme) => ({
         marginTop: theme.spacing(3),
         minHeight: '150vh',
 
+
     }
 }));
 
 
 
 const mainFeaturedPost = {
-  title: 'Title of a longer featured blog post',
+  title: 'The Perfect Crossaint.',
   description:
-    "Multiple lines of text that form the lede, informing new readers quickly and efficiently about what's most interesting in this post's contents.",
+    "Experience the signature food of France at its finest.",
   imgText: 'main image description',
   buttonText: 'Book with us',
 };
@@ -37,14 +38,12 @@ export default function App(){
     return <div className={classes.root}>
         <React.Fragment>
     <CssBaseline />
-    <Container maxWidth="lg">
+    <Container maxWidth="lg" >
       <Header title="Le Bistrot d'Andre" sections={sections} />
     </Container>
-    <Container maxWidth="false">
     <main>
       <MainFeaturedPost post={mainFeaturedPost} />
       </main>
-  </Container>
   </React.Fragment>
     </div>;
 }

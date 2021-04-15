@@ -3,7 +3,7 @@ import { DataGrid } from '@material-ui/data-grid';
 import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
-
+/*
 const columns = [
   { field: 'id', headerName: 'Staff ID', type: 'number', width: 130},
   { field: 'firstName', headerName: 'First name', width: 130},
@@ -31,6 +31,7 @@ const rows = [
     {id: 106, firstName: 'Crokom', lastName: 'Bush', position: 'Accountant', email: 'profiteroles@gmail.com', phone: '0410000006'},
     {id: 107, firstName: 'Au', lastName: 'Revoir', position: 'Waiter', email: 'aurevoir@gmail.com', phone: '0410000007'},
 ];
+*/
 
 class DataTable extends React.Component {
     state = {
@@ -39,9 +40,10 @@ class DataTable extends React.Component {
     }
 
     rowClicked = (a) => {
-        this.setState({ selectedRow : a.data.firstName, disableButton: false});
+        this.setState({ selectedRow : a, disableButton: false});
       }
     render() {
+      const { handleDelete } = this.props;
         return (
             <div style={{ height: 350, width: '100%' }}>
             <p>
@@ -52,14 +54,15 @@ class DataTable extends React.Component {
             </Button>
             <Button
             disabled={this.state.disableButton}
+            onClick={() => handleDelete(this.state.selectedRow)}
             >
               <DeleteIcon/>
             </Button>
-            Showing row data can be accessed. First name of selected row: {this.state.selectedRow}
+            Showing row data can be accessed. First name of selected row: 
             </p>
             <DataGrid 
-            rows={rows} 
-            columns={columns} 
+            rows={this.props.rows} 
+            columns={this.props.columns} 
             autoPageSize = {true}
             density = {'compact'}
             checkboxSelection = {false}  
@@ -70,6 +73,8 @@ class DataTable extends React.Component {
         )
     }
 }
+
+
 /*const DataTable = (props) => {
     const [select, getSelectedRow] = React.useState([]);
     const [disable, enableButton] = React.useState([]);

@@ -3,6 +3,7 @@ import { DataGrid } from '@material-ui/data-grid';
 import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+
 /*
 const columns = [
   { field: 'id', headerName: 'Staff ID', type: 'number', width: 130},
@@ -33,46 +34,43 @@ const rows = [
 ];
 */
 
+
+
 class DataTable extends React.Component {
     state = {
         selectedRow:'',
+        selectedCell:'',
         disableButton: true,
     }
-
-    rowClicked = (a) => {
-        this.setState({ selectedRow : a, disableButton: false});
-      }
+    
     render() {
-      const { handleDelete } = this.props;
+      const { handleDelete, handleEdit, handleValueChange } = this.props;
         return (
             <div style={{ height: 350, width: '100%' }}>
-            <p>
-            <Button
-            disabled={this.state.disableButton}
-            >
-              <EditIcon/>
-            </Button>
             <Button
             disabled={this.state.disableButton}
             onClick={() => handleDelete(this.state.selectedRow)}
             >
+              
               <DeleteIcon/>
             </Button>
-            Showing row data can be accessed. First name of selected row: 
-            </p>
             <DataGrid 
             rows={this.props.rows} 
             columns={this.props.columns} 
             autoPageSize = {true}
-            density = {'compact'}
-            checkboxSelection = {false}  
+            density = {'compact'}  
             disableColumnResize = {false}
-            onRowSelected={(data) => this.rowClicked(data)}
+            onRowSelected={(data) => this.setState({ selectedRow : data, disableButton: false})}
+            onCellClick={(data) => {this.setState({ selectedCell : data, })}}
+            onCellDoubleClick={() => handleEdit(this.state.selectedCell)}
+            onCellValueChange={() => handleValueChange(this.state.selectedCell)}
             />
+            
         </div>
         )
     }
 }
+
 
 
 /*const DataTable = (props) => {

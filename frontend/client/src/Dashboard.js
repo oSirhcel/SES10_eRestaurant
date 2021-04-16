@@ -105,7 +105,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+const Dashboard = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -158,7 +158,7 @@ export default function Dashboard() {
           <Grid container spacing={3}>
             <Grid item xs={12}>
               <Paper className={classes.paper}>
-                <DataTable />
+                {props.element}
               </Paper>
             </Grid>
           </Grid>
@@ -167,3 +167,5 @@ export default function Dashboard() {
     </div>
   );
 }
+
+export default Dashboard;

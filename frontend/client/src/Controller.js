@@ -1,5 +1,6 @@
 import React from 'react';
 import DataTable from './DataGrid';
+import Dashboard from './Dashboard.js';
 
 const columns = [
     { field: 'id', headerName: 'Staff ID', type: 'number', width: 130},
@@ -29,23 +30,51 @@ const columns = [
       {id: 107, firstName: 'Au', lastName: 'Revoir', position: 'Waiter', email: 'aurevoir@gmail.com', phone: '0410000007'},
   ];
 
-export default class DataGridController extends React.Component {
+class DataGridController extends React.Component {
     state = {
         columns: columns,
         rows: rows,
+        disableButton: true,
     }
 
     handleDelete = (selectedRow) => {
         this.setState(state => ({
-            rows : rows.filter((row, j) => row.id != selectedRow.data.id)
+            rows : state.rows.filter((row, j) => row.id != selectedRow.data.id)
         }));
+    }
+
+    handleEdit = (selectedCell) => {
+        selectedCell.api.setCellMode(selectedCell.id, selectedCell.field, "edit");
+    }
+
+    handleValueChange = (selectedCell) => {
+        const editValue = selectedCell.api.getEditCellValueParams(selectedCell.id, selectedCell.field).value;
+        const id = selectedCell.id;
+        const field = selectedCell.field;
+        this.setState(state => ({
+            rows: state.rows.map(
+              (row) => {
+                  if (row.id == id) {
+                      return ({ ...row, [field]: editValue })
+                  } else {
+                      return row;
+                  }
+              }
+          )}));
     }
     render() {
         return(
-            <div>
-                <h1>{this.state.columns[0].headerName}</h1>
-                <DataTable 
+            <div
+            onKeyDownCapture={(e) => {
+                if (e.key === "Backspace" || e.key === "Delete") {
+                  e.stopPropagation();
+                }
+              }}
+            >
+            <DataTable 
             handleDelete={this.handleDelete}
+            handleEdit={this.handleEdit}
+            handleValueChange={this.handleValueChange}
             columns={this.state.columns}
             rows={this.state.rows}
             />
@@ -54,3 +83,11 @@ export default class DataGridController extends React.Component {
         )
     }
 }
+
+const Stage = () => {
+    return (
+      <Dashboard element = {<DataGridController />}/>
+    )
+  }
+
+  export default Stage;

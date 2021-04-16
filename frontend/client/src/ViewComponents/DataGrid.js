@@ -38,13 +38,11 @@ const rows = [
 
 class DataTable extends React.Component {
     state = {
-        selectedRow:'',
-        selectedCell:'',
         disableButton: true,
     }
     
     render() {
-      const { handleDelete, handleEdit, handleValueChange } = this.props;
+      const { handleRowSelected, handleCellClicked, handleDelete, handleEdit, handleValueChange } = this.props;
         return (
             <div style={{ height: 350, width: '100%' }}>
             <Button
@@ -60,10 +58,10 @@ class DataTable extends React.Component {
             autoPageSize = {true}
             density = {'compact'}  
             disableColumnResize = {false}
-            onRowSelected={(data) => this.setState({ selectedRow : data, disableButton: false})}
-            onCellClick={(data) => {this.setState({ selectedCell : data, })}}
-            onCellDoubleClick={() => handleEdit(this.state.selectedCell)}
-            onCellValueChange={() => handleValueChange(this.state.selectedCell)}
+            onRowSelected={(data) => {this.setState({ disableButton: false}); handleRowSelected(data)}}
+            onCellClick={(cell) => handleCellClicked(cell)}
+            onCellDoubleClick={() => handleEdit()}
+            onCellValueChange={() => handleValueChange()}
             />
             
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from './DataGrid';
-import Dashboard from './Dashboard.js';
+import DataTable from './ViewComponents/DataGrid';
+import Dashboard from './ViewComponents/Dashboard.js';
 
 const columns = [
     { field: 'id', headerName: 'Staff ID', type: 'number', width: 130},
@@ -34,20 +34,31 @@ class DataGridController extends React.Component {
     state = {
         columns: columns,
         rows: rows,
-        disableButton: true,
+        selectedRow:'',
+        selectedCell:'',
     }
 
-    handleDelete = (selectedRow) => {
+    handleRowSelected = (row) => {
+        this.setState({selectedRow : row});
+    }
+
+    handleCellClicked = (cell) => {
+        this.setState({selectedCell : cell});
+    }
+
+    handleDelete = () => {
         this.setState(state => ({
-            rows : state.rows.filter((row, j) => row.id != selectedRow.data.id)
+            rows : state.rows.filter((row, j) => row.id != this.state.selectedRow.data.id)
         }));
     }
 
-    handleEdit = (selectedCell) => {
+    handleEdit = () => {
+        const selectedCell = this.state.selectedCell;
         selectedCell.api.setCellMode(selectedCell.id, selectedCell.field, "edit");
     }
 
-    handleValueChange = (selectedCell) => {
+    handleValueChange = () => {
+        const selectedCell = this.state.selectedCell;
         const editValue = selectedCell.api.getEditCellValueParams(selectedCell.id, selectedCell.field).value;
         const id = selectedCell.id;
         const field = selectedCell.field;
@@ -72,6 +83,8 @@ class DataGridController extends React.Component {
               }}
             >
             <DataTable 
+            handleRowSelected={this.handleRowSelected}
+            handleCellClicked={this.handleCellClicked}
             handleDelete={this.handleDelete}
             handleEdit={this.handleEdit}
             handleValueChange={this.handleValueChange}

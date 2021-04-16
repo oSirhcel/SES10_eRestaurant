@@ -4,13 +4,14 @@ import Button from '@material-ui/core/Button';
 import Review from './ReviewOrder';
 import FormDate from './FormDate';
 import { getDate, format } from 'date-fns';
+import Grid from '@material-ui/core/Grid';
 
 export class UserForm extends Component {
   state = {
     step: 1,
-    session: 'lunch',
+    session: 'Lunch',
     date: new Date(),
-    time: 'test',
+    time: '',
     numPeople: 0,
   };
 
@@ -39,11 +40,11 @@ export class UserForm extends Component {
     this.setState({ [input]: e.target.value });
   };
 
-  getDateChange = (value) => {
+  handleDateSelect = (value) => {
       this.setState({date: value});
   }
 
-  getTimeChange = (value) => {
+  handleTimeSelect = (value) => {
       this.setState({time: value});
   }
 
@@ -56,53 +57,59 @@ export class UserForm extends Component {
       case 1:
         return (
             <div>
-                <h1> Book a Table </h1>
-                <FormDate
-            nextStep={this.nextStep}
-            handleChange={this.handleChange}
-            getDateChange={this.getDateChange}
-            values={values}
-            selectSession={this.selectSession}
-          />
+              <h1> Book a Table </h1>
+              <FormDate
+                nextStep={this.nextStep}
+                handleChange={this.handleChange}
+                handleDateSelect={this.handleDateSelect}
+                values={values}
+                selectSession={this.selectSession}
+              />
             </div>
           
         );
       case 2:
         return (
             <div>
+              <Grid container spacing={3}>
+              <Grid item xs={12} sm={6}>
                 <h1> Pick a Time </h1>
-                <Timeslots
-            nextStep={this.nextStep}
-            prevStep={this.prevStep}
-            handleChange={this.handleChange}
-            getTimeChange={this.getTimeChange}
-            values={values}
-            session={this.state.session}
-          />
+              </Grid>
+              <Grid item xs={12} sm={6} align="center">
+                <h1> {this.state.time} </h1>
+              </Grid>
+              </Grid>
+              <Timeslots
+                nextStep={this.nextStep}
+                prevStep={this.prevStep}
+                handleChange={this.handleChange}
+                handleTimeSelect={this.handleTimeSelect}
+                values={values}
+                session={this.state.session}
+              />
             </div>
           
         );
       case 3:
         return (
             <div>
-                <h1
+              <h1
                 nextStep={this.nextStep}
                 prevStep={this.prevStep}
                 values={values}
-                > Add Meal Order
-                </h1>
-                <Button onClick={this.prevStep}>Back</Button>
-                <Button onClick={this.nextStep}>Next</Button>
+              > 
+                Add Meal Order
+              </h1>
+              <Button onClick={this.prevStep}>Back</Button>
+              <Button onClick={this.nextStep}>Next</Button>
             </div>
           
         );
       case 4:
         return <Review 
-        prevStep={this.prevStep}
-        handleChange={this.handleChange}
-        values={values}/>;
-      default:
-        (console.log('This is a multi-step form built with React.'))
+                prevStep={this.prevStep}
+                handleChange={this.handleChange}
+                values={values}/>;
     }
   }
 }

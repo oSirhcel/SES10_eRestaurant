@@ -39,17 +39,18 @@ export class FormDate extends Component {
 
   handleDateChange = e => {
       this.setState({selectedDate : e});
-      this.props.getDateChange(e);
+      this.props.handleDateSelect(e);
   }
 
   render() {
-    const { values, handleChange, getDateChange } = this.props;
+    const { values, handleChange } = this.props;
     return (
       <div>
          
         
         <Grid container spacing={2}>
-          <Grid item>
+          <Grid item xs={12} sm={6}>
+            
           <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DatePicker
                 autoOk
@@ -62,9 +63,11 @@ export class FormDate extends Component {
             />
     </MuiPickersUtilsProvider>
           </Grid>
-          <Grid item xs={12} sm container>
+          <Grid container item xs={12} sm={6} >
+            
           <Grid container direction="column" spacing={5}>
             <Grid item>
+            
             <TextField
               id="outlined-number"
               label="Number of People"
@@ -76,13 +79,15 @@ export class FormDate extends Component {
               <FormControl component="fieldset">
                 <FormLabel component="legend">Session</FormLabel>
                 <RadioGroup aria-label="Session" name="session" onChange={handleChange('session')} defaultValue={values.session}>
-                  <FormControlLabel value="lunch" control={<Radio />} label="Lunch" />
-                  <FormControlLabel value="dinner" control={<Radio />} label="Dinner" />
+                  <FormControlLabel value="Lunch" control={<Radio />} label="Lunch" />
+                  <FormControlLabel value="Dinner" control={<Radio />} label="Dinner" />
                 </RadioGroup>
               </FormControl>
             </Grid>
           </Grid>
-          </Grid>          
+          
+          </Grid> 
+                    
         </Grid>      
       
       <br></br>

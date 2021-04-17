@@ -10,11 +10,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import FormHelperText from '@material-ui/core/FormHelperText';
-import FormControl from '@material-ui/core/FormControl';
-import Select from '@material-ui/core/Select';
+
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -25,16 +21,11 @@ const useStyles = makeStyles((theme) => ({
   },
   avatar: {
     margin: theme.spacing(1),
-    backgroundColor: '#B22222'
+    backgroundColor: '#039be5'
   },
   form: {
     width: '100%',
     marginTop: theme.spacing(3),
-  },
-  select: {
-    width: '100%',
-    marginTop: theme.spacing(0),
-    align: 'center'
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -79,24 +70,6 @@ export default function Register() {
                 name="lastName"
                 autoComplete="lname"
               />
-            </Grid>
-            <Grid item xs ={12}>
-            <FormControl className={classes.select}>
-        <InputLabel>Role</InputLabel>
-        <Select
-          labelId=""
-          id=""
-          // value={}
-          // onChange={}
-        >
-          <MenuItem value={1}>Head Chef</MenuItem>
-          <MenuItem value={2}>Cook</MenuItem>
-          <MenuItem value={3}>Waiter</MenuItem>
-          <MenuItem value={4}>Cashier</MenuItem>
-          <MenuItem value={5}>Manager</MenuItem>
-          <MenuItem value={6}>Barista</MenuItem>
-        </Select>
-      </FormControl>
             </Grid>
             <Grid item xs={12}>
               <TextField

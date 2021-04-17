@@ -29,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
     flexShrink: 0,
     overflowX: 'auto',
     marginRight: theme.spacing(2.5),
+    fontWeight: 700
   },
 }));
 

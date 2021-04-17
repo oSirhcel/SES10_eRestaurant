@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     color:'#088bdc',
     wrap: 'noWrap',
     marginTop: theme.spacing(10),
-    marginBottom: theme.spacing(-1),
+    marginBottom: theme.spacing(0),
     },
 
     slogan: {
@@ -45,7 +45,7 @@ return (
             <div 
             align = 'Center'
             className = {classes.title}>
-             LE BISTRO D'ANDRE 
+             LE BISTROT D'ANDRE 
             </div>
             <div className =  {classes.slogan} align = 'center'> The World's Greatest Cuisine.</div>
 

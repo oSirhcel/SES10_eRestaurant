@@ -13,7 +13,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="">
-        Le Bistro d'Andre
+        Le Bistrot d'Andre
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -23,8 +23,8 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
   footer: {
-    // background: '#ffcc80',
-     marginTop: theme.spacing(22),
+    borderTop: `2px solid ${theme.palette.divider}`,
+     marginTop: theme.spacing(21),
     padding: theme.spacing(1, 0),
     maxWidth: 'false',
   },

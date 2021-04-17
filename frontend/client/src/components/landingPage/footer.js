@@ -1,6 +1,5 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
@@ -14,7 +13,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="">
-        Le Bistro
+        Le Bistro d'Andre
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -25,14 +24,14 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   footer: {
     // background: '#ffcc80',
-     marginTop: theme.spacing(8),
-    padding: theme.spacing(6, 0),
+     marginTop: theme.spacing(24),
+    padding: theme.spacing(1, 0),
     maxWidth: 'false',
   },
 }));
 
 
-export default function Footer(props) {
+export default function Footer() {
     const classes = useStyles();
 
     return (
@@ -45,13 +44,13 @@ export default function Footer(props) {
             justify="center"
             >
                 <Grid direction="row"> 
-                    <Typography component="h1" variant="h6">
+                    <Typography style ={{fontSize: 16, fontWeight:600}} align = 'center'>
                         Connect with us
                     </Typography>
 
-                <IconButton aria-label="Instagram"> <InstagramIcon/> </IconButton>
-                <IconButton aria-label="Twitter"> <TwitterIcon/> </IconButton>
-                <IconButton aria-label="Facebook"> <FacebookIcon/> </IconButton>
+                <IconButton aria-label="Instagram" href="https://instagram.com" target="_blank" rel="noopener noreferrer"> <InstagramIcon/> </IconButton>
+                <IconButton aria-label="Twitter" href="https://twitter.com" target="_blank" rel="noopener noreferrer"> <TwitterIcon/> </IconButton>
+                <IconButton aria-label="Facebook" href="https://facebook.com" target="_blank" rel="noopener noreferrer"> <FacebookIcon/> </IconButton>
                 </Grid>
 
             </Grid>

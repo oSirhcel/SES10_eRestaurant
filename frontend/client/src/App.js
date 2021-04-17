@@ -5,9 +5,11 @@ import Container from '@material-ui/core/Container';
 import Header from './components/LandingPage/header';
 import MainFeaturedPost from "./components/LandingPage/feature.js"
 import Footer from './components/LandingPage/footer';
+import MainDescription from './components/LandingPage/mainDescription';
+
 const useStyles = makeStyles((theme) => ({ 
     root: {
-        marginTop: theme.spacing(3),
+        marginTop: theme.spacing(0),
         minHeight: '100vh',
         
 
@@ -26,12 +28,12 @@ const mainFeaturedPost = {
 
 
 const sections = [
-  { title: 'Locations', url: '#' },
-  { title: 'Menu', url: '#' },
-  { title: 'Reserve', url: '#' },
-  { title: 'About Us', url: '#' },
-  { title: 'Promotions', url: '#' },
-  { title: 'My Account', url: '#' },
+  { title: 'LOCATIONS', url: '#' },
+  { title: 'MENU', url: '#' },
+  { title: 'RESERVE', url: '#' },
+  { title: 'ABOUT US', url: '#' },
+  { title: 'PROMOTIONS', url: '#' },
+  { title: 'MY ACCOUNT', url: '#' },
 ];
 
 export default function App(){
@@ -44,8 +46,10 @@ export default function App(){
     </Container>
     <main>
       <MainFeaturedPost post={mainFeaturedPost} />
+      <MainDescription />
       </main>
       <Container>
+        
         <Footer/>
       </Container>
   </React.Fragment>

@@ -1,31 +1,37 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, MuiThemeProvider } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Link from '@material-ui/core/Link';
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
-    // backgroundColor: '#ffcc80'
+
   },
   toolbar: {
-    borderBottom: `2px solid ${theme.palette.divider}`,
     backgroundColor: 'primary',
   },
   toolbarTitle: {
+    color: '#088bdc',
+    fontWeight: 750,
     flex: 1,
+    fontfamily: 'Serif',
   },
   toolbarSecondary: {
-    justifyContent: 'space-between',
-    overflowX: 'auto',
+    justifyContent: 'flex-end',
+    
   },
   toolbarLink: {  
     padding: theme.spacing(1),
     flexShrink: 0,
+    overflowX: 'auto',
+    marginRight: theme.spacing(2.5),
   },
 }));
+
 
 export default function Header(props) {
   const classes = useStyles();
@@ -37,23 +43,17 @@ export default function Header(props) {
       <Toolbar className={classes.toolbar}>
         <Typography
           component="h2"
-          variant="h4"
+          variant="h5"  
           color="inherit"
-          align="Center"
+          align="Left"
           noWrap
           className={classes.toolbarTitle}
         >
           {title}
         </Typography>
-        <Button variant="outlined" size="small">
-          Sign up
-        </Button>
-      </Toolbar>
-      <Toolbar component="nav" variant="dense" className={classes.toolbarSecondary}>
         {sections.map((section) => (
           <Link
             color="inherit"
-            noWrap
             key={section.title}
             variant="body2"
             href={section.url}
@@ -62,6 +62,9 @@ export default function Header(props) {
             {section.title}
           </Link>
         ))}
+        <Button variant="contained" size="small" color="primary" className ={classes.toolbarSecondary}>
+          Sign up
+        </Button>
       </Toolbar>
       </div>
     </React.Fragment>

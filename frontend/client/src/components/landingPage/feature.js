@@ -11,13 +11,16 @@ root: {
     
 },
     mainFeaturedPost: {
+
     position: 'relative',
     backgroundColor: theme.palette.grey[800],
     color: theme.palette.common.white,
-    marginBottom: theme.spacing(4),
+    marginBottom: theme.spacing(3),
+    marginTop: theme.spacing(1),
     backgroundSize: 'cover',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'centre',
+    
   },
   overlay: {
     position: 'absolute',
@@ -31,7 +34,7 @@ root: {
     position: 'relative',
     padding: theme.spacing(1),
     [theme.breakpoints.up('md')]: {
-      padding: theme.spacing(35),
+      padding: theme.spacing(32),
       paddingRight: 0,
     },
   },

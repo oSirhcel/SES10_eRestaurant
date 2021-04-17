@@ -24,7 +24,7 @@ function Copyright() {
 const useStyles = makeStyles((theme) => ({
   footer: {
     // background: '#ffcc80',
-     marginTop: theme.spacing(24),
+     marginTop: theme.spacing(22),
     padding: theme.spacing(1, 0),
     maxWidth: 'false',
   },

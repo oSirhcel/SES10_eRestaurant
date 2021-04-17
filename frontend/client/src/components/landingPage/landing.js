@@ -2,10 +2,10 @@ import React from 'react';
 import {makeStyles} from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Container from '@material-ui/core/Container';
-import Header from './components/LandingPage/header';
-import MainFeaturedPost from "./components/LandingPage/feature.js"
-import Footer from './components/LandingPage/footer';
-import MainFeaturedPost from "./components/LandingPage/feature.js"
+import Header from './components/landingPage/header';
+import MainFeaturedPost from "./components/landingPage/feature.js"
+import Footer from './components/landingPage/footer';
+import MainFeaturedPost from "./components/landingPage/feature.js"
 
 const useStyles = makeStyles((theme) => ({ 
   root: {

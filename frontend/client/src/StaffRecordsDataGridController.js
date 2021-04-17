@@ -1,6 +1,6 @@
 import React from 'react';
-import DataTable from './ViewComponents/DataGrid';
-import Dashboard from './ViewComponents/Dashboard.js';
+import StaffRecordsDataGrid from './ViewComponents/StaffRecordsDataGrid';
+import AdminViewFrame from './ViewComponents/AdminViewFrame';
 
 const columns = [
     { field: 'id', headerName: 'Staff ID', type: 'number', width: 130},
@@ -30,7 +30,7 @@ const columns = [
       {id: 107, firstName: 'Au', lastName: 'Revoir', position: 'Waiter', email: 'aurevoir@gmail.com', phone: '0410000007'},
   ];
 
-class DataGridController extends React.Component {
+class StaffRecordsDataGridController extends React.Component {
     state = {
         columns: columns,
         rows: rows,
@@ -82,15 +82,17 @@ class DataGridController extends React.Component {
                 }
               }}
             >
-            <DataTable 
-            handleRowSelected={this.handleRowSelected}
-            handleCellClicked={this.handleCellClicked}
-            handleDelete={this.handleDelete}
-            handleEdit={this.handleEdit}
-            handleValueChange={this.handleValueChange}
-            columns={this.state.columns}
-            rows={this.state.rows}
+                
+            <StaffRecordsDataGrid 
+                handleRowSelected={this.handleRowSelected}
+                handleCellClicked={this.handleCellClicked}
+                handleDelete={this.handleDelete}
+                handleEdit={this.handleEdit}
+                handleValueChange={this.handleValueChange}
+                columns={this.state.columns}
+                rows={this.state.rows}
             />
+
             </div>
             
         )
@@ -99,7 +101,7 @@ class DataGridController extends React.Component {
 
 const Stage = () => {
     return (
-      <Dashboard element = {<DataGridController />}/>
+      <AdminViewFrame element = {<StaffRecordsDataGridController />}/>
     )
   }
 

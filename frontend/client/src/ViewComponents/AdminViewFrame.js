@@ -99,7 +99,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Dashboard = (props) => {
+const AdminViewFrame = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -162,4 +162,4 @@ const Dashboard = (props) => {
   );
 }
 
-export default Dashboard;
+export default AdminViewFrame;

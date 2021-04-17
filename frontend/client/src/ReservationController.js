@@ -43,6 +43,10 @@ export class ReservationController extends Component {
       this.setState({time: value});
   }
 
+  handleOnSubmit = () => {
+    alert("Need to actually put reservation in the system lol");
+  }
+
   timeToString = (time) => {
     if (time == '') {
       return('');
@@ -80,6 +84,7 @@ export class ReservationController extends Component {
             handleChange = {this.handleChange}
             handleDateSelect = {this.handleDateSelect}
             handleTimeSelect = {this.handleTimeSelect}
+            handleOnSubmit = {this.handleOnSubmit}
             timeToString = {this.timeToString}
         />
     )

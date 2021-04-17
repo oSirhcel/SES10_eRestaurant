@@ -6,11 +6,14 @@ import FormDate from './FormDate';
 import Grid from '@material-ui/core/Grid';
 
 export class ReservationForm extends Component {
+  
   render() {
     const { step } = this.props;
     const { date, session, time, numPeople } = this.props;
-    const { nextStep, prevStep, handleChange, handleDateSelect, handleTimeSelect, timeToString } = this.props;
+    const { nextStep, prevStep, handleChange, handleDateSelect, handleTimeSelect, timeToString, handleOnSubmit } = this.props;
     const values = { date, session, time, numPeople };
+
+    
 
     switch (step) {
       case 1:
@@ -77,13 +80,14 @@ export class ReservationForm extends Component {
       case 4:
         return (
           <div>
-
+            <form onSubmit={handleOnSubmit}>
             <Review 
               values={values}
             />
 
             <Button onClick={prevStep} color="primary"> Back </Button>
-
+            </form>
+            
           </div>
           
         )

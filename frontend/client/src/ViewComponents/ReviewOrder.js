@@ -61,12 +61,12 @@ const Review = ({values}) => {
             Number of People: {values.numPeople} 
           </p>
         </Typography>
-        <Button className={classes.button} color="secondary" variant="contained">Submit</Button>
-           
-        </Paper>
-            
+          <Button className={classes.button} type="submit" color="secondary" variant="contained">Submit</Button>
+        </Paper>   
     </div>
   )
 }
 
 export default Review;
+
+//        

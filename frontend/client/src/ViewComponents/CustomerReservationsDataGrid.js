@@ -4,7 +4,7 @@ import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 
-class CustomerReservationsDataGrid extends React.Component {
+class StaffRecordsDataGrid extends React.Component {
     state = {
         disableButton: true,
     }
@@ -15,7 +15,7 @@ class CustomerReservationsDataGrid extends React.Component {
             <div style={{ height: 350, width: '100%' }}>
               <Grid container spacing={3}>
                 <Grid item xs={12} sm = {6}>
-                <h1> Staff Records </h1>
+                <h1> My Reservations </h1>
                 </Grid>
                 <Grid item xs={12} sm = {6} align="right">
                 <Button
@@ -29,15 +29,15 @@ class CustomerReservationsDataGrid extends React.Component {
               
             
             <DataGrid 
-            rows={this.props.rows} 
-            columns={this.props.columns} 
-            autoPageSize = {true}
-            density = {'compact'}  
-            disableColumnResize = {false}
-            onRowSelected={(data) => {this.setState({ disableButton: false}); handleRowSelected(data)}}
-            onCellClick={(cell) => handleCellClicked(cell)}
-            onCellDoubleClick={() => handleEdit()}
-            onCellValueChange={() => handleValueChange()}
+              rows={this.props.rows} 
+              columns={this.props.columns} 
+              autoPageSize = {true}
+              density = {'compact'}  
+              onRowSelected={(data) => {this.setState({ disableButton: false}); handleRowSelected(data)}}
+              onCellClick={(cell) => handleCellClicked(cell)}
+              onCellDoubleClick={() => handleEdit()}
+              onCellValueChange={() => handleValueChange()}
+              disableColumnFilter
             />
             
         </div>
@@ -45,4 +45,4 @@ class CustomerReservationsDataGrid extends React.Component {
     }
 }
 
-export default CustomerReservationsDataGrid;
+export default StaffRecordsDataGrid;

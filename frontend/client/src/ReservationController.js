@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ReservationForm from './ViewComponents/ReservationForm.js';
-import CustomerViewFrame from './ViewComponents/CustomerViewFrame';
+import ReservationForm from './components/makeReservation/ReservationForm.js';
+import CustomerViewFrame from './components/makeReservation/CustomerViewFrame';
 
 export class ReservationController extends Component {
   state = {

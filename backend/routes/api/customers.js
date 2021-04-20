@@ -7,8 +7,8 @@ const { check, validationResult } = require("express-validator");
 
 const Customer = require("../../src/models/customer");
 
-// @route   POST api/users
-// @desc    Register user
+// @route   POST api/customers
+// @desc    Register customers
 // @access  Public
 router.post(
   "/",
@@ -25,12 +25,12 @@ router.post(
     const { name, email, password } = req.body;
 
     try {
-      let customer = await User.findOne({ email });
+      let customer = await Customer.findOne({ email });
 
       if (customer) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'User already exists' }] });
+          .json({ errors: [{ msg: 'Customer already exists' }] });
       }
 
       customer = new Customer({

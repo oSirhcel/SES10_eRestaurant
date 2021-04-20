@@ -1,6 +1,5 @@
 const express = require("express");
 const connectDB = require("./config/db");
-const api = require('./routes/api');
 const mongoose = require('mongoose')
 
 const app = express();
@@ -12,7 +11,9 @@ connectDB();
 app.use(express.json());
 
 // Define Routes
-app.use(api);
+app.use('/api/customers', require('./routes/api/customers'));
+app.use('/api/staff', require('./routes/api/staff'));
+app.use('/api/auth', require('./routes/api/auth'));
 
 // Selecting Port
 const port = process.env.PORT || 5000;

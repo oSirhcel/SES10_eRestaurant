@@ -1,6 +1,6 @@
 import React from 'react';
 import CustomerReservationsDataGrid from './ViewComponents/CustomerReservationsDataGrid';
-import AdminViewFrame from './ViewComponents/AdminViewFrame';
+import CustomerViewFrame from './ViewComponents/CustomerViewFrame';
 import Button from '@material-ui/core/Button';
 import { format } from 'date-fns'
 
@@ -124,7 +124,7 @@ class CustomerReservationsController extends React.Component {
 
 const CustomerReservationsStage = () => {
     return (
-      <AdminViewFrame element = {<CustomerReservationsController />}/>
+      <CustomerViewFrame element = {<CustomerReservationsController />}/>
     )
   }
 

@@ -1,8 +1,7 @@
-import SignIn from "./components/login";
 function App() {
   return (
     <div className="App">
-      <SignIn />
+      <h1> Hello, World! </h1>
     </div>
   );
 }

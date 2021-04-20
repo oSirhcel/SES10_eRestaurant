@@ -91,11 +91,11 @@ export class ReservationController extends Component {
   }
 }
 
-const Stage = () => {
+const MakeReservationStage = () => {
     return (
       <CustomerViewFrame element = {<ReservationController />}/>
     )
 }
 
-export default Stage;
+export default MakeReservationStage;
 

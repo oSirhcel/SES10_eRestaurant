@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Stage from './ReservationController';
+import App from './App';
+import MakeReservationStage from './ReservationController';
 
-ReactDOM.render(<Stage />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 

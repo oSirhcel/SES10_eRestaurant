@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Register() {
+export default function RegisterCustomer() {
   const classes = useStyles();
 
   return (

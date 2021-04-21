@@ -1,48 +1,54 @@
 import React from 'react';
-import CustomerReservationsDataGrid from './ViewComponents/CustomerReservationsDataGrid';
-import CustomerViewFrame from './ViewComponents/CustomerViewFrame';
+import CustomerReservationsDataGrid from '../components/customerReservations/CustomerReservationsDataGrid';
+import CustomerViewFrame from '../components/viewFrames/CustomerViewFrame';
 import Button from '@material-ui/core/Button';
-import { format } from 'date-fns'
+import { format } from 'date-fns';
+import ViewReservationStepper from '../components/customerReservations/ViewReservationStepper';
 
-const columns = [
-    { field: 'id', headerName: 'Reservation ID', type: 'number', width: 200},
-    { 
-        field: 'date', 
-        headerName: 'Date', 
-        type: 'date',
-        width: 130, 
-        renderCell: (params) => (       
-              `${format(params.value, 'dd MMM yyyy')}`           
-          ),  
-    },
-    
-    { 
-        field: 'time', 
-        headerName: 'Time', 
-        width: 130,
-        valueGetter: (params) => (
-            `${format(params.getValue('date'), 'h:mm a')}`  
-        )
+const columns = (handleDetailsClicked, nextStep) => {
+    return (
+    [
+        { field: 'id', headerName: 'Reservation ID', type: 'number', width: 200},
+        { 
+            field: 'date', 
+            headerName: 'Date', 
+            type: 'date',
+            width: 130, 
+            renderCell: (params) => (       
+                  `${format(params.value, 'd MMM yyyy')}`           
+              ),  
+        },
         
-    },
-    { field: 'numPeople', headerName: 'Number of People', type: 'number', width: 200},
-    { field: 'mealOrder', headerName: 'Meal Order', width: 130},
-    { 
-        field: 'detailsBtn', 
-        headerName: ' ',
-        width: 130,
-        renderCell: () => (
-            <Button
-                variant="contained"
-                color="primary"
-                size="small"
-                style={{ marginLeft: 16 }}
-            >
-                Details
-            </Button>
-        )
-    },
-  ];
+        { 
+            field: 'time', 
+            headerName: 'Time', 
+            width: 130,
+            valueGetter: (params) => (
+                `${format(params.getValue('date'), 'h:mm a')}`  
+            )
+            
+        },
+        { field: 'numPeople', headerName: 'Number of People', type: 'number', width: 200},
+        { field: 'mealOrder', headerName: 'Meal Order', width: 130},
+        { 
+            field: 'detailsBtn', 
+            headerName: ' ',
+            width: 130,
+            renderCell: (api) => (
+                <Button
+                    variant="contained"
+                    color="primary"
+                    size="small"
+                    style={{ marginLeft: 16 }}
+                    onClick={() => handleDetailsClicked()}
+                >
+                    Details
+                </Button>
+            )
+        },
+      ]
+    );
+} 
   
   const rows = [
       {id: 101, date: new Date(2021, 4, 19, 11, 15), time: "11AM", numPeople: 12, mealOrder: 'No'},
@@ -55,11 +61,28 @@ const columns = [
  
 class CustomerReservationsController extends React.Component {
     state = {
-        columns: columns,
+        step: 1,
+        columns: columns(),
         rows: rows,
         selectedRow:'',
         selectedCell:'',
     }
+
+    // Proceed to next step
+  nextStep = () => {
+    const { step } = this.state;
+    this.setState({
+      step: step + 1
+    });
+  };
+  
+  // Go back to prev step
+  prevStep = () => {
+    const { step } = this.state;
+    this.setState({
+      step: step - 1
+    });
+  };
 
     handleRowSelected = (row) => {
         this.setState({selectedRow : row});
@@ -67,6 +90,13 @@ class CustomerReservationsController extends React.Component {
 
     handleCellClicked = (cell) => {
         this.setState({selectedCell : cell});
+    }
+
+    handleDetailsClicked = () => {
+        const { step } = this.state;
+        this.setState({
+        step: step + 1
+        });
     }
 
     handleDelete = () => {
@@ -105,14 +135,15 @@ class CustomerReservationsController extends React.Component {
                 }
               }}
             >
-                
-            <CustomerReservationsDataGrid
+
+            <ViewReservationStepper
+                step = {this.state.step}
+                prevStep = {this.prevStep}
+                reservationData = {this.state.selectedRow}
                 handleRowSelected={this.handleRowSelected}
-                handleCellClicked={this.handleCellClicked}
                 handleDelete={this.handleDelete}
                 handleEdit={this.handleEdit}
-                handleValueChange={this.handleValueChange}
-                columns={this.state.columns}
+                columns={columns(this.handleDetailsClicked)}
                 rows={this.state.rows}
             />
 

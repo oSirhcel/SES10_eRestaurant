@@ -1,11 +1,16 @@
 import React from 'react';
-import ReservationDetailsForm from './ViewComponents/ReservationDetailsForm';
-import CustomerViewFrame from './ViewComponents/CustomerViewFrame';
+import ReservationDetailsForm from '../components/customerReservations/ReservationDetailsForm';
+import CustomerViewFrame from '../components/viewFrames/CustomerViewFrame';
 
 class ReservationDetailsController extends React.Component {
+    state = {
+        selectedReservation: '',
+    }
     render() {
         return (
-            <ReservationDetailsForm />
+            <ReservationDetailsForm
+                selectedReservaiton = {this.state.selectedReservation} 
+            />
         )
     }
 }

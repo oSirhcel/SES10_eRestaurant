@@ -4,13 +4,13 @@ import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 
-class StaffRecordsDataGrid extends React.Component {
+class CustomerReservationsDataGrid extends React.Component {
     state = {
         disableButton: true,
     }
     
     render() {
-      const { handleRowSelected, handleCellClicked, handleDelete, handleEdit, handleValueChange } = this.props;
+      const { handleRowSelected, handleDelete, handleEdit } = this.props;
         return (
             <div style={{ height: 350, width: '100%' }}>
               <Grid container spacing={3}>
@@ -34,9 +34,6 @@ class StaffRecordsDataGrid extends React.Component {
               autoPageSize = {true}
               density = {'compact'}  
               onRowSelected={(data) => {this.setState({ disableButton: false}); handleRowSelected(data)}}
-              onCellClick={(cell) => handleCellClicked(cell)}
-              onCellDoubleClick={() => handleEdit()}
-              onCellValueChange={() => handleValueChange()}
               disableColumnFilter
             />
             
@@ -45,4 +42,4 @@ class StaffRecordsDataGrid extends React.Component {
     }
 }
 
-export default StaffRecordsDataGrid;
+export default CustomerReservationsDataGrid;

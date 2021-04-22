@@ -125,6 +125,9 @@ const ReservationDetailsForm = ({
                     ) : (
                         reservationData.data.numPeople
                 )}
+                <Typography variant = "body2">
+                    Maximum number of people is 20
+                </Typography>
                 <p/>
 
                 <Typography>

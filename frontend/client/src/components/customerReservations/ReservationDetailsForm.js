@@ -15,20 +15,6 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 
-const TimeRange = (beginT, endT) => {
-    const times=[];
-    const startH = format(beginT, 'H');
-    const endH = format(endT, 'H');
-    const endM = format(endT, 'mm');
-    for (var h = startH; h <= endH; h++) {
-        for (var m = 0; m <= 3; m++) {
-            if (!(h == endH && m*15 > endM))
-                times.push(new Date(0, 0, 0, h, m*15));
-        }
-    }
-    return times;      
-}
-
 const Session = (handleSessionSelection) => {
     return (
         <FormControl component="fieldset">
@@ -41,86 +27,18 @@ const Session = (handleSessionSelection) => {
     )
 }
 
-const Timeslots = (lunchStart, lunchEnd, handleTimeSelection) => {
-    return (
-        <div>
-            <Grid container spacing={3}>
-              
-                {TimeRange(lunchStart, lunchEnd).map(timeslot =>(
-                <Grid item xs={6} sm={3}>
-                    <Button 
-                    onClick = {() => handleTimeSelection(timeslot)}
-                    >
-                    {format(timeslot, 'h:mm a')} 
-                    </Button>
-                </Grid>
-                ))}
-              
-            </Grid>
-                        
-        </div>
-    )
-}
 
-/**/
-
-const ReservationDetailsForm = ({reservationData}) => {
-    const [selectedDate, handleDateSelect] = React.useState(reservationData.data.date);
-    const [numPeople, setNumPeople] = React.useState(reservationData.data.numPeople);
-    const [mealOrder, setMealOrder] = React.useState(reservationData.data.mealOrder);
-    const [selectedTime, setSelectedTime] = React.useState(reservationData.data.date);
-
-    const [currentlyEditing, setEdit] = React.useState(false);
-    const [session, setSession] = React.useState('');
-
-    const lunchStart = new Date (0, 0, 0, 11);
-    const lunchEnd = new Date (0, 0, 0, 14, 30);
-    const dinnerStart = new Date (0, 0, 0, 17);
-    const dinnerEnd = new Date (0, 0, 0, 21, 30);
-    
-    const [timeClicked, setTimeClicked] = React.useState(false);
-    
-    const handleTimeSelection = (timeslot) => {
-        setSelectedTime(timeslot);
-    }
-
-    const [times, setTime] = React.useState(<TextField
-        defaultValue={format(reservationData.data.date, 'h:mm a')}
-        onClick={() => {
-            if (format(reservationData.data.date, 'h') <= format(lunchEnd, 'h')) {
-                setTimeClicked(true);
-                setTime(Timeslots(lunchStart, lunchEnd, handleTimeSelection));
-            } else {
-                setTime(Timeslots(dinnerStart, dinnerEnd, handleTimeSelection));
-            }
-        }                  
-        }
-    />);
-    
-    const handleSessionSelection = (event) => {
-        if (event.target.value == "Lunch") {
-            setTime(Timeslots(lunchStart, lunchEnd, handleTimeSelection));
-        } else {
-            setTime(Timeslots(dinnerStart, dinnerEnd, handleTimeSelection));
-        }
-    }
-
-    const handleDateChange = (date) => {
-        handleDateSelect(date);
-        setTime('');
-        setSession(Session(handleSessionSelection));
-    }
-
-    const handleSubmit = () => {
-        alert("submitted");
-    }
-
+const ReservationDetailsForm = ({
+    currentlyEditing, setEdit, reservationData, handleDateChange, 
+    selectedDate, timeClicked, selectedTime, setNumPeople, numPeople, session, times,
+    handleCancel, handleSubmit, handleSessionSelection
+}) => {
     return (
         <div>
             <Paper>
                 {currentlyEditing}
                 <Box p={3}>
-                <form>  
+                <form onSubmit = {handleSubmit}>  
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm = {6}>
                             <h1> Reservation Details </h1>
@@ -155,7 +73,7 @@ const ReservationDetailsForm = ({reservationData}) => {
                     <DatePicker
                         orientation="landscape"
                         openTo="date"
-                        onChange={handleDateChange}
+                        onChange={(e) => handleDateChange(e, Session)}
                         value={selectedDate}
                         format='d MMM yyyy'
                         disablePast
@@ -173,7 +91,7 @@ const ReservationDetailsForm = ({reservationData}) => {
                     <div>
                         {timeClicked ? (
                         <TextField
-                            value={format(selectedTime, 'h:mm a')}
+                            value={selectedTime != 0 ? format(selectedTime, 'h:mm a') : ''}
                         />
                         ) : ('')}
                         {times}
@@ -221,11 +139,19 @@ const ReservationDetailsForm = ({reservationData}) => {
                 )}
                 <p/>
                 {currentlyEditing ? (
-                    <Button
+                    <div>
+                        <Button
                         type="submit"
+                        disabled={selectedTime == 0}
                     > 
                     Confirm
                     </Button>
+                    <Button
+                        onClick={handleCancel}
+                    >
+                        Cancel
+                    </Button>
+                    </div>
                     ) : (
                         ''
                 )}

@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 import CustomerReservationsDataGrid from './CustomerReservationsDataGrid';
-import ReservationDetailsForm from './ReservationDetailsForm';
-
+import ReservationDetailsController from '../../actions/ReservationDetailsController';
 
 export class ViewReservationStepper extends Component {
 
@@ -32,7 +30,7 @@ export class ViewReservationStepper extends Component {
       case 2:
         return (
             <div>
-              <ReservationDetailsForm 
+              <ReservationDetailsController
                 reservationData = {reservationData}
               />
               <Button onClick={prevStep}>Back</Button>

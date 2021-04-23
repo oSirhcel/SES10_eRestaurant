@@ -5,13 +5,16 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
 import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import List from '@material-ui/core/List';
-import { mainListItems } from './ListItems';
+import { mainListItems, secondaryListItems } from './AdminListItems';
 
 
 const drawerWidth = 240;
@@ -81,31 +84,22 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
   },
   container: {
-    paddingTop: theme.spacing(2),
+    paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
   },
   paper: {
     padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
-  },
-  divPaper: {
-    padding: theme.spacing(1),
+    paddingBottom: theme.spacing(10),
     display: 'flex',
     overflow: 'auto',
     flexDirection: 'column',
   },
   fixedHeight: {
-    height: 300,
-    padding: theme.spacing(2),
-    display: 'flex',
-    overflow: 'auto',
-    flexDirection: 'column',
+    height: 240,
   },
 }));
 
-const CustomerViewFrame = ({element}) => {
+const AdminViewFrame = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -131,7 +125,7 @@ const CustomerViewFrame = ({element}) => {
             <MenuIcon />
           </IconButton>
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-          Le Bistrot d'Andre
+            Dashboard
           </Typography>
         </Toolbar>
       </AppBar>
@@ -147,17 +141,25 @@ const CustomerViewFrame = ({element}) => {
             <ChevronLeftIcon />
           </IconButton>
         </div>
+        <Divider />
         <List>{mainListItems}</List>
-
+        <Divider />
+        <List>{secondaryListItems}</List>
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
         <Container maxWidth="lg" className={classes.container}>
-          {element}
+          <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Paper className={classes.paper}>
+                {props.element}
+              </Paper>
+            </Grid>
+          </Grid>
         </Container>
       </main>
     </div>
   );
 }
 
- export default CustomerViewFrame;
+export default AdminViewFrame;

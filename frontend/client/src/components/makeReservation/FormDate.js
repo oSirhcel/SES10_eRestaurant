@@ -45,6 +45,7 @@ export class FormDate extends Component {
                 id="outlined-number"
                 label="Number of People"
                 type="number"
+                value={values.numPeople}
                 onChange={handleChange("numPeople")}
               />
               <p> <Typography color="secondary" variant="body2">Maximum number of People is 20</Typography> </p>

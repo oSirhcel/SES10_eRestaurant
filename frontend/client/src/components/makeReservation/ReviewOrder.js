@@ -18,55 +18,42 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-const timeToString = (time) => {
-  if (time == '') {
-    return('Please select a Time');
-  }
-    if (time.h > 12 ) {
-      if (time.m == 0) {
-        return ((time.h-12)+":"+time.m+time.m+"PM");
-      }
-      return( (time.h-12)+":"+time.m+"PM" );
-    }
-    if (time.m == 0) {
-      if (time.h == 12) {
-        return (time.h+":"+time.m+time.m+"PM");
-      }        
-      return ((time.h)+":"+time.m+time.m+"AM");
-    }
-    if (time.h == 12) {
-      return( time.h+":"+time.m+"PM");
-    }    
-    return( time.h+":"+time.m+"AM");
-}
-
 const Review = ({values}) => {
   const classes = useStyles();
 
   return(
     <div>
       <Paper className={classes.paper}>
-        <h1> Review Booking </h1>        
-        <Typography variant="h6">
-          <p>
-            Date: {format(values.date, 'EEEE, do MMMM yyyy')} 
-          </p>
-          <p>
-            Session: {values.session} 
-          </p>
-          <p>
-            Time: {timeToString(values.time)} 
-          </p>
-          <p>
-            Number of People: {values.numPeople} 
-          </p>
+        <h1> Review Booking </h1>     
+
+        <Typography>
+          Date
         </Typography>
-          <Button className={classes.button} type="submit" color="secondary" variant="contained">Submit</Button>
+        {format(values.date, 'EEEE, do MMMM yyyy')} 
+        <p/>
+
+        <Typography>
+          Session
+        </Typography>
+        {values.session} 
+        <p/>
+
+        <Typography>
+          Time
+        </Typography>
+        {format(values.time, 'h:mm a')} 
+        <p />
+
+        <Typography>
+          Number of People
+        </Typography>
+        {values.numPeople}  
+        <p />
+          
+        <Button className={classes.button} type="submit" color="secondary" variant="contained">Submit</Button>
         </Paper>   
     </div>
   )
 }
 
 export default Review;
-
-//        

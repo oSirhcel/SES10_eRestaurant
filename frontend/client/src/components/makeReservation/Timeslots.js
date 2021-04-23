@@ -2,7 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-  
+import { format } from 'date-fns';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -18,63 +19,42 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-const times = (startH, lastH) => {
-  const times = [];
-   for (var hours = startH; hours <= lastH; hours++) {
-    for (var minutes = 0; minutes <= 3; minutes++) {
-      var m = minutes*15;
-      if (!(hours == lastH && m == 45))
-       times.push({h: hours, m: m });
-    }
-   }
-  return times; 
-}
-
-const timeToString = (time) => {
-  if (time.h > 12 ) {
-     if (time.m == 0) {
-      return ((time.h-12)+":"+time.m+time.m+"PM");
+const TimeRange = (beginT, endT) => {
+  const times=[];
+  const startH = format(beginT, 'H');
+  const endH = format(endT, 'H');
+  const endM = format(endT, 'mm');
+  for (var h = startH; h <= endH; h++) {
+      for (var m = 0; m <= 3; m++) {
+          if (!(h == endH && m*15 > endM))
+              times.push(new Date(0, 0, 0, h, m*15));
       }
-    return( (time.h-12)+":"+time.m+"PM" );
   }
-  if (time.m == 0) {
-    if (time.h == 12) {
-      return (time.h+":"+time.m+time.m+"PM");
-    }        
-    return ((time.h)+":"+time.m+time.m+"AM");
-  }
-  if (time.h == 12) {
-    return( time.h+":"+time.m+"PM");
-  }    
-  return( time.h+":"+time.m+"AM");
+  return times;      
 }
 
-const Timeslots = ({session, handleTimeSelect}) => {
-const classes = useStyles();
-const lunch = times(11, 14);
-const dinner = times(17, 21);
-const showTimes = (session == 'Lunch' ? lunch : dinner);
-    
+const Timeslots = ({start, end, handleTimeSelect}) => {
+
   return (
-    <div className={classes.root}>
-
-      <Grid container spacing={3}>
-
-        {showTimes.map(timeslot =>(
-          <Grid item xs={6} sm={3}>
-            <Button 
-              className={classes.button}
-              onClick={() => handleTimeSelect(timeslot)}
-            >
-              {timeToString(timeslot)} 
-            </Button>
+      <div>
+          <Grid container spacing={3}>
+            
+              {TimeRange(start, end).map(timeslot =>(
+              <Grid item xs={6} sm={3}>
+                  <Button 
+                  onClick = {() => handleTimeSelect(timeslot)}
+                  >
+                  {format(timeslot, 'h:mm a')} 
+                  </Button>
           </Grid>
-        ))}
-
-      </Grid>
-          
-    </div>
-  );
+              ))}
+            
+          </Grid>
+                      
+      </div>
+  )
 }
+  
+
 
 export default Timeslots;

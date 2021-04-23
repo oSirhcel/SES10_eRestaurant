@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ReservationForm from '../components/makeReservation/ReservationForm';
-import CustomerViewFrame from '../components/makeReservation/CustomerViewFrame';
+import CustomerViewFrame from '../components/viewFrames/CustomerViewFrame';
 
 export class ReservationController extends Component {
   state = {
@@ -10,6 +10,15 @@ export class ReservationController extends Component {
     time: '',
     numPeople: 0,
   };
+
+  lunchTimes = {
+    start: new Date (0, 0, 0, 11),
+    end: new Date (0, 0, 0, 14, 30),
+  }
+  dinnerTimes = {
+    start: new Date (0, 0, 0, 17),
+    end: new Date (0, 0, 0, 21, 30),
+  }
 
   // Proceed to next step
   nextStep = () => {
@@ -31,8 +40,9 @@ export class ReservationController extends Component {
   handleChange = input => e => {
     if (input == 'session' && this.state.session != e.target.value) {
       this.setState({ time : ''});
+    } else {
+      this.setState({ [input]: e.target.value });
     }
-    this.setState({ [input]: e.target.value });
   };
 
   handleDateSelect = (value) => {
@@ -47,31 +57,12 @@ export class ReservationController extends Component {
     alert("Need to actually put reservation in the system lol");
   }
 
-  timeToString = (time) => {
-    if (time == '') {
-      return('');
-    }
-    if (time.h > 12 ) {
-      if (time.m == 0) {
-        return ((time.h-12)+":"+time.m+time.m+"PM");
-      }
-      return( (time.h-12)+":"+time.m+"PM" );
-    }
-    if (time.m == 0) {
-      if (time.h == 12) {
-        return (time.h+":"+time.m+time.m+"PM");
-      }        
-      return ((time.h)+":"+time.m+time.m+"AM");
-    }
-    if (time.h == 12) {
-      return( time.h+":"+time.m+"PM");
-    }    
-    return( time.h+":"+time.m+"AM");
-  }
-
   render() {
-    const { step, date, time, session, numPeople } = this.state;
+    const { step, date, time, session, numPeople, lunchStart, lunchEnd, dinnerStart, dinnerEnd } = this.state;
+    const lunchTimes = this.lunchTimes;
+    const dinnerTimes = this.dinnerTimes;
     
+
     return (
         <ReservationForm 
             step = {step}
@@ -85,7 +76,7 @@ export class ReservationController extends Component {
             handleDateSelect = {this.handleDateSelect}
             handleTimeSelect = {this.handleTimeSelect}
             handleOnSubmit = {this.handleOnSubmit}
-            timeToString = {this.timeToString}
+            timeBoundaries = {session == "Lunch" ? lunchTimes : dinnerTimes}
         />
     )
   }

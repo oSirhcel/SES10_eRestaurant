@@ -6,5 +6,5 @@ import CustomerReservationsStage from './actions/CustomerReservationsController'
 import ViewReservationStepper from './components/customerReservations/ViewReservationStepper';
 
 
-ReactDOM.render(<CustomerReservationsStage />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 

@@ -4,5 +4,5 @@ import MakeReservationStage from './actions/ReservationController';
 import StaffRecordsStage from './actions/StaffRecordsDataGridController';
 import App from './App.js';
 
-ReactDOM.render(<MakeReservationStage />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
 

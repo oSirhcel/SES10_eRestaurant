@@ -12,7 +12,7 @@ export class ReservationForm extends Component {
     const { step } = this.props;
     const { date, session, time, numPeople } = this.props;
     const { nextStep, prevStep, handleChange, handleDateSelect, handleTimeSelect, timeToString, handleOnSubmit } = this.props;
-    const {timeBoundaries} = this.props;
+    const {timeBoundaries, handleSession} = this.props;
     const values = { date, session, time, numPeople };
     
 
@@ -28,6 +28,7 @@ export class ReservationForm extends Component {
               <FormDate
                 handleChange={handleChange}
                 handleDateSelect={handleDateSelect}
+                handleSession = {handleSession}
                 values={values}
                 selectedDate={date}
               />
@@ -46,7 +47,10 @@ export class ReservationForm extends Component {
                   <h1> Pick a Time </h1>
                 </Grid>
                 <Grid item xs={12} sm={6} align="center">
-                  <h1> {time != "" ? format(time, 'h:mm a') : ""} </h1>
+                  {/*Shows the time the user has selected cuz I
+                  couldn't figure out how to show a button had been selected :|
+                  */}
+                  <h1> {time != "" ? format(time, 'h:mm a') : ""} </h1> 
                 </Grid>
               </Grid>
 
@@ -58,9 +62,13 @@ export class ReservationForm extends Component {
               />
 
               <Button onClick={prevStep} color="primary">Back</Button>
-              <Button onClick={nextStep} color="primary" 
-              disabled={time == ''}>
-              Next</Button>
+              <Button 
+                onClick={nextStep} 
+                color="primary" 
+                disabled={time == ''}
+              >
+                Next
+              </Button>
 
             </div>
           
@@ -68,13 +76,11 @@ export class ReservationForm extends Component {
       case 3:
         return (
             <div>
-
-              <h1
-                values={values}
-              > 
+              {/*Will need to add create meal order feature here */}
+              <h1 values={values}> 
                 Add Meal Order
               </h1>
-
+              
               <Button onClick={prevStep} color="primary">Back</Button>
               <Button onClick={nextStep} color="primary">Next</Button>
 

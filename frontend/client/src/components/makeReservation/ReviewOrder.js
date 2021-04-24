@@ -50,7 +50,14 @@ const Review = ({values}) => {
         {values.numPeople}  
         <p />
           
-        <Button className={classes.button} type="submit" color="secondary" variant="contained">Submit</Button>
+        <Button 
+          className={classes.button} 
+          type="submit" 
+          color="secondary" 
+          variant="contained"
+        >
+          Submit
+        </Button>
         </Paper>   
     </div>
   )

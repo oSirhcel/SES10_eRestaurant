@@ -15,16 +15,19 @@ import {
 } from '@material-ui/pickers';
 import Typography from '@material-ui/core/Typography';
 
+//This is the first page/step of the reservation form. (i.e. pick date, number of people, session)
+
 export class FormDate extends Component {
 
   render() {
-    const { values, handleChange, handleDateSelect, selectedDate } = this.props;
+    const { values, handleChange, handleDateSelect, selectedDate, handleSession } = this.props;
     return (
       <div>
         
         <Grid container spacing={2}>
 
-          <Grid item xs={12} sm={6}>           
+          {/*Date Picker*/}  
+          <Grid item xs={12} sm={6}>        
             <MuiPickersUtilsProvider utils={DateFnsUtils}>
             <DatePicker
                 autoOk
@@ -38,6 +41,7 @@ export class FormDate extends Component {
             </MuiPickersUtilsProvider>
           </Grid>
           
+          {/*Number of People Textfield*/}
           <Grid item xs={12} sm={6} display="block" >
           <Paper width = {100}>
             <Box m={2} p={2}>
@@ -52,10 +56,11 @@ export class FormDate extends Component {
               
             </Box>      
 
+            {/*Session Radio Buttons*/}
             <Box m={2} p={2}>
               <FormControl component="fieldset">
                 <FormLabel component="legend">Session</FormLabel>
-                <RadioGroup aria-label="Session" name="session" onChange={handleChange('session')} defaultValue={values.session}>
+                <RadioGroup aria-label="Session" name="session" onChange={handleSession} defaultValue={values.session}>
                   <FormControlLabel value="Lunch" control={<Radio />} label="Lunch" />
                   <FormControlLabel value="Dinner" control={<Radio />} label="Dinner" />
                 </RadioGroup>

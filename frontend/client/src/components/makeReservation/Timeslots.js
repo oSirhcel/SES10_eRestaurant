@@ -26,13 +26,16 @@ const TimeRange = (beginT, endT) => {
   const endM = format(endT, 'mm');
   for (var h = startH; h <= endH; h++) {
       for (var m = 0; m <= 3; m++) {
-          if (!(h == endH && m*15 > endM))
-              times.push(new Date(0, 0, 0, h, m*15));
+          if (!(h == endH && m*15 > endM)) //Timeslots are every 15 min. Can change this but will have to do some maths.
+              times.push(new Date(0, 0, 0, h, m*15)); //The date is arbitrary. Only care about the time. 
       }
   }
   return times;      
 }
 
+
+// I couldn't figure out how to show a button had been selected :( 
+// ceebs with CSS tings.
 const Timeslots = ({start, end, handleTimeSelect}) => {
 
   return (

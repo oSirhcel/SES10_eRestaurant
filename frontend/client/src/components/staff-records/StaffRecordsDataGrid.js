@@ -13,6 +13,7 @@ class StaffRecordsDataGrid extends React.Component {
       const { handleRowSelected, handleCellClicked, handleDelete, handleEdit, handleValueChange } = this.props;
         return (
             <div style={{ height: 350, width: '100%' }}>
+              {/*positions the DataGrid title and delete Button*/}
               <Grid container spacing={3}>
                 <Grid item xs={12} sm = {6}>
                 <h1> Staff Records </h1>
@@ -29,15 +30,15 @@ class StaffRecordsDataGrid extends React.Component {
               
             
             <DataGrid 
-            rows={this.props.rows} 
-            columns={this.props.columns} 
-            autoPageSize = {true}
-            density = {'compact'}  
-            disableColumnResize = {false}
-            onRowSelected={(data) => {this.setState({ disableButton: false}); handleRowSelected(data)}}
-            onCellClick={(cell) => handleCellClicked(cell)}
-            onCellDoubleClick={() => handleEdit()}
-            onCellValueChange={() => handleValueChange()}
+              rows={this.props.rows} 
+              columns={this.props.columns} 
+              autoPageSize = {true}
+              density = {'compact'}  
+              disableColumnResize = {false}
+              onRowSelected={(data) => {this.setState({ disableButton: false}); handleRowSelected(data)}}
+              onCellClick={(cell) => handleCellClicked(cell)}
+              onCellDoubleClick={() => handleEdit()}
+              onCellValueChange={() => handleValueChange()}
             />
             
         </div>

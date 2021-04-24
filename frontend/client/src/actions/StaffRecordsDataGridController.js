@@ -1,6 +1,6 @@
 import React from 'react';
 import StaffRecordsDataGrid from '../components/staff-records/StaffRecordsDataGrid';
-import AdminViewFrame from '../components/staff-records/ViewComponents/AdminViewFrame';
+import AdminViewFrame from '../components/viewFrames/AdminViewFrame';
 
 const columns = [
     { field: 'id', headerName: 'Staff ID', type: 'number', width: 130},
@@ -99,10 +99,10 @@ class StaffRecordsDataGridController extends React.Component {
     }
 }
 
-const Stage = () => {
+const StaffRecordsStage = () => {
     return (
       <AdminViewFrame element = {<StaffRecordsDataGridController />}/>
     )
   }
 
-  export default Stage;
+  export default StaffRecordsStage;

@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App.js';
-import MenuDataGrid from './components/edit-Menu/MenuDataGrid';
+import EditMenuController from './actions/EditMenuController';
+import StaffRecordsStage from './actions/StaffRecordsDataGridController';
+import MenuTabs from './components/edit-Menu/MenuTabs';
 
-ReactDOM.render(<MenuDataGrid />, document.getElementById('root'));
+ReactDOM.render(<EditMenuController />, document.getElementById('root'));
 

@@ -63,15 +63,8 @@ const ItemType = ({type, setType}) => {
   );
 }
 
-const AddItemDialog = ({handleSubmit, deleteButton}) => { 
-  const [item, setItem] = React.useState('');
-  const [description, setDescription] = React.useState('');
-  const [price, setPrice] = React.useState('');
-  const [type, setType] = React.useState(''); 
-
+const AddItemDialog = ({handleSubmit, deleteButton, setItem, setDescription, setPrice, setType, type}) => { 
   const [open, setOpen] = React.useState(false);
-
-  
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -88,9 +81,7 @@ const AddItemDialog = ({handleSubmit, deleteButton}) => {
             <AddIcon />
         </Button>
         <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <form onSubmit={(e) => {
-              handleSubmit(item, description, price, type, e);
-            }}>
+            <form onSubmit={handleSubmit}>
                 <DialogTitle id="form-dialog-title">Add New Item</DialogTitle>
                 <DialogContent>
                     <DialogContentText>
@@ -115,10 +106,13 @@ const AddItemDialog = ({handleSubmit, deleteButton}) => {
                         label="Price"
                         id="price"
                         type="number"
-                        InputProps={{
-                            startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                        inputProps={{ 
+                          step: "0.01",                      
                         }}
-                        onChange = {(event) => setPrice(event.target.value)}
+                        InputProps={{ 
+                          startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                        }}
+                        onChange = {(event) => setPrice(parseFloat(event.target.value))}
                     />         
           
                     <ItemType

@@ -8,11 +8,16 @@ const c = [
     { field: 'id', headerName: 'Item ID', width: 70, hide: true },
     { field: 'item', headerName: 'Item', width: 200 },
     { field: 'description', headerName: 'Description', flex: 1},
-    { field: 'price', headerName: 'Price', width: 130 },
+    { 
+        field: 'price', 
+        headerName: 'Price', 
+        width: 130,
+        valueFormatter: (params) => params.value.toFixed(2), 
+    },
     { field: 'type', headerName: 'Type', width: 130 },
   ];
   
-  const r = [
+  const lunchRows = [
     { id: 1, item: 'Oysters', description: '6 oysters with yummy vinegareete and bacon', price: 24.00, type: 'Entree' },
     { id: 2, item: 'Baguette', description: 'Sourdough baguette with smashed avo', price: 15.00, type: 'Entree' },
     { id: 3, item: 'French Onion soup', description: 'Classic French onion soup containing crispy croutons', price: 18.50, type: 'Entree' },
@@ -22,18 +27,36 @@ const c = [
     { id: 7, item: 'Garden Salad', price: 6.00, type: 'Entree' },
     { id: 8, item: 'Profiteroles', description: '4 custard filled profiteroles dipped in a smooth chocolate ganache', price: 17.00, type: 'Dessert' },
     { id: 9, item: 'Crepes Suzette', description: '2 crepes served with fresh raspberries and a scoop of vanilla bean ice cream', price: 15.00, type: 'Dessert' },
-    { id: 10, item: 'Genoise cake', description: 'Genoise cake, candied orange in grand Marnier syrup, crème patissière, Armagnac jelly', price: 10.00, type: 'Dessert' },
-  
+    { id: 10, item: 'Genoise cake', description: 'Genoise cake, candied orange in grand Marnier syrup, crème patissière, Armagnac jelly', price: 10.00, type: 'Dessert' },  
+  ];
+
+  const dinnerRows = [
+    { id: 1, item: 'Ratatouille', description: 'House special made by the infamous Remy Rat', price: 20.00, type: 'Main' },
+    { id: 2, item: 'Lobster Mornay', description: 'A delicious cheesy lobster', price: 40.00, type: 'Main' },
+    { id: 3, item: 'Quiche Lorraine', description: 'Classic French quiche with containing bacon', price: 17.50, type: 'Main' },
+    { id: 4, item: 'Steak Tartare', description: 'Raw beef that\'s bloody good. (Just don\'t ask Mr Bean)', price: 16.00, type: 'Entree' },
+    { id: 5, item: 'Escargots', description: 'Snails', price: 40.00, type: 'Entree' },
+    { id: 6, item: 'Coquilles Saint-Jacques (Gratinéed scallops)', description: 'Two poached scallops topped with Gruyere', price: 25.00, type: 'Entree' },
+    { id: 7, item: 'Tarte Tatin', description: 'Upside down apple pastry served with a scoop of vanilla bean ice cream', price: 10.00, type: 'Dessert' },
+    { id: 8, item: 'Chocolate Soufflé', price: 12.00, type: 'Dessert' },
+    { id: 9, item: 'Crème brûlée', description: 'Pure yumminess', price: 15.00, type: 'Dessert' },
+    { id: 10, item: 'Macaron', description: 'Three macarons served with fresh strawberries and whipped cream', price: 17.00, type: 'Dessert' },  
   ];
 
 
-const EditMenuController = () => {
+
+const EditMenuController = ({tabValue}) => {
     const columns = c;
-    const [rows, setRows] = React.useState(r);
+    const [rows, setRows] = React.useState(tabValue == 0 ? lunchRows : dinnerRows);
     const [selectedRow, setSelectedRow] = React.useState('');
     const [selectedCell, setSelectedCell] = React.useState();
+    
+    const [item, setItem] = React.useState('');
+    const [description, setDescription] = React.useState('');
+    const [price, setPrice] = React.useState('');
+    const [type, setType] = React.useState(''); 
 
-    const handleSubmit = (item, description, price, type, e) => {        
+    const handleSubmit = (e) => {        
         const newID = rows[rows.length-1].id + 1;
         const newItem = {id: newID, item: item, description: description, price: price, type: type};
         setRows([...rows, newItem]);        
@@ -74,14 +97,19 @@ const EditMenuController = () => {
                  <DeleteIcon />
                 </Button>   
                 }
+                setItem = {setItem}
+                setDescription = {setDescription}
+                setPrice = {setPrice}
+                setType = {setType}
+                type = {type}
                 />
             <MenuDataGrid
-            columns = {columns}
-            rows = {rows}
-            setSelectedRow = {setSelectedRow}
-            setSelectedCell = {setSelectedCell}
-            handleEdit = {handleEdit}
-            handleValueChange = {handleValueChange}
+                columns = {columns}
+                rows = {rows}
+                setSelectedRow = {setSelectedRow}
+                setSelectedCell = {setSelectedCell}
+                handleEdit = {handleEdit}
+                handleValueChange = {handleValueChange}
             />
         </div>
         

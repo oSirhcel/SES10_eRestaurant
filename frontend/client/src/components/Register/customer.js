@@ -10,6 +10,13 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+// Imports for the functionality
+// import React, { Fragment, useState } from 'react';
+// import { connect } from 'react-redux';
+// import { Link, Redirect } from 'react-router-dom';
+// import { setAlert } from '../../actions/alert';
+// import { register } from '../../actions/auth';
+// import PropTypes from 'prop-types';
 
 
 const useStyles = makeStyles((theme) => ({

@@ -10,7 +10,7 @@ class CustomerReservationsDataGrid extends React.Component {
     }
     
     render() {
-      const { handleRowSelected, handleDelete, handleEdit } = this.props;
+      const { handleRowSelected, handleDelete } = this.props;
         return (
             <div style={{ height: 350, width: '100%' }}>
               <Grid container spacing={3}>

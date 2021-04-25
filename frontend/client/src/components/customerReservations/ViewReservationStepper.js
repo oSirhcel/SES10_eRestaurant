@@ -3,27 +3,28 @@ import Button from '@material-ui/core/Button';
 import CustomerReservationsDataGrid from './CustomerReservationsDataGrid';
 import ReservationDetailsController from '../../actions/ReservationDetailsController';
 
+
+/*Shows the user's reservation in the datagrid in first step and 
+then details of the selected reservaiton in the second step.*/
+
 export class ViewReservationStepper extends Component {
 
   render() {
     const { step, columns, rows, reservationData } = this.props;
-    const { prevStep,  } = this.props;
-    const { handleRowSelected, handleCellClicked, handleDelete, handleEdit, handleValueChange } = this.props;
+    const { prevStep, } = this.props;
+    const { handleRowSelected, handleDelete } = this.props;
     
 
     switch (step) {
       case 1:
         return (
             <div>
-                <CustomerReservationsDataGrid
-                  handleRowSelected={handleRowSelected}
-                  handleCellClicked={handleCellClicked}
-                  handleDelete={handleDelete}
-                  handleEdit={handleEdit}
-                  handleValueChange={this.handleValueChange}
-                  columns={columns}
-                  rows={rows}
-                />
+              <CustomerReservationsDataGrid
+                handleRowSelected={handleRowSelected}
+                handleDelete={handleDelete}
+                columns={columns}
+                rows={rows}
+              />
             </div>
           
         );

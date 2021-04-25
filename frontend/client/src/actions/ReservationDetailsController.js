@@ -19,8 +19,6 @@ const TimeRange = (beginT, endT) => {
     return times;      
 }
 
-
-
 const Timeslots = (lunchStart, lunchEnd, handleTimeSelection) => {
     return (
         <div>
@@ -45,25 +43,28 @@ const Timeslots = (lunchStart, lunchEnd, handleTimeSelection) => {
 
 const ReservationDetailsController = ({reservationData}) => {
     const [selectedDate, handleDateSelect] = React.useState(reservationData.data.date);
+    const [selectedTime, setSelectedTime] = React.useState(reservationData.data.date);
     const [numPeople, setNumPeople] = React.useState(reservationData.data.numPeople);
     const [mealOrder, setMealOrder] = React.useState(reservationData.data.mealOrder);
-    const [selectedTime, setSelectedTime] = React.useState(reservationData.data.date);
 
     const [currentlyEditing, setEdit] = React.useState(false);
-    const [session, setSession] = React.useState('');
+    const [session, setSession] = React.useState(''); //Used to show which timeslots
+    
+    const [timeClicked, setTimeClicked] = React.useState(false); //Flag for when user wants to see timeslots.
 
     const lunchStart = new Date (0, 0, 0, 11);
     const lunchEnd = new Date (0, 0, 0, 14, 30);
     const dinnerStart = new Date (0, 0, 0, 17);
     const dinnerEnd = new Date (0, 0, 0, 21, 30);
     
-    const [timeClicked, setTimeClicked] = React.useState(false);
     
     const handleTimeSelection = (timeslot) => {
         setSelectedTime(timeslot);
     }
 
-    const [times, setTime] = React.useState(<TextField
+    //The view where the times stuff goes.
+    const [times, setTime] = React.useState(
+    <TextField
         value={format(selectedTime, 'h:mm a')}
         onClick={() => {
             if (format(reservationData.data.date, 'h') <= format(lunchEnd, 'h')) {
@@ -76,6 +77,7 @@ const ReservationDetailsController = ({reservationData}) => {
         }
     />);
     
+    // Sets the timeslots shown depending on which session was selected.
     const handleSessionSelection = (event) => {
         if (event.target.value == "Lunch") {
             setTime(Timeslots(lunchStart, lunchEnd, handleTimeSelection));
@@ -84,6 +86,7 @@ const ReservationDetailsController = ({reservationData}) => {
         }
     }
 
+    // If a new Date was selected then the time needs to be chosen again.
     const handleDateChange = (date, Session) => {
         handleDateSelect(date);
         handleTimeSelection(0);
@@ -92,32 +95,60 @@ const ReservationDetailsController = ({reservationData}) => {
         setSession(Session(handleSessionSelection));
     }
 
+    // Doesn't actually alert anything excepts objects. Just some dummy code for submitting stuff.
     const handleSubmit = () => {
-        alert("submitted");
+        alert(
+            <p>
+                Date: {format(selectedDate, 'd MMM yyyy')} <br />
+                Time: {format(selectedTime, 'h:mm a')} <br />
+                Number of People: {numPeople} <br />
+                Meal Order: {mealOrder} <br />
+            </p>
+        );
     }
 
+    //Resets all the states basically.
     const handleCancel = () => {
-        setSession('');
-        setTime('');
+        handleDateSelect(reservationData.data.date);
+        setNumPeople(reservationData.data.numPeople);
+        setMealOrder(reservationData.data.mealOrder);
         setSelectedTime(reservationData.data.date);
         setEdit(false);
+        setSession('');
+        setTimeClicked(false);
+        setTime(
+            <TextField
+                value={format(reservationData.data.date, 'h:mm a')}
+                onClick={() => {
+                    if (format(reservationData.data.date, 'h') <= format(lunchEnd, 'h')) {
+                        setTimeClicked(true);
+                        setTime(Timeslots(lunchStart, lunchEnd, handleTimeSelection));
+                    } else {
+                        setTime(Timeslots(dinnerStart, dinnerEnd, handleTimeSelection));
+                    }
+                }                  
+                }
+            />
+        );
     }
 
+    //Returns the view
     return (
         <ReservationDetailsForm 
-        currentlyEditing = {currentlyEditing}
-        setEdit = {setEdit}
-        reservationData = {reservationData}
-        handleDateChange = {handleDateChange}
-        selectedDate = {selectedDate}
-        timeClicked = {timeClicked}
-        selectedTime = {selectedTime}
-        setNumPeople = {setNumPeople}
-        numPeople = {numPeople}
-        session = {session}
-        times = {times}
-        handleSubmit = {handleSubmit}
-        handleCancel = {handleCancel}
+            currentlyEditing = {currentlyEditing}
+            setEdit = {setEdit}
+            reservationData = {reservationData}
+            handleDateChange = {handleDateChange}
+            selectedDate = {selectedDate}
+            timeClicked = {timeClicked}
+            selectedTime = {selectedTime}
+            setNumPeople = {setNumPeople}
+            numPeople = {numPeople}
+            session = {session}
+            times = {times}
+            handleSubmit = {handleSubmit}
+            handleCancel = {handleCancel}
+            setMealOrder = {setMealOrder}
         />
     )
 }

@@ -5,70 +5,73 @@ import Button from '@material-ui/core/Button';
 import { format } from 'date-fns';
 import ViewReservationStepper from '../components/customerReservations/ViewReservationStepper';
 
-const columns = (handleDetailsClicked, nextStep) => {
+
+// The time is derived from the date. The details button is a separate column
+const columns = (nextStep) => {
     return (
     [
-        { field: 'id', headerName: 'Reservation ID', type: 'number', width: 200},
-        { 
-            field: 'date', 
-            headerName: 'Date', 
-            type: 'date',
-            width: 130, 
-            renderCell: (params) => (       
-                  `${format(params.value, 'd MMM yyyy')}`           
-              ),  
-        },
+      { field: 'id', headerName: 'Reservation ID', type: 'number', width: 200},
+      { 
+        field: 'date', 
+        headerName: 'Date', 
+        type: 'date',
+        width: 130, 
+        renderCell: (params) => (       
+          `${format(params.value, 'd MMM yyyy')}`           
+        ),  
+      },
         
-        { 
-            field: 'time', 
-            headerName: 'Time', 
-            width: 130,
-            valueGetter: (params) => (
-                `${format(params.getValue('date'), 'h:mm a')}`  
-            )
+      { 
+        field: 'time', 
+        headerName: 'Time', 
+        width: 130,
+        valueGetter: (params) => (
+            `${format(params.getValue('date'), 'h:mm a')}`  
+        )
             
-        },
-        { field: 'numPeople', headerName: 'Number of People', type: 'number', width: 200},
-        { field: 'mealOrder', headerName: 'Meal Order', width: 130},
-        { 
-            field: 'detailsBtn', 
-            headerName: ' ',
-            width: 130,
-            renderCell: (api) => (
-                <Button
-                    variant="contained"
-                    color="primary"
-                    size="small"
-                    style={{ marginLeft: 16 }}
-                    onClick={() => handleDetailsClicked()}
-                >
-                    Details
-                </Button>
-            )
-        },
-      ]
-    );
+      },
+      { field: 'numPeople', headerName: 'Number of People', type: 'number', width: 200},
+      { field: 'mealOrder', headerName: 'Meal Order', width: 130},
+      { 
+        field: 'detailsBtn', 
+        headerName: ' ',
+        width: 130,
+        renderCell: () => (
+          <Button
+            variant="contained"
+            color="primary"
+            size="small"
+            style={{ marginLeft: 16 }}
+            onClick={nextStep}
+          >
+            Details
+          </Button>
+        )
+      },
+    ]
+  );
 } 
   
+//Dummy Data
   const rows = [
-      {id: 101, date: new Date(2021, 4, 19, 11, 15), time: "11AM", numPeople: 12, mealOrder: 'No'},
-      {id: 102, date: new Date(2021, 4, 20, 11, 30), time: "11:30AM", numPeople: 2, mealOrder: 'Yes'},
-      {id: 103, date: new Date(2021, 6, 20, 12, 30), time: "12:30PM", numPeople: 4, mealOrder: 'Yes'},
-      {id: 104, date: new Date(2021, 7, 22, 18, 15), time: "6:15PM", numPeople: 6, mealOrder: 'Yes'},
-      {id: 105, date: new Date(1999, 7, 22, 11, 0), time: "8:00PM", numPeople: 15, mealOrder: 'No'},
+      {id: 101, date: new Date(2020, 4, 19, 11, 15), numPeople: 12, mealOrder: 'No'},
+      {id: 102, date: new Date(2021, 4, 20, 11, 30), numPeople: 2, mealOrder: 'Yes'},
+      {id: 103, date: new Date(2021, 6, 20, 12, 30), numPeople: 4, mealOrder: 'Yes'},
+      {id: 104, date: new Date(2021, 7, 22, 18, 15), numPeople: 6, mealOrder: 'Yes'},
+      {id: 105, date: new Date(1999, 7, 22, 11, 0), numPeople: 15, mealOrder: 'No'},
     ];
   
- 
-class CustomerReservationsController extends React.Component {
-    state = {
-        step: 1,
-        columns: columns(),
-        rows: rows,
-        selectedRow:'',
-        selectedCell:'',
-    }
 
-    // Proceed to next step
+// In order to edit reservations have to view the details first.
+class CustomerReservationsController extends React.Component {
+  state = {
+    step: 1,
+    columns: columns(),
+    rows: rows,
+    selectedRow:'',
+  }
+
+  // Proceed to next step
   nextStep = () => {
     const { step } = this.state;
     this.setState({
@@ -84,79 +87,46 @@ class CustomerReservationsController extends React.Component {
     });
   };
 
-    handleRowSelected = (row) => {
-        this.setState({selectedRow : row});
-    }
+  handleRowSelected = (row) => {
+    this.setState({selectedRow : row});
+  }
 
-    handleCellClicked = (cell) => {
-        this.setState({selectedCell : cell});
-    }
+  handleDelete = () => {
+    this.setState(state => ({
+      rows : state.rows.filter((row, j) => row.id != this.state.selectedRow.data.id)
+    }));
+  }
 
-    handleDetailsClicked = () => {
-        const { step } = this.state;
-        this.setState({
-        step: step + 1
-        });
-    }
+  render() {
+    return(
+      <div
+        onKeyDownCapture={(e) => {
+          if (e.key === "Backspace" || e.key === "Delete") {
+            e.stopPropagation();
+          }
+        }}
+      >
 
-    handleDelete = () => {
-        this.setState(state => ({
-            rows : state.rows.filter((row, j) => row.id != this.state.selectedRow.data.id)
-        }));
-    }
+        <ViewReservationStepper
+          step = {this.state.step}
+          prevStep = {this.prevStep}
+          reservationData = {this.state.selectedRow}
+          handleRowSelected={this.handleRowSelected}
+          handleDelete={this.handleDelete}
+          columns={columns(this.nextStep)}
+          rows={this.state.rows}
+        />
 
-    handleEdit = () => {
-        const selectedCell = this.state.selectedCell;
-        selectedCell.api.setCellMode(selectedCell.id, selectedCell.field, "edit");
-    }
-
-    handleValueChange = () => {
-        const selectedCell = this.state.selectedCell;
-        const editValue = selectedCell.api.getEditCellValueParams(selectedCell.id, selectedCell.field).value;
-        const id = selectedCell.id;
-        const field = selectedCell.field;
-        this.setState(state => ({
-            rows: state.rows.map(
-              (row) => {
-                  if (row.id == id) {
-                      return ({ ...row, [field]: editValue })
-                  } else {
-                      return row;
-                  }
-              }
-          )}));
-    }
-    render() {
-        return(
-            <div
-            onKeyDownCapture={(e) => {
-                if (e.key === "Backspace" || e.key === "Delete") {
-                  e.stopPropagation();
-                }
-              }}
-            >
-
-            <ViewReservationStepper
-                step = {this.state.step}
-                prevStep = {this.prevStep}
-                reservationData = {this.state.selectedRow}
-                handleRowSelected={this.handleRowSelected}
-                handleDelete={this.handleDelete}
-                handleEdit={this.handleEdit}
-                columns={columns(this.handleDetailsClicked)}
-                rows={this.state.rows}
-            />
-
-            </div>
+      </div>
             
-        )
-    }
+    )
+  }
 }
 
 const CustomerReservationsStage = () => {
-    return (
-      <CustomerViewFrame element = {<CustomerReservationsController />}/>
-    )
-  }
+  return (
+    <CustomerViewFrame element = {<CustomerReservationsController />}/>
+  )
+}
 
-  export default CustomerReservationsStage;
+export default CustomerReservationsStage;

@@ -32,8 +32,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RegisterCustomer() {
+export default function RegisterCustomer({}) {
   const classes = useStyles();
+
 
   return (
     <Container component="main" maxWidth="xs">

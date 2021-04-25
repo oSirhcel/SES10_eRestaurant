@@ -6,15 +6,15 @@ const MenuDataGrid = ({columns, rows, setSelectedRow, setSelectedCell, handleEdi
     <div style={{ height: 300, width: '100%' }}>
          
       <DataGrid 
-      rows={rows} 
-      columns={columns} 
-      pageSize={10}
-      density = {'compact'} 
-      checkboxSelection = {false}
-      onRowSelected = {setSelectedRow}
-      onCellClick = {setSelectedCell}
-      onCellDoubleClick={handleEdit}
-      onCellValueChange={handleValueChange}
+        rows={rows} 
+        columns={columns} 
+        pageSize={10}
+        density = {'compact'} 
+        checkboxSelection = {false}
+        onRowSelected = {setSelectedRow}
+        onCellClick = {setSelectedCell}
+        onCellDoubleClick={handleEdit}
+        onCellValueChange={handleValueChange}
       />
     </div>
   );

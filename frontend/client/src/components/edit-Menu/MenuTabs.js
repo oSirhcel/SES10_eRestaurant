@@ -47,6 +47,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+//menu is the datagrid.
 const MenuTabs = ({tabValue, handleTabChange, menu}) => {
   const classes = useStyles();
 

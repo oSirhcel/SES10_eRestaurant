@@ -24,6 +24,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+// The dropdown selection for entree, main and dessert.
 const ItemType = ({type, setType}) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -63,6 +65,7 @@ const ItemType = ({type, setType}) => {
   );
 }
 
+//The add item dialog.
 const AddItemDialog = ({handleSubmit, deleteButton, setItem, setDescription, setPrice, setType, type}) => { 
   const [open, setOpen] = React.useState(false);
 
@@ -77,57 +80,65 @@ const AddItemDialog = ({handleSubmit, deleteButton, setItem, setDescription, set
   return (
     <div>
         
-        <Button color="primary" onClick={handleClickOpen}>
-            <AddIcon />
-        </Button>
-        <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-            <form onSubmit={handleSubmit}>
-                <DialogTitle id="form-dialog-title">Add New Item</DialogTitle>
-                <DialogContent>
-                    <DialogContentText>
-                        Add New Item to the menu.
-                    </DialogContentText>
-                    <TextField
-                        autoFocus
-                        margin="dense"
-                        id="item"
-                        label="Item Name"
-                        fullWidth
-                        onChange={(event) => setItem(event.target.value)}
-                    />
-                    <TextField
-                        margin="dense"
-                        id="description"
-                        label="Description"
-                        fullWidth
-                        onChange = {(event) => setDescription(event.target.value)}
-                    />
-                    <TextField
-                        label="Price"
-                        id="price"
-                        type="number"
-                        inputProps={{ 
-                          step: "0.01",                      
-                        }}
-                        InputProps={{ 
-                          startAdornment: <InputAdornment position="start">$</InputAdornment>,
-                        }}
-                        onChange = {(event) => setPrice(parseFloat(event.target.value))}
-                    />         
+      <Button color="primary" onClick={handleClickOpen}>
+        <AddIcon />
+      </Button>
+
+      <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
+          <form onSubmit={handleSubmit}>
+
+            <DialogTitle id="form-dialog-title">Add New Item</DialogTitle>
+
+            <DialogContent>
+
+              <DialogContentText>
+                Add New Item to the menu.
+              </DialogContentText>
+              <TextField
+                autoFocus
+                margin="dense"
+                id="item"
+                label="Item Name"
+                fullWidth
+                onChange={(event) => setItem(event.target.value)}
+              />
+              <TextField
+                margin="dense"
+                id="description"
+                label="Description"
+                fullWidth
+                onChange = {(event) => setDescription(event.target.value)}
+              />
+              <TextField
+                label="Price"
+                id="price"
+                type="number"
+                inputProps={{ 
+                  step: "0.01",                      
+                }}
+                InputProps={{ 
+                  startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                }}
+                  onChange = {(event) => setPrice(parseFloat(event.target.value))}
+              />         
           
-                    <ItemType
-                    type = {type}
-                    setType = {setType}
-                    />
-                </DialogContent>
+              <ItemType
+                type = {type}
+                setType = {setType}
+              />
+
+            </DialogContent>
+
+
             <DialogActions>
-                <Button onClick={handleClose} color="primary">
-                    Cancel
-                </Button>
-                <Button onClick={handleClose} color="primary" type="submit">
-                    Add
-                </Button>
+              <Button onClick={handleClose} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={handleClose} color="primary" type="submit">
+                Add
+              </Button>
             </DialogActions>
+
         </form>
       </Dialog>
       {deleteButton}

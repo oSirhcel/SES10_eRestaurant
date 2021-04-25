@@ -15,8 +15,9 @@ const c = [
         valueFormatter: (params) => params.value.toFixed(2), 
     },
     { field: 'type', headerName: 'Type', width: 130 },
-  ];
+];
   
+//Dummy Data
   const lunchRows = [
     { id: 1, item: 'Oysters', description: '6 oysters with yummy vinegareete and bacon', price: 24.00, type: 'Entree' },
     { id: 2, item: 'Baguette', description: 'Sourdough baguette with smashed avo', price: 15.00, type: 'Entree' },
@@ -44,18 +45,20 @@ const c = [
   ];
 
 
-
+//Rows depend on whether the lunch or dinner tab was selected.
 const EditMenuController = ({tabValue}) => {
     const columns = c;
     const [rows, setRows] = React.useState(tabValue == 0 ? lunchRows : dinnerRows);
     const [selectedRow, setSelectedRow] = React.useState('');
     const [selectedCell, setSelectedCell] = React.useState();
     
+    //These are for when a new item is added.
     const [item, setItem] = React.useState('');
     const [description, setDescription] = React.useState('');
     const [price, setPrice] = React.useState('');
     const [type, setType] = React.useState(''); 
 
+    // This is to handle when a new item is added. Need to update database.
     const handleSubmit = (e) => {        
         const newID = rows[rows.length-1].id + 1;
         const newItem = {id: newID, item: item, description: description, price: price, type: type};

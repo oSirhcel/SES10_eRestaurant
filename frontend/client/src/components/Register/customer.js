@@ -17,7 +17,6 @@ import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
 const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
-  const classes = useStyles();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -72,15 +71,14 @@ const useStyles = makeStyles((theme) => ({
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-      <Avatar className={classes.avatar}>
+      <div>
+      <Avatar >
             <AssignmentIcon />
       </Avatar>
-      {/* Header font */}
         <Typography component="h1" variant="h5">
         Le Bistrot d'Andre.
         </Typography>
-        <form className={classes.form} noValidate onSubmit={onSubmit}>
+        <form  noValidate onSubmit={onSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -178,7 +176,7 @@ const useStyles = makeStyles((theme) => ({
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            
           >
             Sign Up
           </Button>

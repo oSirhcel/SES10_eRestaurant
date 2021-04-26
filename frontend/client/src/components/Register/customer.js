@@ -10,14 +10,42 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// Imports for the functionality
-// import React, { Fragment, useState } from 'react';
-// import { connect } from 'react-redux';
-// import { Link, Redirect } from 'react-router-dom';
-// import { setAlert } from '../../actions/alert';
-// import { register } from '../../actions/auth';
-// import PropTypes from 'prop-types';
+//Imports for the functionality
+import React, { Fragment, useState } from 'react';
+import { connect } from 'react-redux';
+import { Link, Redirect } from 'react-router-dom';
+import { setAlert } from '../../actions/alert';
+import { register } from '../../actions/auth';
+import PropTypes from 'prop-types';
 
+const Register = ({ setAlert, register, isAuthenticated }) => {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone:'',
+    address:'',
+    password: '',
+    password2: ''
+  });
+
+  const { firstName, lastName, email, phone, address, password, password2 } = formData;
+
+  const onChange = (e) =>
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (password !== password2) {
+      setAlert('Passwords do not match', 'danger');
+    } else {
+      register({ firstName, lastName, email, phone, address, password });
+    }
+  };
+
+  // if (isAuthenticated) {
+  //   return <Redirect to="/dashboard" />;
+  // }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -52,13 +80,12 @@ export default function RegisterCustomer({}) {
       </Avatar>
       {/* Header font */}
         <Typography component="h1" variant="h5">
-        Le Bistro d'Andre.
+        Le Bistrot d'Andre.
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={onSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
                 name="firstName"
                 variant="outlined"
                 required
@@ -66,6 +93,8 @@ export default function RegisterCustomer({}) {
                 id="firstName"
                 label="First Name"
                 autoFocus
+                value ={firstName}
+                onChange={onChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -76,7 +105,8 @@ export default function RegisterCustomer({}) {
                 id="lastName"
                 label="Last Name"
                 name="lastName"
-                autoComplete="lname"
+                value={lastName}
+                onChange={onChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -87,7 +117,8 @@ export default function RegisterCustomer({}) {
                 id="email"
                 label="Email Address"
                 name="email"
-                autoComplete="email"
+                value ={email}
+                onChange ={onChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -99,6 +130,8 @@ export default function RegisterCustomer({}) {
                 label="Mobile Number"
                 name="phone"
                 autoComplete="phone"
+                value ={phone}
+                onChange={onChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -108,7 +141,8 @@ export default function RegisterCustomer({}) {
                 id="address"
                 label="Address"
                 name="address"
-                autoComplete="address"
+                value={address}
+                onChange={onChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -116,11 +150,26 @@ export default function RegisterCustomer({}) {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
+                name="password1"
                 label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
+                type="password1"
+                id="password1"
+                value = {password1}
+                onChange ={onChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                variant="outlined"
+                required
+                fullWidth
+                name="password2"
+                label="Confirm Password"
+                type="password2"
+                id="password2"
+                value = {password2}
+                onChange ={onChange}
+
               />
             </Grid>
             <Grid item xs={13}>

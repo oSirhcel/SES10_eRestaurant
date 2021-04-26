@@ -1,34 +1,41 @@
-import React, { Fragment, useState } from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import { Link, Redirect } from 'react-router-dom';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import React, { Fragment, useState } from "react";
+import Avatar from "@material-ui/core/Avatar";
+import AssignmentIcon from "@material-ui/icons/Assignment";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import { Link, Redirect } from "react-router-dom";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import { createMuiTheme, makeStyles } from "@material-ui/core/styles";
+import Container from "@material-ui/core/Container";
 //Imports for the functionality
-import { connect } from 'react-redux';
-import { setAlert } from '../../actions/alert';
-import { register } from '../../actions/auth';
-import PropTypes from 'prop-types';
+import { connect } from "react-redux";
+import { setAlert } from "../../actions/alert";
+import { register } from "../../actions/auth";
+import PropTypes from "prop-types";
 
 const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone:'',
-    address:'',
-    password: '',
-    password2: ''
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    password: "",
+    password2: "",
   });
 
-  
-  const { firstName, lastName, email, phone, address, password, password2 } = formData;
+  const {
+    firstName,
+    lastName,
+    email,
+    phone,
+    address,
+    password,
+    password2,
+  } = formData;
 
   const onChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,7 +43,7 @@ const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
   const onSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      setAlert('Passwords do not match', 'danger');
+      setAlert("Passwords do not match", "danger");
     } else {
       register({ firstName, lastName, email, phone, address, password });
     }
@@ -46,39 +53,37 @@ const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
     return <Redirect to="/dashboard" />;
   }
 
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: '#039be5'
-  },
-  form: {
-    width: '100%',
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
-
-
+  const useStyles = makeStyles((theme) => ({
+    paper: {
+      marginTop: theme.spacing(8),
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+    avatar: {
+      margin: theme.spacing(1),
+      backgroundColor: "#039be5",
+    },
+    form: {
+      width: "100%",
+      marginTop: theme.spacing(3),
+    },
+    submit: {
+      margin: theme.spacing(3, 0, 2),
+    },
+  }));
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div>
-      <Avatar >
-            <AssignmentIcon />
-      </Avatar>
+        <Avatar>
+          <AssignmentIcon />
+        </Avatar>
         <Typography component="h1" variant="h5">
-        Le Bistrot d'Andre.
+          Le Bistrot d'Andre.
         </Typography>
-        <form  noValidate onSubmit={onSubmit}>
+        <form noValidate onSubmit={onSubmit}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -89,7 +94,7 @@ const useStyles = makeStyles((theme) => ({
                 id="firstName"
                 label="First Name"
                 autoFocus
-                value ={firstName}
+                value={firstName}
                 onChange={onChange}
               />
             </Grid>
@@ -113,8 +118,8 @@ const useStyles = makeStyles((theme) => ({
                 id="email"
                 label="Email Address"
                 name="email"
-                value ={email}
-                onChange ={onChange}
+                value={email}
+                onChange={onChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -123,10 +128,11 @@ const useStyles = makeStyles((theme) => ({
                 required
                 fullWidth
                 id="phone"
+                type="number"
                 label="Mobile Number"
                 name="phone"
                 autoComplete="phone"
-                value ={phone}
+                value={phone}
                 onChange={onChange}
               />
             </Grid>
@@ -146,12 +152,12 @@ const useStyles = makeStyles((theme) => ({
                 variant="outlined"
                 required
                 fullWidth
-                name="password1"
+                name="password"
                 label="Password"
-                type="password1"
+                type="password"
                 id="password1"
-                value = {password}
-                onChange ={onChange}
+                value={password}
+                onChange={onChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -163,21 +169,14 @@ const useStyles = makeStyles((theme) => ({
                 label="Confirm Password"
                 type="password2"
                 id="password2"
-                value = {password2}
-                onChange ={onChange}
-
+                type="password"
+                value={password2}
+                onChange={onChange}
               />
             </Grid>
-            <Grid item xs={13}>
-            </Grid>
+            <Grid item xs={13}></Grid>
           </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            
-          >
+          <Button type="submit" fullWidth variant="contained" color="primary">
             Sign Up
           </Button>
           <Grid container justify="flex-end">
@@ -189,22 +188,21 @@ const useStyles = makeStyles((theme) => ({
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-
-      </Box>
+      <Box mt={5}></Box>
     </Container>
   );
-  }
-
+};
 
 RegisterCustomer.propTypes = {
   setAlert: PropTypes.func.isRequired,
   registerCustomer: PropTypes.func.isRequired,
-  isAuthenticated: PropTypes.bool
+  isAuthenticated: PropTypes.bool,
 };
 
 const mapStateToProps = (state) => ({
-  isAuthenticated: state.auth.isAuthenticated
+  isAuthenticated: state.auth.isAuthenticated,
 });
 
-export default connect(mapStateToProps, { setAlert, register })(RegisterCustomer);
+export default connect(mapStateToProps, { setAlert, register })(
+  RegisterCustomer
+);

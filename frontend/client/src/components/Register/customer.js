@@ -1,24 +1,23 @@
-import React from 'react';
+import React, { Fragment, useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
+import { Link, Redirect } from 'react-router-dom';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 //Imports for the functionality
-import React, { Fragment, useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
 import { setAlert } from '../../actions/alert';
 import { register } from '../../actions/auth';
 import PropTypes from 'prop-types';
 
-const Register = ({ setAlert, register, isAuthenticated }) => {
+const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
+  const classes = useStyles();
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -29,6 +28,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     password2: ''
   });
 
+  
   const { firstName, lastName, email, phone, address, password, password2 } = formData;
 
   const onChange = (e) =>
@@ -43,9 +43,9 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     }
   };
 
-  // if (isAuthenticated) {
-  //   return <Redirect to="/dashboard" />;
-  // }
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -67,8 +67,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function RegisterCustomer({}) {
-  const classes = useStyles();
 
 
   return (
@@ -154,7 +152,7 @@ export default function RegisterCustomer({}) {
                 label="Password"
                 type="password1"
                 id="password1"
-                value = {password1}
+                value = {password}
                 onChange ={onChange}
               />
             </Grid>
@@ -199,4 +197,16 @@ export default function RegisterCustomer({}) {
     </Container>
   );
   }
-}
+
+
+RegisterCustomer.propTypes = {
+  setAlert: PropTypes.func.isRequired,
+  registerCustomer: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool
+};
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { setAlert, register })(RegisterCustomer);

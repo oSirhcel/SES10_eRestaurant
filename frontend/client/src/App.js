@@ -1,4 +1,4 @@
-import RegisterCustomer from './components/register/Customer'
+import RegisterCustomer from './components/Register/customer'
 
 export default function App(){
   return (

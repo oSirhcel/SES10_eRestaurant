@@ -198,4 +198,5 @@ export default function RegisterCustomer({}) {
       </Box>
     </Container>
   );
+  }
 }

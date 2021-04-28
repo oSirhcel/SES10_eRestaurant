@@ -41,8 +41,8 @@ router.post(
   );
 
 
-// @route    DELETE api/posts/:id
-// @desc     Delete a post
+// @route    DELETE api/reservations/:id
+// @desc     Delete a reservation
 // @access   Private
 router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
     try {
@@ -67,8 +67,8 @@ router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
     }
   });
 
-// @route    GET api/posts
-// @desc     Get all posts
+// @route    GET api/reservations
+// @desc     Get all reservations
 // @access   Private
 router.get('/', auth, async (req, res) => {
     try {
@@ -80,8 +80,8 @@ router.get('/', auth, async (req, res) => {
     }
   });
   
-  // @route    GET api/posts/:id
-// @desc     Get post by ID
+  // @route    GET api/reservations/:id
+// @desc     Get reservation by ID
 // @access   Private
 router.get('/:id', auth, checkObjectId('id'), async (req, res) => {
     try {

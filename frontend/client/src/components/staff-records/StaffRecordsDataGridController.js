@@ -95,10 +95,11 @@ class StaffRecordsDataGridController extends React.Component {
     }
 }
 
+/*
 const StaffRecordsStage = () => {
     return (
       <AdminViewFrame element = {<StaffRecordsDataGridController />}/>
     )
-  }
+}*/
 
-  export default StaffRecordsStage;
+export default StaffRecordsDataGridController;

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import ReservationForm from './ReservationForm';
 import CustomerViewFrame from '../viewFrames/CustomerViewFrame';
 import { format } from 'date-fns';
+/*import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { addPost, addReservation } from '../../actions/reservation';*/
 
 export class ReservationController extends Component {
   state = {
@@ -69,7 +72,8 @@ export class ReservationController extends Component {
   }
 
   //Dummy code for submit event handler. Might need a submitted dialog or page.
-  handleOnSubmit = () => {
+  handleOnSubmit = (e) => {
+    e.preventDefault();
     const dateTime = new Date(   
       //Thinking it might be easier to store the date and time together in the database. 
       format(this.state.date, 'y'), 
@@ -79,8 +83,8 @@ export class ReservationController extends Component {
       format(this.state.time, 'm')
       );
 
-      
-    alert("Need to actually put reservation in the system lol");
+      console.log({dateTime: dateTime, numPeople: this.state.numPeople})
+     // addReservation({dateTime: dateTime, numPeople: this.state.numPeople});
   }
 
   render() {
@@ -111,11 +115,11 @@ export class ReservationController extends Component {
 
 
 //Uses temporary view frame. Can get rid of this later.
-const MakeReservationStage = () => {
+/*const MakeReservationStage = () => {
     return (
       <CustomerViewFrame element = {<ReservationController />}/>
     )
-}
+}*/
 
-export default MakeReservationStage;
+export default ReservationController;
 

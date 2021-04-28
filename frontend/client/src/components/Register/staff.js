@@ -1,52 +1,44 @@
-import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
-import AssignmentIcon from '@material-ui/icons/Assignment';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import React from "react";
+import Avatar from "@material-ui/core/Avatar";
+import Button from "@material-ui/core/Button";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import TextField from "@material-ui/core/TextField";
+import Link from "@material-ui/core/Link";
+import Grid from "@material-ui/core/Grid";
+import Box from "@material-ui/core/Box";
+import Typography from "@material-ui/core/Typography";
+import Container from "@material-ui/core/Container";
+import { PersonAdd } from "@material-ui/icons";
 
-
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    marginTop: theme.spacing(8),
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  avatar: {
-    margin: theme.spacing(1),
-    backgroundColor: '#039be5'
-  },
-  form: {
-    width: '100%',
-    marginTop: theme.spacing(3),
-  },
-  submit: {
-    margin: theme.spacing(3, 0, 2),
-  },
-}));
+const paper = {
+  marginTop: 100,
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+};
+const avatar = {
+  backgroundColor: "#F85050",
+};
+const form = {
+  width: "100%",
+  marginTop: 20,
+};
+const submit = {
+  marginTop: 10,
+};
 
 export default function RegisterStaff() {
-  const classes = useStyles();
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div className={classes.paper}>
-      {/* <Avatar className={classes.avatar}>
-            <AssignmentIcon />
-      </Avatar> */}
-      {/* Header font */}
+      <div style={paper}>
+        <Avatar style={avatar}>
+          <PersonAdd />
+        </Avatar>
         <Typography component="h1" variant="h5">
-        Staff Registration
+          Staff Registration
         </Typography>
-        <form className={classes.form} noValidate>
+        <form style={form} noValidate>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -115,15 +107,14 @@ export default function RegisterStaff() {
                 autoComplete="current-password"
               />
             </Grid>
-            <Grid item xs={13}>
-            </Grid>
+            <Grid item xs={13}></Grid>
           </Grid>
           <Button
             type="submit"
             fullWidth
             variant="contained"
             color="primary"
-            className={classes.submit}
+            style={submit}
           >
             Sign Up
           </Button>
@@ -136,9 +127,7 @@ export default function RegisterStaff() {
           </Grid>
         </form>
       </div>
-      <Box mt={5}>
-
-      </Box>
+      <Box mt={5}></Box>
     </Container>
   );
 }

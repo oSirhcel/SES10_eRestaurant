@@ -1,6 +1,6 @@
 import React from 'react';
-import StaffRecordsDataGrid from '../components/staff-records/StaffRecordsDataGrid';
-import AdminViewFrame from '../components/viewFrames/AdminViewFrame';
+import StaffRecordsDataGrid from './StaffRecordsDataGrid';
+import AdminViewFrame from '../viewFrames/AdminViewFrame';
 
 const columns = [
     { field: 'id', headerName: 'Staff ID', type: 'number', width: 130},

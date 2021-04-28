@@ -1,5 +1,5 @@
 import React from 'react';
-import MenuTabs from '../components/edit-Menu/MenuTabs';
+import MenuTabs from './MenuTabs';
 import EditMenuController from './EditMenuController';
 
 const MenuTabController = () => {

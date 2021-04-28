@@ -41,7 +41,7 @@ router.post(
   );
 
 
-  // @route    DELETE api/posts/:id
+// @route    DELETE api/posts/:id
 // @desc     Delete a post
 // @access   Private
 router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
@@ -66,4 +66,35 @@ router.delete('/:id', [auth, checkObjectId('id')], async (req, res) => {
       res.status(500).send('Server Error');
     }
   });
+
+// @route    GET api/posts
+// @desc     Get all posts
+// @access   Private
+router.get('/', auth, async (req, res) => {
+    try {
+      const reservations = await Reservation.find().sort({ dateTime: -1 });
+      res.json(reservations);
+    } catch (err) {
+      console.error(err.message);
+      res.status(500).send('Server Error');
+    }
+  });
   
+  // @route    GET api/posts/:id
+// @desc     Get post by ID
+// @access   Private
+router.get('/:id', auth, checkObjectId('id'), async (req, res) => {
+    try {
+      const reservation = await Reservation.findById(req.params.id);
+  
+      if (!reservation) {
+        return res.status(404).json({ msg: 'Reservation not found' });
+      }
+  
+      res.json(reservation);
+    } catch (err) {
+      console.error(err.message);
+  
+      res.status(500).send('Server Error');
+    }
+  });

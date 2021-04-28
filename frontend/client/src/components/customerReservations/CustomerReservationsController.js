@@ -1,9 +1,8 @@
 import React from 'react';
-import CustomerReservationsDataGrid from '../components/customerReservations/CustomerReservationsDataGrid';
-import CustomerViewFrame from '../components/viewFrames/CustomerViewFrame';
+import CustomerViewFrame from '../viewFrames/CustomerViewFrame';
 import Button from '@material-ui/core/Button';
 import { format } from 'date-fns';
-import ViewReservationStepper from '../components/customerReservations/ViewReservationStepper';
+import ViewReservationStepper from './ViewReservationStepper';
 
 
 // The time is derived from the date. The details button is a separate column

@@ -3,7 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { format } from 'date-fns';
-import ReservationDetailsForm from '../components/customerReservations/ReservationDetailsForm';
+import ReservationDetailsForm from './ReservationDetailsForm';
 
 const TimeRange = (beginT, endT) => {
     const times=[];

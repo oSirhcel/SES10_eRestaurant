@@ -1,9 +1,5 @@
-function App() {
-    return (
-      <div className="App">
-        <h1> Hello, World! </h1>
-      </div>
-    );
-  }
-  
-  export default App;
+import PromoPage from "./components/promotions/promoPage";
+
+export default function App() {
+  return <PromoPage></PromoPage>;
+}

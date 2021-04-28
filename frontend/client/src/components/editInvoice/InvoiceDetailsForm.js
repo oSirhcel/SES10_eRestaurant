@@ -6,14 +6,6 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import { format, isBefore } from 'date-fns';
-import EditIcon from '@material-ui/icons/Edit';
-import { DatePicker, MuiPickersUtilsProvider, } from '@material-ui/pickers';
-import DateFnsUtils from '@date-io/date-fns'; 
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 import {DataGrid} from '@material-ui/data-grid';
 
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -45,9 +37,10 @@ const InvoiceDetailsForm = ({
                 <form onSubmit = {handleSubmit}>  
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm = {6}>
-                            <h1> Invoice Details </h1>
+                            <Typography> <h1> Invoice Details </h1> </Typography>
                         </Grid>
                     </Grid>
+                    <Typography variant = "body2">
                     <Typography>
                         Reservation ID
                     </Typography>
@@ -113,6 +106,7 @@ const InvoiceDetailsForm = ({
                     ) : (
                         ''
                     )}
+                    </Typography>
 
             </form>
             </Box>

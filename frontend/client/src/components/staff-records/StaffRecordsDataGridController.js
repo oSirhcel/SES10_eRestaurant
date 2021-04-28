@@ -1,6 +1,6 @@
 import React from 'react';
-import StaffRecordsDataGrid from '../components/staff-records/StaffRecordsDataGrid';
-import AdminViewFrame from '../components/staff-records/ViewComponents/AdminViewFrame';
+import StaffRecordsDataGrid from './StaffRecordsDataGrid';
+import AdminViewFrame from '../viewFrames/AdminViewFrame';
 
 const columns = [
     { field: 'id', headerName: 'Staff ID', type: 'number', width: 130},
@@ -62,6 +62,7 @@ class StaffRecordsDataGridController extends React.Component {
         const editValue = selectedCell.api.getEditCellValueParams(selectedCell.id, selectedCell.field).value;
         const id = selectedCell.id;
         const field = selectedCell.field;
+        console.log(editValue);
         this.setState(state => ({
             rows: state.rows.map(
               (row) => {
@@ -98,11 +99,11 @@ class StaffRecordsDataGridController extends React.Component {
         )
     }
 }
-
+/*
 const Stage = () => {
     return (
       <AdminViewFrame element = {<StaffRecordsDataGridController />}/>
     )
-  }
+  }*/
 
-  export default Stage;
+  export default StaffRecordsDataGridController;

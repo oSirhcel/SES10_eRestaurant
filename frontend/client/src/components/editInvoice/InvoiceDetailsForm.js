@@ -68,7 +68,7 @@ const InvoiceDetailsForm = ({
                     <Typography>
                         Meal Order
                     </Typography>
-                    <div style={{ height: 400, width: '100%' }}>
+                    <div style={{ height: 400, width: 700 }}>
                         <DataGrid
                             rows = {mealOrder}
                             columns = {columns}

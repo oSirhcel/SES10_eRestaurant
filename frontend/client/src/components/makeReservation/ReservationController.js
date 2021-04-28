@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ReservationForm from '../components/makeReservation/ReservationForm';
-import CustomerViewFrame from '../components/viewFrames/CustomerViewFrame';
+import ReservationForm from './ReservationForm';
+import CustomerViewFrame from '../viewFrames/CustomerViewFrame';
 import { format } from 'date-fns';
 
 export class ReservationController extends Component {
@@ -78,6 +78,8 @@ export class ReservationController extends Component {
       format(this.state.time, 'H'), 
       format(this.state.time, 'm')
       );
+
+      
     alert("Need to actually put reservation in the system lol");
   }
 

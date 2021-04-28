@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import AssignmentIcon from "@material-ui/icons/Assignment";
 import Button from "@material-ui/core/Button";
@@ -8,7 +8,6 @@ import { Link, Redirect } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-import { createMuiTheme, makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 //Imports for the functionality
 import { connect } from "react-redux";
@@ -53,37 +52,34 @@ const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
     return <Redirect to="/dashboard" />;
   }
 
-  const useStyles = makeStyles((theme) => ({
-    paper: {
-      marginTop: theme.spacing(8),
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-    },
-    avatar: {
-      margin: theme.spacing(1),
-      backgroundColor: "#039be5",
-    },
-    form: {
-      width: "100%",
-      marginTop: theme.spacing(3),
-    },
-    submit: {
-      margin: theme.spacing(3, 0, 2),
-    },
-  }));
+  const paper = {
+    marginTop: 100,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  };
+  const avatar = {
+    backgroundColor: "#039be5",
+  };
+  const form = {
+    width: "100%",
+    marginTop: 20,
+  };
+  const submit = {
+    marginTop: 10,
+  };
 
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
-      <div>
-        <Avatar>
+      <div style={paper}>
+        <Avatar style={avatar}>
           <AssignmentIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          Le Bistrot d'Andre.
+          Sign up
         </Typography>
-        <form noValidate onSubmit={onSubmit}>
+        <form noValidate onSubmit={onSubmit} style={form}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
@@ -167,7 +163,6 @@ const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
                 fullWidth
                 name="password2"
                 label="Confirm Password"
-                type="password2"
                 id="password2"
                 type="password"
                 value={password2}
@@ -176,7 +171,13 @@ const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
             </Grid>
             <Grid item xs={13}></Grid>
           </Grid>
-          <Button type="submit" fullWidth variant="contained" color="primary">
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            style={submit}
+          >
             Sign Up
           </Button>
           <Grid container justify="flex-end">

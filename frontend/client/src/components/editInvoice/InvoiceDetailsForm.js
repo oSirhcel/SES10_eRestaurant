@@ -16,9 +16,12 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import {DataGrid} from '@material-ui/data-grid';
 
+import InputAdornment from '@material-ui/core/InputAdornment';
+
 
 const columns = [
     { field: 'itemName', headerName: 'Item', width: 300},
+    { field: 'qty', headerName: 'Quantity', width: 130},
     { 
         field: 'price', 
         headerName: 'Price', 
@@ -32,8 +35,7 @@ const columns = [
 
 // Reservation Details View
 const InvoiceDetailsForm = ({
-    currentlyEditing, setEdit, invoiceData, 
-    handleCancel, handleSubmit,
+    currentlyEditing, handleSubmit, reservation, mealOrder, setAdjustedTotal, adjustedTotal
 }) => {
     return (
         <div>
@@ -45,37 +47,72 @@ const InvoiceDetailsForm = ({
                         <Grid item xs={12} sm = {6}>
                             <h1> Invoice Details </h1>
                         </Grid>
-                        <Grid item xs={12} sm = {6} align="right">
-                            <Button
-                                onClick={() => setEdit(true)}
-                            > 
-                                <EditIcon /> 
-                            </Button>
-                        </Grid>
                     </Grid>
                     <Typography>
                         Reservation ID
                     </Typography>
-                    {invoiceData.data.id}
+                    {reservation.reservationId}
                     <p />
                 
                     <Typography>
                         Customer
                     </Typography>
-                    {invoiceData.data.firstName} {invoiceData.data.lastName}
+                    {reservation.name}
+                    <p />
+
+                    <Typography>
+                        Date
+                    </Typography>
+                    {format(reservation.dateTime, 'EEEE, do MMMM yyyy')}
+                    <p />
+
+                    <Typography>
+                        Time
+                    </Typography>
+                    {format(reservation.dateTime, 'h:mm a')}
                     <p />
 
                     <Typography>
                         Meal Order
                     </Typography>
-                    <div style={{ height: 350, width: '100%' }}>
+                    <div style={{ height: 400, width: '100%' }}>
                         <DataGrid
-                            rows = {invoiceData.data.mealOrder}
+                            rows = {mealOrder}
                             columns = {columns}
                             autoPageSize = {true}
                         />
                     </div>
-                    
+                    <p />
+
+                    <Typography variant="h5">
+                        Total
+                    </Typography>
+                    <Typography variant="h5">
+                    ${reservation.amount.toFixed(2)}
+                    </Typography>
+                    <p />
+
+                    <TextField
+                        label="Adjusted Total"
+                        id="adjustedTotal"
+                        type="number"
+                        defaultValue={reservation.amount.toFixed(2)}
+                        inputProps={{ 
+                            step: "0.01",                      
+                        }}
+                        InputProps={{ 
+                            startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                        }}
+                        onChange = {(event) => setAdjustedTotal(parseFloat(event.target.value))}
+                    />      
+
+                    <p />
+
+                    {adjustedTotal != reservation.amount ? (
+                        <Button type="submit"> Save adjusted Total </Button>
+                    ) : (
+                        ''
+                    )}
 
             </form>
             </Box>

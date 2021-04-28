@@ -18,8 +18,8 @@ import PropTypes from "prop-types";
 
 const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    firstname: "",
+    lastname: "",
     email: "",
     phone: "",
     address: "",
@@ -28,8 +28,8 @@ const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
   });
 
   const {
-    firstName,
-    lastName,
+    firstname,
+    lastname,
     email,
     phone,
     address,
@@ -45,7 +45,7 @@ const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
     if (password !== password2) {
       setAlert("Passwords do not match", "danger");
     } else {
-      register({ firstName, lastName, email, phone, address, password });
+      register({ firstname, lastname, email, phone, address, password });
     }
   };
 
@@ -87,14 +87,14 @@ const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                name="firstName"
+                name="firstname"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
+                id="firstname"
                 label="First Name"
                 autoFocus
-                value={firstName}
+                value={firstname}
                 onChange={onChange}
               />
             </Grid>
@@ -103,10 +103,10 @@ const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
                 variant="outlined"
                 required
                 fullWidth
-                id="lastName"
+                id="lastname"
                 label="Last Name"
-                name="lastName"
-                value={lastName}
+                name="lastname"
+                value={lastname}
                 onChange={onChange}
               />
             </Grid>

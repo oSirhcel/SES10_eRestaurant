@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import InvoicesDataGrid from './InvoicesDataGrid';
-import InvoiceDetailsController from '../../actions/InvoiceDetailsController';
+import InvoiceDetailsController from './InvoiceDetailsController';
 
 
 /*Shows the user's reservation in the datagrid in first step and 

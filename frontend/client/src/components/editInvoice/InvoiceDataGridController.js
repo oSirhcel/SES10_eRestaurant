@@ -1,9 +1,9 @@
 import React from 'react';
-import InvoicesDataGrid from '../components/editInvoice/InvoicesDataGrid';
-import AdminViewFrame from '../components/viewFrames/AdminViewFrame';
+import InvoicesDataGrid from './InvoicesDataGrid';
+import AdminViewFrame from '../viewFrames/AdminViewFrame';
 import Button from '@material-ui/core/Button';
 import { format } from 'date-fns';
-import ViewInvoiceStepper from '../components/editInvoice/ViewInvoiceStepper';
+import ViewInvoiceStepper from './ViewInvoiceStepper';
 
 
 // The time is derived from the date. The details button is a separate column

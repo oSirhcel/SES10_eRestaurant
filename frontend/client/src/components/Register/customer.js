@@ -18,14 +18,6 @@ import PropTypes from "prop-types";
 import Header from "../margins/header";
 import Footer from "../margins/footer";
 
-const sections = [
-  { title: "LOCATIONS", url: "#" },
-  { title: "MENU", url: "#" },
-  { title: "RESERVE", url: "#" },
-  { title: "ABOUT US", url: "#" },
-  { title: "PROMOTIONS", url: "#" },
-  { title: "MY ACCOUNT", url: "#" },
-];
 
 const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
   const [formData, setFormData] = useState({
@@ -84,7 +76,7 @@ const RegisterCustomer = ({ setAlert, register, isAuthenticated }) => {
   return (
     <div>
       <Container maxWidth="lg">
-        <Header title="Le Bistrot d'Andre" sections={sections} />
+        <Header />
       </Container>
       <Container component="main" maxWidth="xs">
         <CssBaseline />

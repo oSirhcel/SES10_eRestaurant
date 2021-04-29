@@ -31,9 +31,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header(props) {
+export default function Header(){
   const classes = useStyles();
-  const { sections, title } = props;
+
 
   return (
     <React.Fragment>
@@ -47,19 +47,56 @@ export default function Header(props) {
             noWrap
             className={classes.toolbarTitle}
           >
-            {title}
+            Bistrot d'Andre
           </Typography>
-          {sections.map((section) => (
             <Link
               color="inherit"
-              key={section.title}
               variant="body2"
-              href={section.url}
+              to="/locations" 
               className={classes.toolbarLink}
             >
-              {section.title}
-            </Link>
-          ))}
+              LOCATIONS            
+              </Link>
+              <Link
+              color="inherit"
+              variant="body2"
+              to="/menu" 
+              className={classes.toolbarLink}
+            >
+              MENU   
+              </Link>
+              <Link
+              color="inherit"
+              variant="body2"
+              to="/reserve" 
+              className={classes.toolbarLink}
+            >
+              RESERVE           
+              </Link>
+              <Link
+              color="inherit"
+              variant="body2"
+              to="/aboutus" 
+              className={classes.toolbarLink}
+            >
+              ABOUT US            
+              </Link>
+              <Link
+              color="inherit"
+              variant="body2"
+              to="/promotions" 
+              className={classes.toolbarLink}
+            >
+              PROMOTIONS            
+              </Link>
+              <Link
+              color="inherit"
+              variant="body2"
+              to="/dashboard" 
+              className={classes.toolbarLink}
+            >
+              MY ACCOUNT            
+              </Link>
           <Button
             component={Link}
             variant="contained"
@@ -75,8 +112,3 @@ export default function Header(props) {
     </React.Fragment>
   );
 }
-
-Header.propTypes = {
-  sections: PropTypes.array,
-  title: PropTypes.string,
-};

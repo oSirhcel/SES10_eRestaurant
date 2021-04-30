@@ -4,6 +4,7 @@ import Button from '@material-ui/core/Button';
 import Review from './ReviewOrder';
 import FormDate from './FormDate';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 import { format } from 'date-fns';
 
 export class ReservationForm extends Component {
@@ -22,8 +23,10 @@ export class ReservationForm extends Component {
       case 1:
         return (
             <div>
-
-              <h1> Book a Table </h1>
+              <Typography>
+                <h1> Book a Table </h1>
+              </Typography>
+              
 
               <FormDate
                 handleChange={handleChange}
@@ -44,13 +47,18 @@ export class ReservationForm extends Component {
 
               <Grid container spacing={3}>
                 <Grid item xs={12} sm={6}>
-                  <h1> Pick a Time </h1>
+                  <Typography>
+                    <h1> Pick a Time </h1>
+                  </Typography>
                 </Grid>
                 <Grid item xs={12} sm={6} align="center">
                   {/*Shows the time the user has selected cuz I
                   couldn't figure out how to show a button had been selected :|
                   */}
-                  <h1> {time != "" ? format(time, 'h:mm a') : ""} </h1> 
+                  <Typography>
+                    <h1> {time != "" ? format(time, 'h:mm a') : ""} </h1> 
+                  </Typography>
+                  
                 </Grid>
               </Grid>
 
@@ -77,9 +85,12 @@ export class ReservationForm extends Component {
         return (
             <div>
               {/*Will need to add create meal order feature here */}
-              <h1 values={values}> 
-                Add Meal Order
-              </h1>
+              <Typography>
+                <h1 values={values}> 
+                  Add Meal Order
+                </h1>
+              </Typography>
+              
               
               <Button onClick={prevStep} color="primary">Back</Button>
               <Button onClick={nextStep} color="primary">Next</Button>

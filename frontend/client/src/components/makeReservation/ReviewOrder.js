@@ -24,6 +24,7 @@ const Review = ({values}) => {
   return(
     <div>
       <Paper className={classes.paper}>
+        <Typography>
         <h1> Review Booking </h1>     
 
         <Typography>
@@ -58,6 +59,7 @@ const Review = ({values}) => {
         >
           Submit
         </Button>
+        </Typography>
         </Paper>   
     </div>
   )

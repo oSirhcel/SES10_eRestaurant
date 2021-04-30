@@ -4,7 +4,8 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Container from "@material-ui/core/Container";
 import Header from "../margins/header";
 import Footer from "../margins/footer";
-import MainFeaturedPost from "./components/landingPage/feature.js";
+import MainFeaturedPost from "./feature";
+import MainDescription from "./mainDescription";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,23 +21,14 @@ const mainFeaturedPost = {
   buttonText: "Book with us",
 };
 
-const sections = [
-  { title: "LOCATIONS", url: "#" },
-  { title: "MENU", url: "#" },
-  { title: "RESERVE", url: "#" },
-  { title: "ABOUT US", url: "#" },
-  { title: "PROMOTIONS", url: "#" },
-  { title: "MY ACCOUNT", url: "#" },
-];
-
-export default function App() {
+export default function LandingPage() {
   const classes = useStyles();
   return (
     <div className={classes.root}>
       <React.Fragment>
         <CssBaseline />
         <Container maxWidth="lg">
-          <Header title="Le Bistrot d'Andre" sections={sections} />
+          <Header />
         </Container>
         <main>
           <MainFeaturedPost post={mainFeaturedPost} />

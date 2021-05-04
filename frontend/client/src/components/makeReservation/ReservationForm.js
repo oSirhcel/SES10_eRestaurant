@@ -83,23 +83,6 @@ export class ReservationForm extends Component {
         );
       case 3:
         return (
-            <div>
-              {/*Will need to add create meal order feature here */}
-              <Typography>
-                <h1 values={values}> 
-                  Add Meal Order
-                </h1>
-              </Typography>
-              
-              
-              <Button onClick={prevStep} color="primary">Back</Button>
-              <Button onClick={nextStep} color="primary">Next</Button>
-
-            </div>
-          
-        );
-      case 4:
-        return (
           <div>
             <form onSubmit={handleOnSubmit}>
             <Review 

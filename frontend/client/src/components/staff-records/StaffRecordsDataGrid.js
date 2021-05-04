@@ -3,6 +3,7 @@ import { DataGrid } from '@material-ui/data-grid';
 import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
 
 class StaffRecordsDataGrid extends React.Component {
     state = {
@@ -16,7 +17,7 @@ class StaffRecordsDataGrid extends React.Component {
               {/*positions the DataGrid title and delete Button*/}
               <Grid container spacing={3}>
                 <Grid item xs={12} sm = {6}>
-                <h1> Staff Records </h1>
+                <Typography><h1> Staff Records </h1> </Typography>
                 </Grid>
                 <Grid item xs={12} sm = {6} align="right">
                 <Button

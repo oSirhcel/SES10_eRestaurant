@@ -54,8 +54,6 @@ class StaffRecordsDataGridController extends React.Component {
         const editValue = selectedCell.api.getEditCellValueParams(selectedCell.id, selectedCell.field).value;
         const id = selectedCell.id;
         const field = selectedCell.field;
-        /*This just redefines the rows, but the rendering might be different if the
-        rows are being fetched from the database. idk */
         this.setState(state => ({
             rows: state.rows.map(
               (row) => {
@@ -95,11 +93,4 @@ class StaffRecordsDataGridController extends React.Component {
     }
 }
 
-/*
-const StaffRecordsStage = () => {
-    return (
-      <AdminViewFrame element = {<StaffRecordsDataGridController />}/>
-    )
-}*/
-
-export default StaffRecordsDataGridController;
+  export default StaffRecordsDataGridController;

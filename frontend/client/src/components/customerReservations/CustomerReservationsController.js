@@ -122,10 +122,10 @@ class CustomerReservationsController extends React.Component {
   }
 }
 
-const CustomerReservationsStage = () => {
+/*const CustomerReservationsStage = () => {
   return (
     <CustomerViewFrame element = {<CustomerReservationsController />}/>
   )
-}
+}*/
 
-export default CustomerReservationsStage;
+export default CustomerReservationsController;

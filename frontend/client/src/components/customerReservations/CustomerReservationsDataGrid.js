@@ -3,6 +3,7 @@ import { DataGrid } from '@material-ui/data-grid';
 import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography'
 
 class CustomerReservationsDataGrid extends React.Component {
   state = {
@@ -17,7 +18,9 @@ class CustomerReservationsDataGrid extends React.Component {
             <Grid container spacing={3}>
 
               <Grid item xs={12} sm = {6}>
+                <Typography>
                 <h1> My Reservations </h1>
+                </Typography>
               </Grid>
 
 

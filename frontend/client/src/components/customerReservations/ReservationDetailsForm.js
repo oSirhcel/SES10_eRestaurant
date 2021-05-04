@@ -40,10 +40,13 @@ const ReservationDetailsForm = ({
             <Paper>
                 {currentlyEditing}
                 <Box p={3}>
-                <form onSubmit = {handleSubmit}>  
+                <form onSubmit = {handleSubmit}>
+                    <Typography variant = "body2">  
                     <Grid container spacing={3}>
                         <Grid item xs={12} sm = {6}>
-                            <h1> Reservation Details </h1>
+                            <Typography>
+                                <h1> Reservation Details </h1>
+                            </Typography>
                         </Grid>
                         <Grid item xs={12} sm = {6} align="right">
                             <Button
@@ -174,7 +177,7 @@ const ReservationDetailsForm = ({
                     ) : (
                         ''
                 )}
-
+                </Typography>
 
             </form>
             </Box>

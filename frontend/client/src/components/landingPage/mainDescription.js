@@ -1,11 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import Typography from "@material-ui/core/Typography";
+import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 import Container from "@material-ui/core/Container";
-import Toolbar from "@material-ui/core/Toolbar";
-import { Autorenew } from "@material-ui/icons";
+
 const useStyles = makeStyles((theme) => ({
   title: {
     fontWeight: 750,
@@ -58,7 +57,14 @@ export default function MainDescription() {
           </div>
         </div>
         <div align="center" className={classes.link}>
-          <Link to="/locations">Find your closest location.</Link>
+          <Button
+            component={Link}
+            to="/locations"
+            variant="contained"
+            color="primary"
+          >
+            Find your closest location.
+          </Button>
         </div>
       </Grid>
     </Container>

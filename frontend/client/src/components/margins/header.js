@@ -102,7 +102,7 @@ export default function Header() {
             size="small"
             color="primary"
             className={classes.toolbarSecondary}
-            to="/registerCustomer"
+            to="/landing"
           >
             Sign Up
           </Button>

@@ -11,9 +11,9 @@ const Routes = (props) => {
     <section className="container">
       <Alert />
       <Router>
-        <Route exact path="/register" component={RegisterCustomer} />
-        <Route exact path="/registerStaff" component={RegisterStaff} />
-        <Route exact path="/landing" component={LandingPage} />
+        <Route path="/registerCustomer" component={RegisterCustomer} />
+        <Route path="/registerStaff" component={RegisterStaff} />
+        <Route exact path="/" component={LandingPage} />
       </Router>
     </section>
   );

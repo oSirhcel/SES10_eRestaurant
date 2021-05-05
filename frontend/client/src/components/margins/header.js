@@ -102,9 +102,9 @@ export default function Header() {
             size="small"
             color="primary"
             className={classes.toolbarSecondary}
-            to="/landing"
+            to="/registerCustomer"
           >
-            Home
+            Sign Up
           </Button>
         </Toolbar>
       </div>

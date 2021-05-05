@@ -77,7 +77,7 @@ export default function MainFeaturedPost(props) {
               component={Link}
               variant="contained"
               color="primary"
-              to="/reserve"
+              to="/registerCustomer"
             >
               {post.buttonText}
             </Button>

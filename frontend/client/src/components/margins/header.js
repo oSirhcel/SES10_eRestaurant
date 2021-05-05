@@ -19,9 +19,6 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     fontfamily: "Serif",
   },
-  toolbarSecondary: {
-    justifyContent: "flex-end",
-  },
   toolbarLink: {
     padding: theme.spacing(1),
     flexShrink: 0,
@@ -101,10 +98,9 @@ export default function Header() {
             variant="contained"
             size="small"
             color="primary"
-            className={classes.toolbarSecondary}
-            to="/landing"
+            to="/"
           >
-            Sign Up
+            Home
           </Button>
         </Toolbar>
       </div>

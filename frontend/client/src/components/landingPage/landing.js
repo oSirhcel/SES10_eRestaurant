@@ -18,7 +18,7 @@ const mainFeaturedPost = {
   title: "The Perfect Crossaint.",
   description: "Experience the signature food of France at its finest.",
   imgText: "crossaint",
-  buttonText: "Book with us",
+  buttonText: "Join us",
 };
 
 export default function LandingPage() {

@@ -5,6 +5,8 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import { Link } from "react-router-dom";
+import { LinkOffOutlined } from "@material-ui/icons";
 
 const useStyles = makeStyles((theme) => ({
   root: {},
@@ -71,7 +73,12 @@ export default function MainFeaturedPost(props) {
             <Typography variant="h5" color="inherit" paragraph>
               {post.description}
             </Typography>
-            <Button variant="contained" color="primary">
+            <Button
+              component={Link}
+              variant="contained"
+              color="primary"
+              to="/reserve"
+            >
               {post.buttonText}
             </Button>
           </div>

@@ -62,6 +62,7 @@ class StaffRecordsDataGridController extends React.Component {
         const editValue = selectedCell.api.getEditCellValueParams(selectedCell.id, selectedCell.field).value;
         const id = selectedCell.id;
         const field = selectedCell.field;
+
         this.setState(state => ({
             rows: state.rows.map(
               (row) => {
@@ -99,10 +100,4 @@ class StaffRecordsDataGridController extends React.Component {
     }
 }
 
-const StaffRecordsStage = () => {
-    return (
-      <AdminViewFrame element = {<StaffRecordsDataGridController />}/>
-    )
-  }
-
-  export default StaffRecordsStage;
+  export default StaffRecordsDataGridController;

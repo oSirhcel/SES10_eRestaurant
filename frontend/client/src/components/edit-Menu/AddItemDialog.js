@@ -13,6 +13,9 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import AddIcon from '@material-ui/icons/Add';
+import AddPhotoIcon from "@material-ui/icons/AddPhotoAlternate";
+import Typography from '@material-ui/core/Typography';
+
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -21,6 +24,10 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+  },
+  imgPreview: {
+    width: 200,
+    height: 200,
   },
 }));
 
@@ -66,7 +73,10 @@ const ItemType = ({type, setType}) => {
 }
 
 //The add item dialog.
-const AddItemDialog = ({handleSubmit, deleteButton, setItem, setDescription, setPrice, setType, type}) => { 
+const AddItemDialog = ({
+  handleSubmit, handleImageSelection, deleteButton, setItem, 
+  setDescription, setPrice, setType, type, error, imgPreview, setImgPreview}) => { 
+  const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -76,6 +86,8 @@ const AddItemDialog = ({handleSubmit, deleteButton, setItem, setDescription, set
   const handleClose = () => {
     setOpen(false);
   };
+
+
 
   return (
     <div>
@@ -94,6 +106,34 @@ const AddItemDialog = ({handleSubmit, deleteButton, setItem, setDescription, set
               <DialogContentText>
                 Add New Item to the menu.
               </DialogContentText>
+
+
+        {error && <p className="errorMsg">File not supported</p>}
+        <div
+          className={classes.imgPreview}
+          style={{
+            background: imgPreview
+              ? `url("${imgPreview}") no-repeat center/cover`
+              : "#ffffff"
+          }
+        }
+        >
+          {!imgPreview && (
+            <>
+              <InputLabel htmlFor="fileUpload" className="customFileUpload">
+                <AddPhotoIcon/>               
+              </InputLabel>
+              <input type="file" id="fileUpload" style={{display:"none"}} onChange={handleImageSelection} />
+              <Typography>(jpg, jpeg or png)</Typography>
+            </>
+          )}
+          </div>
+
+        
+        {imgPreview && (
+          <Button onClick={() => setImgPreview(null)}>Remove image</Button>
+        )}
+
               <TextField
                 autoFocus
                 margin="dense"

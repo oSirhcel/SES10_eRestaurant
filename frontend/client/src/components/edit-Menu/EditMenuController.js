@@ -15,6 +15,18 @@ const c = [
         valueFormatter: (params) => params.value.toFixed(2), 
     },
     { field: 'type', headerName: 'Type', width: 130 },
+    { 
+        field: 'image', 
+        headerName: 'Image', 
+        width: 200,
+        renderCell: (params) => (
+            <div
+                style={{
+                    background: `url("${params.value}") no-repeat center/cover`, width: 150, height: 150}
+                }
+            />
+        ) 
+    },
 ];
   
 //Dummy Data
@@ -57,20 +69,25 @@ const EditMenuController = ({tabValue}) => {
     const [description, setDescription] = React.useState('');
     const [price, setPrice] = React.useState('');
     const [type, setType] = React.useState(''); 
+    const [img, setImg] = React.useState(null);
+    const [error, setError] = React.useState(false);
 
     // This is to handle when a new item is added. Need to update database.
     const handleSubmit = (e) => {        
         const newID = rows[rows.length-1].id + 1;
-        const newItem = {id: newID, item: item, description: description, price: price, type: type};
+        const newItem = {id: newID, item: item, description: description, price: price, type: type, image: img};
         setRows([...rows, newItem]);        
         e.preventDefault();
+        setImg(null);
     }
     const handleDelete = () => {
         setRows(rows.filter((row, j) => row.id != selectedRow.data.id));
     }
 
     const handleEdit = () => {
-        selectedCell.api.setCellMode(selectedCell.id, selectedCell.field, "edit");
+        if (selectedCell.colIndex != 4) {
+            selectedCell.api.setCellMode(selectedCell.id, selectedCell.field, "edit");
+        }
     }
 
     const handleValueChange = () => {
@@ -89,10 +106,32 @@ const EditMenuController = ({tabValue}) => {
         ))
     }
 
+    const handleImageSelection = (e) => {
+        const selected = e.target.files[0];
+        const ALLOWED_TYPES = ["image/png", "image/jpeg", "image/jpg"];
+        const reader = new FileReader();
+        var url = reader.readAsDataURL(selected);
+        if (selected && ALLOWED_TYPES.includes(selected.type)) {
+          console.log("accepted");
+          reader.onloadend = () => {
+              setImg(reader.result);
+              console.log(reader.result);
+          }
+          console.log(url);
+          
+
+        } else {
+            setError(true);
+        }
+           
+      }
+
     return (
         <div>
             <AddItemDialog 
                 handleSubmit = {handleSubmit}
+                handleImageSelection = {handleImageSelection}
+                setImgPreview = {setImg}
                 deleteButton = {<Button
                     onClick={handleDelete}
                     disabled={selectedRow == ''}
@@ -105,6 +144,8 @@ const EditMenuController = ({tabValue}) => {
                 setPrice = {setPrice}
                 setType = {setType}
                 type = {type}
+                error = {error}
+                imgPreview = {img}
                 />
             <MenuDataGrid
                 columns = {columns}

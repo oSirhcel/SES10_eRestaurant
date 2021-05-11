@@ -3,12 +3,15 @@ import { DataGrid } from '@material-ui/data-grid';
 
 const MenuDataGrid = ({columns, rows, setSelectedRow, setSelectedCell, handleEdit, handleValueChange}) => {
   return (
-    <div style={{ height: 300, width: '100%' }}>
+    
+    <div style={{ width: '100%' }}>
          
       <DataGrid 
         rows={rows} 
+        rowHeight={200}
         columns={columns} 
         pageSize={10}
+        autoHeight
         density = {'compact'} 
         checkboxSelection = {false}
         onRowSelected = {setSelectedRow}

@@ -12,6 +12,8 @@ const useStyles = makeStyles({
   },
 });
 
+const items = [1, 2, 3, 4];
+
 export default function LunchMenu() {
   const classes = useStyles();
   return (
@@ -19,42 +21,27 @@ export default function LunchMenu() {
       <Grid item xs={12} sm={12} md={12}>
         <Typography variant="h4">Entree</Typography>
       </Grid>
-      <Grid item xs={12} sm={6} md={3}>
-        <MenuCard />
-      </Grid>
-      <Grid item xs={12} sm={6} md={3}>
-        <MenuCard />
-      </Grid>
-      <Grid item xs={12} sm={6} md={3}>
-        <MenuCard />
-      </Grid>
-      <Grid item xs={12} sm={6} md={3}>
-        <MenuCard />
-      </Grid>
+      {items.map((item) => (
+        <Grid item key={item} xs={12} sm={6} md={3}>
+          <MenuCard />
+        </Grid>
+      ))}
       <Grid item xs={12} sm={12} md={12}>
         <Typography variant="h4">Main</Typography>
       </Grid>
-      <Grid item xs={12} sm={6} md={3}>
-        <MenuCard />
-      </Grid>
-      <Grid item xs={12} sm={6} md={3}>
-        <MenuCard />
-      </Grid>
-      <Grid item xs={12} sm={6} md={3}>
-        <MenuCard />
-      </Grid>
+      {items.map((item) => (
+        <Grid item key={item} xs={12} sm={6} md={3}>
+          <MenuCard />
+        </Grid>
+      ))}
       <Grid item xs={12} sm={12} md={12}>
         <Typography variant="h4">Dessert</Typography>
       </Grid>
-      <Grid item xs={12} sm={6} md={3}>
-        <MenuCard />
-      </Grid>
-      <Grid item xs={12} sm={6} md={3}>
-        <MenuCard />
-      </Grid>
-      <Grid item xs={12} sm={6} md={3}>
-        <MenuCard />
-      </Grid>
+      {items.map((item) => (
+        <Grid item key={item} xs={12} sm={6} md={3}>
+          <MenuCard />
+        </Grid>
+      ))}
     </Grid>
   );
 }

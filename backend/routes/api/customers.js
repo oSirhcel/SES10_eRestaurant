@@ -5,36 +5,41 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 const { check, validationResult } = require("express-validator");
 
-const Customer = require("../../src/models/customer");
+const Customer = require("../../models/customer");
 
-// @route   POST api/users
-// @desc    Register user
+// @route   POST api/customers
+// @desc    Register customers
 // @access  Public
 router.post(
   "/",
-  check("name", "Name is required").notEmpty(),
+  check("firstname", "First name is required").notEmpty(),
+  check("lastname", "Last name is required").notEmpty(),
   check("email", "Valid email is required").isEmail(),
   check("password", "Password needs to be 8 or more characters").isLength({
     min: 8,
   }),
+  
   async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty) {
       return res.status(400).json({ errors: errors.array() });
+
     }
-    const { name, email, password } = req.body;
+    const { firstname, lastname, phone, email, password } = req.body;
 
     try {
-      let customer = await User.findOne({ email });
+      let customer = await Customer.findOne({ email });
 
       if (customer) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'User already exists' }] });
+          .json({ errors: [{ msg: 'Customer already exists' }] });
       }
 
       customer = new Customer({
-        name,
+        firstname,
+        lastname,
+        phone,
         email,
         password
       });

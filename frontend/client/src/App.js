@@ -1,11 +1,14 @@
-import ViewMenu from "./ViewMenu";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import Routes from "./components/routing/Routes";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <ViewMenu />
-    </div>
+    <Provider store={store}>
+      <Router>
+        <Route component={Routes} />
+      </Router>
+    </Provider>
   );
 }
-
-export default App;

@@ -74,7 +74,7 @@ const ItemType = ({type, setType}) => {
 
 //The add item dialog.
 const AddItemDialog = ({
-  buttonIcon, handleSubmit, handleImageSelection, deleteButton, setItem, 
+  handleSubmit, handleImageSelection, deleteButton, setItem, 
   setDescription, setPrice, setType, type, error, imgPreview, setImgPreview}) => { 
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
@@ -93,7 +93,7 @@ const AddItemDialog = ({
     <div>
         
       <Button color="primary" onClick={handleClickOpen}>
-        {buttonIcon}
+        <AddIcon />
       </Button>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">

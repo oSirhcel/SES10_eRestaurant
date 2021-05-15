@@ -3,31 +3,49 @@ import MenuDataGrid from './MenuDataGrid';
 import AddItemDialog from './AddItemDialog';
 import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
+import AddIcon from '@material-ui/icons/Add';
+import EditIcon from '@material-ui/icons/Edit';
 
-const c = [
-    { field: 'id', headerName: 'Item ID', width: 70, hide: true },
-    { field: 'item', headerName: 'Item', width: 200 },
-    { field: 'description', headerName: 'Description', flex: 1},
-    { 
-        field: 'price', 
-        headerName: 'Price', 
-        width: 130,
-        valueFormatter: (params) => params.value.toFixed(2), 
-    },
-    { field: 'type', headerName: 'Type', width: 130 },
-    { 
-        field: 'image', 
-        headerName: 'Image', 
-        width: 200,
-        renderCell: (params) => (
-            <div
-                style={{
-                    background: `url("${params.value}") no-repeat center/cover`, width: 150, height: 150}
-                }
-            />
-        ) 
-    },
-];
+const c = (showItem) => {
+    return (
+        [
+            { field: 'id', headerName: 'Item ID', width: 70, hide: true },
+            { field: 'item', headerName: 'Item', width: 200 },
+            { field: 'description', headerName: 'Description', flex: 1},
+            { 
+                field: 'price', 
+                headerName: 'Price', 
+                width: 130,
+                valueFormatter: (params) => params.value.toFixed(2), 
+            },
+            { field: 'type', headerName: 'Type', width: 130 },
+            { 
+                field: 'image', 
+                headerName: 'Image', 
+                width: 200,
+                renderCell: (params) => (
+                    <div
+                        style={{
+                            background: `url("${params.value}") no-repeat center/cover`, width: 150, height: 150}
+                        }
+                    />
+                ) 
+            },
+            { 
+                field: 'detailsBtn', 
+                headerName: ' ',
+                width: 130,
+                valueGetter: (params) => (
+                    `${params.getValue('item')}`  
+                ),
+                renderCell: () => (
+                  showItem()
+                )
+              },
+        ]
+    )
+}
+    
   
 //Dummy Data
   const lunchRows = [
@@ -90,6 +108,7 @@ const EditMenuController = ({tabValue}) => {
         }
     }
 
+
     const handleValueChange = () => {
         const editValue = selectedCell.api.getEditCellValueParams(selectedCell.id, selectedCell.field).value;
         const id = selectedCell.id;
@@ -115,42 +134,70 @@ const EditMenuController = ({tabValue}) => {
           console.log("accepted");
           reader.onloadend = () => {
               setImg(reader.result);
-              console.log(reader.result);
+              //console.log(reader.result);
           }
-          console.log(url);
+          //console.log(url);
           
 
         } else {
             setError(true);
         }
            
-      }
+    }
+
+    const showItem = () => {
+        return (
+            <AddItemDialog 
+                buttonIcon = {<EditIcon />}
+                handleSubmit = {handleSubmit}
+                handleImageSelection = {handleImageSelection}
+                setImgPreview = {setImg}
+                item = {item}
+                description = {description}
+                price = {price}
+                type = {type}
+                error = {error}
+                img = {img}
+                setItem = {setItem}
+                setDescription = {setDescription}
+                setPrice = {setPrice}
+                setType = {setType}
+                imgPreview = {img}
+            />
+        )
+    }
 
     return (
         <div>
             <AddItemDialog 
+                buttonIcon = {<AddIcon/>}
                 handleSubmit = {handleSubmit}
                 handleImageSelection = {handleImageSelection}
                 setImgPreview = {setImg}
-                deleteButton = {<Button
-                    onClick={handleDelete}
-                    disabled={selectedRow == ''}
-                >
-                 <DeleteIcon />
-                </Button>   
+                item = {item}
+                description = {description}
+                price = {price}
+                type = {type}
+                error = {error}
+                img = {img}
+                deleteButton = {
+                    <Button
+                        onClick={handleDelete}
+                        disabled={selectedRow == ''}                
+                    >
+                        <DeleteIcon />
+                    </Button>   
                 }
                 setItem = {setItem}
                 setDescription = {setDescription}
                 setPrice = {setPrice}
                 setType = {setType}
-                type = {type}
-                error = {error}
                 imgPreview = {img}
-                />
+            />
             <MenuDataGrid
-                columns = {columns}
+                columns = {columns(showItem)}
                 rows = {rows}
-                setSelectedRow = {setSelectedRow}
+                setSelectedRow = {(e) => {setSelectedRow(e); console.log(selectedRow)}}
                 setSelectedCell = {setSelectedCell}
                 handleEdit = {handleEdit}
                 handleValueChange = {handleValueChange}

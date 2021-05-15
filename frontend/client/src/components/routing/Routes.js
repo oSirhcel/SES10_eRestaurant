@@ -6,6 +6,7 @@ import Login from "../login/login";
 import RegisterCustomer from "../Register/customer";
 import RegisterStaff from "../Register/staff";
 import LandingPage from "../landingPage/landing";
+import CustomerReservationsController from '../customerReservations/CustomerReservationsController';
 
 const Routes = (props) => {
   return (
@@ -16,6 +17,7 @@ const Routes = (props) => {
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={RegisterCustomer} />
         <Route exact path="/registerStaff" component={RegisterStaff} />  
+        <Route exact pth="/customerReservations" component={CustomerReservationsController} />
       </Router>
     </section>
   );

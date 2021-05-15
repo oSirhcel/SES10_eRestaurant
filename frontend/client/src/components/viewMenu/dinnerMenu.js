@@ -11,8 +11,8 @@ import CardMedia from "@material-ui/core/CardMedia";
 
 const useStyles = makeStyles({
   gridContainer: {
-    paddingLeft: "20px",
-    paddingRight: "20px",
+    paddingLeft: "60px",
+    paddingRight: "60px",
     paddingTop: "20px",
   },
   root: {
@@ -31,7 +31,7 @@ export default function DinnerMenu(props) {
         <Typography variant="h4">Entree</Typography>
       </Grid>
       {entree.map((item) => (
-        <Grid item key={item.name} xs={12} sm={6} md={3}>
+        <Grid item key={item.name} xs={12} sm={6} md={4}>
           <Card className={classes.root}>
             <CardMedia
               className={classes.media}
@@ -56,7 +56,7 @@ export default function DinnerMenu(props) {
         <Typography variant="h4">Main</Typography>
       </Grid>
       {main.map((item) => (
-        <Grid item key={item.name} xs={12} sm={6} md={3}>
+        <Grid item key={item.name} xs={12} sm={6} md={4}>
           <Card className={classes.root}>
             <CardMedia
               className={classes.media}
@@ -81,7 +81,7 @@ export default function DinnerMenu(props) {
         <Typography variant="h4">Dessert</Typography>
       </Grid>
       {dessert.map((item) => (
-        <Grid item key={item.name} xs={12} sm={6} md={3}>
+        <Grid item key={item.name} xs={12} sm={6} md={4}>
           <Card className={classes.root}>
             <CardMedia
               className={classes.media}

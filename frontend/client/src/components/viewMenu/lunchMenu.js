@@ -23,8 +23,6 @@ const useStyles = makeStyles({
   },
 });
 
-const items = [1, 2, 3, 4];
-
 export default function LunchMenu() {
   const classes = useStyles();
   return (

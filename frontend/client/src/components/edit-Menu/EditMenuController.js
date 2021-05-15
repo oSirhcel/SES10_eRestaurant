@@ -38,8 +38,8 @@ const c = (showItem) => {
                 valueGetter: (params) => (
                     `${params.getValue('item')}`  
                 ),
-                renderCell: () => (
-                  showItem()
+                renderCell: (params) => (
+                  showItem(params)
                 )
               },
         ]
@@ -93,7 +93,7 @@ const EditMenuController = ({tabValue}) => {
     // This is to handle when a new item is added. Need to update database.
     const handleSubmit = (e) => {        
         const newID = rows[rows.length-1].id + 1;
-        const newItem = {id: newID, item: item, description: description, price: price, type: type, image: img};
+        const newItem = {id: newID, item: item, description: description, price: price, image: img, type: type};
         setRows([...rows, newItem]);        
         e.preventDefault();
         setImg(null);
@@ -145,23 +145,24 @@ const EditMenuController = ({tabValue}) => {
            
     }
 
-    const showItem = () => {
+    const showItem = (params) => {
+
         return (
             <AddItemDialog 
                 buttonIcon = {<EditIcon />}
                 handleSubmit = {handleSubmit}
                 handleImageSelection = {handleImageSelection}
                 setImgPreview = {setImg}
-                item = {item}
-                description = {description}
-                price = {price}
-                type = {type}
+                item = {params.getValue("item")}
+                description = {params.getValue("description")}
+                price = {params.getValue("price")}
+                type = {params.getValue("type")}
                 error = {error}
-                img = {img}
                 setItem = {setItem}
                 setDescription = {setDescription}
                 setPrice = {setPrice}
                 setType = {setType}
+                defaultImg = {params.getValue("image")}
                 imgPreview = {img}
             />
         )

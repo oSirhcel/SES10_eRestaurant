@@ -45,54 +45,60 @@ export default function Header() {
           >
             Bistrot d'Andre
           </Typography>
-          <Link
+          <Button
+            component={Link}
             color="inherit"
             variant="body2"
             to="/locations"
             className={classes.toolbarLink}
           >
             LOCATIONS
-          </Link>
-          <Link
+          </Button>
+          <Button
+            component={Link}
             color="inherit"
             variant="body2"
             to="/menu"
             className={classes.toolbarLink}
           >
             MENU
-          </Link>
-          <Link
+          </Button>
+          <Button
+            component={Link}
             color="inherit"
             variant="body2"
             to="/reserve"
             className={classes.toolbarLink}
           >
             RESERVE
-          </Link>
-          <Link
+          </Button>
+          <Button
+            component={Link}
             color="inherit"
             variant="body2"
             to="/aboutus"
             className={classes.toolbarLink}
           >
             ABOUT US
-          </Link>
-          <Link
+          </Button>
+          <Button
+            component={Link}
             color="inherit"
             variant="body2"
             to="/promotions"
             className={classes.toolbarLink}
           >
             PROMOTIONS
-          </Link>
-          <Link
+          </Button>
+          <Button
+            component={Link}
             color="inherit"
             variant="body2"
             to="/dashboard"
             className={classes.toolbarLink}
           >
             MY ACCOUNT
-          </Link>
+          </Button>
           <Button
             component={Link}
             variant="contained"

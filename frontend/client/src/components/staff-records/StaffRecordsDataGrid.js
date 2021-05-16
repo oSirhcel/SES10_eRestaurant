@@ -5,7 +5,7 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 
-class StaffRecordsDataGrid extends React.Component {
+class CustomerReservationsDataGrid extends React.Component {
     state = {
         disableButton: true,
     }
@@ -47,4 +47,4 @@ class StaffRecordsDataGrid extends React.Component {
     }
 }
 
-export default StaffRecordsDataGrid;
+export default CustomerReservationsDataGrid;

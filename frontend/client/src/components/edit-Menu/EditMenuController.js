@@ -5,6 +5,7 @@ import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
+import ratatouilleDisney from '../../img/ratatouilleDisney.png';
 
 const c = (showItem) => {
     return (
@@ -62,7 +63,7 @@ const c = (showItem) => {
   ];
 
   const dinnerRows = [
-    { id: 1, item: 'Ratatouille', description: 'House special made by the infamous Remy Rat', price: 20.00, type: 'Main' },
+    { id: 1, item: 'Ratatouille', description: 'House special made by the infamous Remy Rat', price: 20.00, type: 'Main', image: ratatouilleDisney },
     { id: 2, item: 'Lobster Mornay', description: 'A delicious cheesy lobster', price: 40.00, type: 'Main' },
     { id: 3, item: 'Quiche Lorraine', description: 'Classic French quiche with containing bacon', price: 17.50, type: 'Main' },
     { id: 4, item: 'Steak Tartare', description: 'Raw beef that\'s bloody good. (Just don\'t ask Mr Bean)', price: 16.00, type: 'Entree' },

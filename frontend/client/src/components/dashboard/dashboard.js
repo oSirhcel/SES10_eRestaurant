@@ -102,7 +102,7 @@ function Dashboard() {
               </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Card className={classes.card} onClick={() => {onClickRedirect("/viewMenu")}}>
+            <Card className={classes.card} onClick={() => {onClickRedirect("/menu")}}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
@@ -141,6 +141,23 @@ function Dashboard() {
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
+            <Card className={classes.card} onClick={() => {onClickRedirect("/customerReservations")}}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image="https://images.pexels.com/photos/7054790/pexels-photo-7054790.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                  title="computer typing"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                   My Reservations 
+                  </Typography>
+                  <Typography variant="body2" color="textSecondary" component="p">
+                    Take a look at your reservation and feel free to edit it as you see fit.
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
           </Grid>
         </Grid>
       </Container>

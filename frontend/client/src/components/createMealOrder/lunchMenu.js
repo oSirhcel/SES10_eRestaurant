@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function LunchMenu() {
+const LunchMenu = ({handleAdd}) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -61,7 +61,11 @@ export default function LunchMenu() {
               </Typography>
             </CardContent>
             <CardActions>
-              <AddToOrder />
+              <AddToOrder 
+                name = {item.name}
+                price = {item.price}
+                handleAdd = {handleAdd}
+              />
             </CardActions>
           </Card>
         </Grid>
@@ -89,7 +93,11 @@ export default function LunchMenu() {
               </Typography>
             </CardContent>
             <CardActions>
-              <AddToOrder />
+              <AddToOrder 
+                name = {item.name}
+                price = {item.price}
+                handleAdd = {handleAdd}
+              />
             </CardActions>
           </Card>
         </Grid>
@@ -117,7 +125,11 @@ export default function LunchMenu() {
               </Typography>
             </CardContent>
             <CardActions>
-              <AddToOrder />
+              <AddToOrder 
+                name = {item.name}
+                price = {item.price}
+                handleAdd = {handleAdd}
+              />
             </CardActions>
           </Card>
         </Grid>
@@ -125,3 +137,5 @@ export default function LunchMenu() {
     </Grid>
   );
 }
+
+export default LunchMenu;

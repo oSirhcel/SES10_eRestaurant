@@ -11,7 +11,7 @@ import LandingPage from "../landingPage/landing";
 import CustomerReservationsController from '../customerReservations/CustomerReservationsController';
 import StaffRecordsDataGridController from '../staff-records/StaffRecordsDataGridController';
 import ViewMenu from '../viewMenu/ViewMenu';
-import CreateMealOrder from '../createMealOrder/createMealOrder';
+import MealOrderController from '../createMealOrder/MealOrderController';
 
 const Routes = (props) => {
   return (
@@ -27,7 +27,7 @@ const Routes = (props) => {
         <Route exact path="/customerReservations" component={CustomerReservationsController} />
         <Route exact path="/staffRecords" component={StaffRecordsDataGridController} />
         <Route exact path="/menu" component={ViewMenu} />
-        <Route exact path="/createMealOrder" component={CreateMealOrder} />
+        <Route exact path="/createMealOrder" component={MealOrderController} />
       </Router>
     </section>
   );

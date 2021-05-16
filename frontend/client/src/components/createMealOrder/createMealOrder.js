@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CreateMealOrder() {
+const CreateMealOrder = ({nextStep, handleAdd}) => {
   const classes = useStyles();
 
   const [selectedTab, setSelectedTab] = React.useState(0);
@@ -53,8 +53,8 @@ export default function CreateMealOrder() {
           <Tab label="Lunch" />
           <Tab label="Dinner" />
         </Tabs>
-        {selectedTab === 0 && <LunchMenu />}
-        {selectedTab === 1 && <DinnerMenu />}
+        {selectedTab === 0 && <LunchMenu handleAdd = {handleAdd}/>}
+        {selectedTab === 1 && <DinnerMenu handleAdd = {handleAdd}/>}
       </div>
       <div className={classes.button}>
         <Button
@@ -63,6 +63,7 @@ export default function CreateMealOrder() {
           fullWidth
           variant="contained"
           color="primary"
+          onClick={nextStep}
         >
           Create Meal Order
         </Button>
@@ -70,3 +71,4 @@ export default function CreateMealOrder() {
     </React.Fragment>
   );
 }
+export default CreateMealOrder;

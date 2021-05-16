@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreateMealOrder = ({nextStep, handleAdd}) => {
+const CreateMealOrder = ({nextStep, handleAdd, order, handleRemove}) => {
   const classes = useStyles();
 
   const [selectedTab, setSelectedTab] = React.useState(0);
@@ -53,8 +53,8 @@ const CreateMealOrder = ({nextStep, handleAdd}) => {
           <Tab label="Lunch" />
           <Tab label="Dinner" />
         </Tabs>
-        {selectedTab === 0 && <LunchMenu handleAdd = {handleAdd}/>}
-        {selectedTab === 1 && <DinnerMenu handleAdd = {handleAdd}/>}
+        {selectedTab === 0 && <LunchMenu handleAdd = {handleAdd} order = {order} handleRemove = {handleRemove}/>}
+        {selectedTab === 1 && <DinnerMenu handleAdd = {handleAdd} order = {order} handleRemove = {handleRemove}/>}
       </div>
       <div className={classes.button}>
         <Button

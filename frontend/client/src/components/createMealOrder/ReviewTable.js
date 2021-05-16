@@ -7,6 +7,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
 
 const DISCOUNT = 0.07;
 
@@ -48,6 +49,10 @@ const ReviewTable = ({rows}) => {
   const invoiceDiscount = -1 * DISCOUNT * invoiceSubtotal;
   const invoiceTotal = invoiceDiscount + invoiceSubtotal;
   return (
+    <div>
+      <Typography variant="h3">
+        Review Meal Order
+      </Typography>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="spanning table">
         <TableHead>
@@ -91,6 +96,7 @@ const ReviewTable = ({rows}) => {
         </TableBody>
       </Table>
     </TableContainer>
+    </div>
   );
 }
 

@@ -40,6 +40,14 @@ const AddToOrder = ({name, price, handleAdd}) => {
             id="quantity"
             type="number"
             onChange = {(e)=>setQty(parseInt(e.target.value))}
+            InputProps={{
+              inputProps: {
+                  min: 1 ,
+                  onKeyDown: (event) => {
+                      event.preventDefault();
+                  },
+              }
+            }}
           />
         </DialogContent>
         <DialogActions>

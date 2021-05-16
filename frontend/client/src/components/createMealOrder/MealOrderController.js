@@ -13,6 +13,12 @@ class MealOrderController extends React.Component {
         data.push(dish);
         this.setState({data: data});
     }
+
+    handleRemove = (itemName) => {
+      var data = this.state.data.filter((item)=>(item.item !== itemName));
+      this.setState({data: data});
+    }
+
     // Proceed to next step
     nextStep = () => {
       const { step } = this.state;
@@ -39,6 +45,7 @@ class MealOrderController extends React.Component {
             nextStep = {this.nextStep}
             handleAdd = {this.handleAdd}
             rows = {this.state.data}
+            handleRemove = {this.handleRemove}
           />
         </div>
               

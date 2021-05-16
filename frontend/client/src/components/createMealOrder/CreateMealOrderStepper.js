@@ -13,7 +13,7 @@ export class CreateMealOrderStepper extends Component {
     //const { prevStep, } = this.props;
     //const { handleRowSelected, handleDelete } = this.props;
     const { step } = this.props;
-    const { prevStep, nextStep, handleAdd, rows } = this.props;
+    const { prevStep, nextStep, handleAdd, handleRemove, rows } = this.props;
     console.log(rows);
 
     switch (step) {
@@ -22,6 +22,8 @@ export class CreateMealOrderStepper extends Component {
             <CreateMealOrder 
               nextStep = {nextStep}
               handleAdd = {handleAdd}
+              handleRemove = {handleRemove}
+              order = {rows}
             />         
         );
       case 2:

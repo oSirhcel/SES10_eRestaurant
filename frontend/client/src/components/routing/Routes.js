@@ -10,6 +10,8 @@ import Login from "../login/login";
 import LandingPage from "../landingPage/landing";
 import CustomerReservationsController from '../customerReservations/CustomerReservationsController';
 import StaffRecordsDataGridController from '../staff-records/StaffRecordsDataGridController';
+import Dashboard from "../dashboard/dashboard";
+import StaffDashboard from "../dashboard/staffDashboard";
 import ViewMenu from '../viewMenu/ViewMenu';
 import CreateMealOrder from '../createMealOrder/createMealOrder';
 
@@ -26,6 +28,8 @@ const Routes = (props) => {
         <Route exact path="/staffMenuView" component={MenuTabController} />
         <Route exact path="/customerReservations" component={CustomerReservationsController} />
         <Route exact path="/staffRecords" component={StaffRecordsDataGridController} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route exact path="/staff-dashboard" component={StaffDashboard} />
         <Route exact path="/menu" component={ViewMenu} />
         <Route exact path="/createMealOrder" component={CreateMealOrder} />
       </Router>

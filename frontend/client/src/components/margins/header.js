@@ -19,9 +19,6 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     fontfamily: "Serif",
   },
-  toolbarSecondary: {
-    justifyContent: "flex-end",
-  },
   toolbarLink: {
     padding: theme.spacing(1),
     flexShrink: 0,
@@ -31,9 +28,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header(){
+export default function Header() {
   const classes = useStyles();
-
 
   return (
     <React.Fragment>
@@ -49,63 +45,62 @@ export default function Header(){
           >
             Bistrot d'Andre
           </Typography>
-            <Link
-              color="inherit"
-              variant="body2"
-              to="/locations" 
-              className={classes.toolbarLink}
-            >
-              LOCATIONS            
-              </Link>
-              <Link
-              color="inherit"
-              variant="body2"
-              to="/menu" 
-              className={classes.toolbarLink}
-            >
-              MENU   
-              </Link>
-              <Link
-              color="inherit"
-              variant="body2"
-              to="/reserve" 
-              className={classes.toolbarLink}
-            >
-              RESERVE           
-              </Link>
-              <Link
-              color="inherit"
-              variant="body2"
-              to="/aboutus" 
-              className={classes.toolbarLink}
-            >
-              ABOUT US            
-              </Link>
-              <Link
-              color="inherit"
-              variant="body2"
-              to="/promotions" 
-              className={classes.toolbarLink}
-            >
-              PROMOTIONS            
-              </Link>
-              <Link
-              color="inherit"
-              variant="body2"
-              to="/dashboard" 
-              className={classes.toolbarLink}
-            >
-              MY ACCOUNT            
-              </Link>
+          <Link
+            color="inherit"
+            variant="body2"
+            to="/locations"
+            className={classes.toolbarLink}
+          >
+            LOCATIONS
+          </Link>
+          <Link
+            color="inherit"
+            variant="body2"
+            to="/menu"
+            className={classes.toolbarLink}
+          >
+            MENU
+          </Link>
+          <Link
+            color="inherit"
+            variant="body2"
+            to="/reserve"
+            className={classes.toolbarLink}
+          >
+            RESERVE
+          </Link>
+          <Link
+            color="inherit"
+            variant="body2"
+            to="/aboutus"
+            className={classes.toolbarLink}
+          >
+            ABOUT US
+          </Link>
+          <Link
+            color="inherit"
+            variant="body2"
+            to="/promotions"
+            className={classes.toolbarLink}
+          >
+            PROMOTIONS
+          </Link>
+          <Link
+            color="inherit"
+            variant="body2"
+            to="/dashboard"
+            className={classes.toolbarLink}
+          >
+            MY ACCOUNT
+          </Link>
           <Button
             component={Link}
             variant="contained"
             size="small"
             color="primary"
-            className={classes.toolbarSecondary}
-            to="/register"
+            to="/"
           >
-            Sign up
+            Home
           </Button>
         </Toolbar>
       </div>

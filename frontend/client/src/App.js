@@ -8,8 +8,8 @@ export default function App() {
   return (
     <Provider store={store}>
       <Router>
-      <Route component={Routes} />
-    </Router>
+        <Route component={Routes} />
+      </Router>
     </Provider>
   );
 }

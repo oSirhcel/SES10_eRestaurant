@@ -6,6 +6,9 @@ import Typography from "@material-ui/core/Typography";
 import { Tabs, Tab } from "@material-ui/core";
 import LunchMenu from "./lunchMenu";
 import DinnerMenu from "./dinnerMenu";
+//Imports for margins
+import Header from "/Users/izzy/SES10_eResturant/frontend/client/src/components/margins/header.js";
+import Footer from "../margins/footer";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {
@@ -26,6 +29,9 @@ export default function ViewMenu() {
   return (
     <React.Fragment>
       <CssBaseline />
+      <Container maxWidth="lg">
+        <Header />
+      </Container>
       <div className={classes.heroContent}>
         <Container>
           <Typography
@@ -52,6 +58,9 @@ export default function ViewMenu() {
         {selectedTab === 0 && <LunchMenu />}
         {selectedTab === 1 && <DinnerMenu />}
       </div>
+      <Container>
+        <Footer />
+      </Container>
     </React.Fragment>
   );
 }

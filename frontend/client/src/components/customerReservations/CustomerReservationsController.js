@@ -53,11 +53,9 @@ const columns = (nextStep) => {
   
 //Dummy Data
   const rows = [
-      {id: 101, date: new Date(2020, 4, 19, 11, 15), numPeople: 12, mealOrder: 'No'},
-      {id: 102, date: new Date(2021, 4, 20, 11, 30), numPeople: 2, mealOrder: 'Yes'},
-      {id: 103, date: new Date(2021, 6, 20, 12, 30), numPeople: 4, mealOrder: 'Yes'},
-      {id: 104, date: new Date(2021, 7, 22, 18, 15), numPeople: 6, mealOrder: 'Yes'},
-      {id: 105, date: new Date(1999, 7, 22, 11, 0), numPeople: 15, mealOrder: 'No'},
+      {id: 1, date: new Date(2020, 5, 19, 12, 45), numPeople: 2, mealOrder: 'No'},
+      {id: 2, date: new Date(2021, 5, 21, 18, 30), numPeople: 5, mealOrder: 'Yes'},
+      {id: 3, date: new Date(2021, 5, 26, 11, 30), numPeople: 13, mealOrder: 'Yes'},
     ];
   
 

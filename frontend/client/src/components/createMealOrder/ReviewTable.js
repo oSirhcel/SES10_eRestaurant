@@ -42,17 +42,17 @@ function subtotal(items) {
 
 
 
-const ReviewTable = ({rows}) => {
-  console.log(rows);
+const ReviewTable = ({rows, title}) => {
   const classes = useStyles();
+  console.log(rows);
+  if (rows != undefined) {
+  
   const invoiceSubtotal = subtotal(rows);
   const invoiceDiscount = -1 * DISCOUNT * invoiceSubtotal;
   const invoiceTotal = invoiceDiscount + invoiceSubtotal;
   return (
     <div>
-      <Typography variant="h3">
-        Review Meal Order
-      </Typography>
+      <Typography variant="h6">{title}</Typography>
     <TableContainer component={Paper}>
       <Table className={classes.table} aria-label="spanning table">
         <TableHead>
@@ -98,6 +98,9 @@ const ReviewTable = ({rows}) => {
     </TableContainer>
     </div>
   );
+  } else {
+    return (<p>Hello</p>);
+  }
 }
 
 export default ReviewTable;

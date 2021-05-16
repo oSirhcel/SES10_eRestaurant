@@ -6,6 +6,7 @@ import FormDate from './FormDate';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { format } from 'date-fns';
+import MealOrderController from '../createMealOrder/MealOrderController';
 
 export class ReservationForm extends Component {
   
@@ -13,7 +14,7 @@ export class ReservationForm extends Component {
     const { step } = this.props;
     const { date, session, time, numPeople } = this.props;
     const { nextStep, prevStep, handleChange, handleDateSelect, handleTimeSelect, timeToString, handleOnSubmit } = this.props;
-    const {timeBoundaries, handleSession} = this.props;
+    const {timeBoundaries, handleSession, handleSubmitOrder, mealOrder} = this.props;
     const values = { date, session, time, numPeople };
     
 
@@ -87,6 +88,12 @@ export class ReservationForm extends Component {
             <form onSubmit={handleOnSubmit}>
             <Review 
               values={values}
+              nextStep={nextStep}
+              mealOrderButton = {
+                <Button onClick={nextStep}>
+                  Create Meal Order
+                </Button>
+              }
             />
 
             <Button onClick={prevStep} color="primary"> Back </Button>
@@ -94,7 +101,31 @@ export class ReservationForm extends Component {
             
           </div>
           
-        )
+        );
+      case 4:
+        return (
+          <div>
+            <MealOrderController handleSubmitOrder={handleSubmitOrder}/> 
+            <Button onClick={prevStep} color="primary"> Cancel Meal Order </Button>           
+          </div>
+          
+        );
+      case 5:
+        return (
+          <div>
+            <form onSubmit={handleOnSubmit}>
+            <Review 
+              values={values}
+              nextStep={nextStep}
+              mealOrder = {mealOrder}
+            />
+
+            <Button onClick={prevStep} color="primary"> Back </Button>
+            </form>
+            
+          </div>
+          
+        );
     }
   }
 }

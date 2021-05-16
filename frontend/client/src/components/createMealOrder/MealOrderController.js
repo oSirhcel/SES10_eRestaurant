@@ -19,6 +19,10 @@ class MealOrderController extends React.Component {
       this.setState({data: data});
     }
 
+    handleSubmit = () => {
+      this.props.handleSubmitOrder(this.state.data);
+    }
+
     // Proceed to next step
     nextStep = () => {
       const { step } = this.state;
@@ -37,12 +41,14 @@ class MealOrderController extends React.Component {
   
  
     render() {
+      const {handleSubmitOrder} = this.props;
       return(
         <div>
           <CreateMealOrderStepper
             step = {this.state.step}
             prevStep = {this.prevStep}
             nextStep = {this.nextStep}
+            submitOrder = {this.handleSubmit}
             handleAdd = {this.handleAdd}
             rows = {this.state.data}
             handleRemove = {this.handleRemove}

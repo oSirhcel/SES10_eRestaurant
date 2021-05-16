@@ -4,6 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { format } from 'date-fns';
 import ReservationDetailsForm from './ReservationDetailsForm';
+import ReviewTable from '../createMealOrder/ReviewTable';
 
 const TimeRange = (beginT, endT) => {
     const times=[];
@@ -131,10 +132,11 @@ const ReservationDetailsController = ({reservationData}) => {
             />
         );
     }
-
+    console.log(mealOrder);
     //Returns the view
     return (
-        <ReservationDetailsForm 
+        <div>
+            <ReservationDetailsForm 
             currentlyEditing = {currentlyEditing}
             setEdit = {setEdit}
             reservationData = {reservationData}
@@ -149,7 +151,19 @@ const ReservationDetailsController = ({reservationData}) => {
             handleSubmit = {handleSubmit}
             handleCancel = {handleCancel}
             setMealOrder = {setMealOrder}
-        />
+            />
+            {
+                mealOrder.length > 0
+                ? (
+                    <div>
+                    <p />
+                    <ReviewTable rows={mealOrder} title = "Meal Order" />
+                    </div>
+                ) : ''
+            }
+            
+        </div>
+        
     )
 }
 

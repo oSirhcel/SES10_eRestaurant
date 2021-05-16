@@ -2,8 +2,8 @@ import React from "react";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import Header from "../header";
-import Footer from "../footer";
+import Header from "../margins/header"
+import Footer from "../margins/footer";
 import Container from "@material-ui/core/Container";
 import { CssBaseline } from "@material-ui/core";
 import {
@@ -32,14 +32,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const sections = [
-  { title: "LOCATIONS", url: "#" },
-  { title: "MENU", url: "#" },
-  { title: "RESERVE", url: "#" },
-  { title: "ABOUT US", url: "#" },
-  { title: "PROMOTIONS", url: "#" },
-  { title: "MY ACCOUNT", url: "#" },
-];
 
 export default function PromoPage() {
   const classes = useStyles();
@@ -47,7 +39,7 @@ export default function PromoPage() {
     <div className={classes.root}>
       <CssBaseline>
         <Container maxWidth="lg">
-          <Header title="Le Bistrot d'Andre" sections={sections} />
+          <Header />
         </Container>
         <Grid
           container

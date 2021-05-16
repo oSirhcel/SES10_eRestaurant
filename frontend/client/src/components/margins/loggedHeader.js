@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -64,19 +63,35 @@ export default function Header() {
           <Link
             color="inherit"
             variant="body2"
-            to="/"
+            to="/dashboard"
             className={classes.toolbarLink}
           >
-            HOME
+           DASHBOARD 
+          </Link>
+          <Link
+            color="inherit"
+            variant="body2"
+            to="/makeReservation"
+            className={classes.toolbarLink}
+          >
+           RESERVE
+          </Link>
+          <Link
+            color="inherit"
+            variant="body2"
+            to="/customerReservations"
+            className={classes.toolbarLink}
+          >
+           MY RESERVATIONS 
           </Link>
           <Button
             component={Link}
             variant="contained"
             size="small"
             color="primary"
-            to="/login"
+            to="/"
           >
-            login
+            logout
           </Button>
         </Toolbar>
       </div>

@@ -14,6 +14,8 @@ import Dashboard from "../dashboard/dashboard";
 import StaffDashboard from "../dashboard/staffDashboard";
 import ViewMenu from '../viewMenu/ViewMenu';
 import CreateMealOrder from '../createMealOrder/createMealOrder';
+import Locations from '../filler/locations';
+
 
 const Routes = (props) => {
   return (
@@ -32,6 +34,7 @@ const Routes = (props) => {
         <Route exact path="/staff-dashboard" component={StaffDashboard} />
         <Route exact path="/menu" component={ViewMenu} />
         <Route exact path="/createMealOrder" component={CreateMealOrder} />
+        <Route exact path="/locations" component={Locations} />
       </Router>
     </section>
   );

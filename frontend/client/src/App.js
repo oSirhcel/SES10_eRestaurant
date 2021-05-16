@@ -1,43 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import DataTable from './DataGrid'
-import PersistentDrawerLeft from './PersistentDrawer';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { Provider } from "react-redux";
+import store from "./store";
+import Routes from "./components/routing/Routes";
 
-class App extends React.Component {
-  state = {
-    message: "this is just testing that data can be passed by the components",
-  }
-
-  changeMessage = (a) => {
-    this.setState({ message : a.data.firstName });
-  }
-
-  handleDelete = (rowIndex) => {
-
-  }
-
-  startEditing = (rowIndex) => {
-
-  }
-
-  stopEditing = () => {
-
-  }
-
-  handleChange = () => {
-
-  }
-
-  render() {
-    return (
-      <div>
-        <h1> {this.state.message} </h1>
-        <DataTable
-        changeMessage={this.changeMessage}
-        />
-      </div>
-      
-    )
-  }
+export default function App() {
+  return (
+    <Provider store={store}>
+      <Router>
+        <Route component={Routes} />
+      </Router>
+    </Provider>
+  );
 }
-export default App;

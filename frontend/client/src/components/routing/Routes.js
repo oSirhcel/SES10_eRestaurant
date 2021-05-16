@@ -15,6 +15,7 @@ import StaffDashboard from "../dashboard/staffDashboard";
 import ViewMenu from '../viewMenu/ViewMenu';
 import CreateMealOrder from '../createMealOrder/createMealOrder';
 import PromoPage from '../promotions/promoPage';
+import EditMenuController from '../edit-Menu/EditMenuController'
 
 const Routes = (props) => {
   return (
@@ -34,6 +35,7 @@ const Routes = (props) => {
         <Route exact path="/menu" component={ViewMenu} />
         <Route exact path="/createMealOrder" component={CreateMealOrder} />
         <Route exact path="/promotions" component={PromoPage} />
+        <Route exact path="/editMenu" component={EditMenuController} />
 
       </Router>
     </section>

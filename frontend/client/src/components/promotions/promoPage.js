@@ -13,27 +13,37 @@ import {
   CardContent,
   CardActions,
 } from "@material-ui/core";
+import promo from "./promoItems"
 
 const useStyles = makeStyles((theme) => ({
+  gridContainer: {
+    paddingLeft: "60px",
+    paddingRight: "60px",
+    paddingTop: "20px",
+  },
+
   root: {
     marginTop: theme.spacing(0),
     minHeight: "100vh",
     alignContent: "center",
   },
   card: {
-    marginTop: 100,
+    marginTop: 50,
     marginBottom: 20,
     maxWidth: 750,
     alignContent: "center",
   },
   media: {
     height: 250,
-    width: 750
+    width: 600
   },
+  heroContent: {
+    padding: theme.spacing(8, 0, 6),
+  }
 }));
 
 
-export default function PromoPage() {
+export default function PromoPage(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -41,6 +51,21 @@ export default function PromoPage() {
         <Container maxWidth="lg">
           <Header />
         </Container>
+        <div className={classes.heroContent}>
+        <Container>
+          <Typography
+            component="h1"
+            variant="h2"
+            align="center"
+            color="textPrimary"
+            gutterBottom
+          >
+            Discounts & Promotions
+          </Typography>
+        </Container>
+      </div>
+
+      {promo.map((item) =>(
         <Grid
           container
           spacing={0}
@@ -54,69 +79,23 @@ export default function PromoPage() {
               <CardActionArea>
                 <CardMedia
                 className={classes.media}
-                  title="Croque Monsieur"
-                  component="img"
-                  src='https://secureservercdn.net/198.71.189.253/b6d.5c9.myftpupload.com/wp-content/uploads/2019/10/inside-vegan-croissant-stacked.jpg'
+                  image={item.image}
+                  title={item.name}
                 />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    align="center"
-                  >
-                    Buy 1 croissant get 1 free.
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-          <Grid item xs={6}>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                className={classes.media}
-                  title="Macaron"
-                  component="img"
-                  src='https://www.kids-world-travel-guide.com/images/xfrench_food_macarons_shutterstock_62967172-2.jpg.pagespeed.ic.1_Cll_AGWX.jpg'
-                />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    align="center"
-                  >
-                    15% off meals over $20
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-          <Grid item xs={6}>
-            <Card className={classes.card}>
-              <CardActionArea>
-                <CardMedia
-                className={classes.media}
-                  title="Crepe"
-                  component="img"
-                  src='https://www.goway.com/media/cache/70/22/702291eb1a1895e3bc3d124cc5ae4da9.jpg'
-                />
-                <CardContent>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                    component="p"
-                    align="center"
-                  >
-                    Free crepe with any meal over $35.
-                  </Typography>
-                </CardContent>
+ 
+                    <CardContent>
+              <Typography gutterBottom variant="h6" component="h2">
+                {item.description}
+              </Typography>
+              <Typography variant="body2" color="textSecondary" component="p">
+                {item.expiry}
+              </Typography>
+            </CardContent>
               </CardActionArea>
             </Card>
           </Grid>
           </Grid>
-
+      ))}
         
         <Container>
           <Footer />

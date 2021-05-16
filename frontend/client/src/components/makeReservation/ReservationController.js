@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 import ReservationForm from './ReservationForm';
 import CustomerViewFrame from '../viewFrames/CustomerViewFrame';
 import { format } from 'date-fns';
-/*import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { addPost, addReservation } from '../../actions/reservation';*/
+import Header from '../margins/loggedHeader';
+import Container from "@material-ui/core/Container";
 
 export class ReservationController extends Component {
   state = {
@@ -108,6 +107,10 @@ export class ReservationController extends Component {
     
 
     return (
+      <div>
+        <Container maxWidth="lg">
+          <Header />
+        </Container>
       <ReservationForm 
         step = {step}
         date = {date}
@@ -125,17 +128,10 @@ export class ReservationController extends Component {
         timeBoundaries = {session == "Lunch" ? lunchTimes : dinnerTimes}
         mealOrder = {this.state.mealOrder}
       />
+      </div>
     )
   }
 }
-
-
-//Uses temporary view frame. Can get rid of this later.
-/*const MakeReservationStage = () => {
-    return (
-      <CustomerViewFrame element = {<ReservationController />}/>
-    )
-}*/
 
 export default ReservationController;
 

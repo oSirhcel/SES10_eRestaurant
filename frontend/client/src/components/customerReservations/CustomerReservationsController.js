@@ -3,7 +3,8 @@ import CustomerViewFrame from '../viewFrames/CustomerViewFrame';
 import Button from '@material-ui/core/Button';
 import { format } from 'date-fns';
 import ViewReservationStepper from './ViewReservationStepper';
-
+import Container from "@material-ui/core/Container";
+import Header from "../margins/loggedHeader";
 
 // The time is derived from the date. The details button is a separate column
 const columns = (nextStep) => {
@@ -103,6 +104,9 @@ class CustomerReservationsController extends React.Component {
           }
         }}
       >
+        <Container maxWidth="lg">
+          <Header />
+        </Container>
 
         <ViewReservationStepper
           step = {this.state.step}

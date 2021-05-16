@@ -6,13 +6,10 @@ import CreateMealOrder from "./components/createMealOrder/createMealOrder";
 
 export default function App() {
   return (
-    // <Provider store={store}>
-    //   <Router>
-    //     <Route component={Routes} />
-    //   </Router>
-    // </Provider>
-    <div>
-      <CreateMealOrder />
-    </div>
+    <Provider store={store}>
+      <Router>
+      <Route component={Routes} />
+    </Router>
+    </Provider>
   );
 }

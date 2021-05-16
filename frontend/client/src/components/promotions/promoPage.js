@@ -1,14 +1,11 @@
 import React from "react";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
 import Header from "../header";
 import Footer from "../footer";
 import Container from "@material-ui/core/Container";
 import { CssBaseline } from "@material-ui/core";
-import { GridList } from "@material-ui/core";
 import {
   Card,
   CardMedia,
@@ -25,13 +22,13 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     marginTop: 100,
-    marginBottom: 50,
+    marginBottom: 0,
     maxWidth: 345,
     alignContent: "center",
   },
   media: {
-    height: 0,
-    paddingTop: "56.25%",
+    height: 250,
+    width: 350,
   },
 }));
 
@@ -59,13 +56,14 @@ export default function PromoPage() {
           alignItems="center"
           justify="center"
         >
-          <Grid items item xs={12} sm={6}>
+          <Grid item xs={12} sm={6}>
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
-                  className={classes.media}
+                className={classes.media}
                   title="Croque Monsieur"
-                  image="frontend\client\src\img\promoMonsieur.jpg"
+                  component="img"
+                  src='https://secureservercdn.net/198.71.189.253/b6d.5c9.myftpupload.com/wp-content/uploads/2019/10/inside-vegan-croissant-stacked.jpg'
                 />
                 <CardContent>
                   <Typography
@@ -73,15 +71,13 @@ export default function PromoPage() {
                     color="textSecondary"
                     component="p"
                   >
-                    Lizards are a widespread group of squamate reptiles, with
-                    over 6,000 species, ranging across all continents except
-                    Antarctica
+                    Buy 1 croissant get 1 free.
                   </Typography>
                 </CardContent>
               </CardActionArea>
             </Card>
           </Grid>
-          <Grid items item xs={12} sm={6}>
+          <Grid item xs={3} sm={3}>
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
@@ -95,9 +91,7 @@ export default function PromoPage() {
                     color="textSecondary"
                     component="p"
                   >
-                    Lizards are a widespread group of squamate reptiles, with
-                    over 6,000 species, ranging across all continents except
-                    Antarctica
+                    Buy 1 croissant get 1 free.
                   </Typography>
                 </CardContent>
               </CardActionArea>

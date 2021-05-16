@@ -21,14 +21,14 @@ const useStyles = makeStyles((theme) => ({
     alignContent: "center",
   },
   card: {
-    marginTop: 100,
-    marginBottom: 0,
-    maxWidth: 345,
+    marginTop: 60,
+    marginBottom: 60,
+    maxWidth: 750,
     alignContent: "center",
   },
   media: {
     height: 250,
-    width: 350,
+    width: 750
   },
 }));
 
@@ -51,12 +51,13 @@ export default function PromoPage() {
         </Container>
         <Grid
           container
-          spacing={2}
-          direction="column"
-          alignItems="center"
-          justify="center"
+          spacing={0}
+        direction="column"
+        alignItems="center"
+        justify="center"
+        style={{ minHeight: '10vh' }}
         >
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={6}>
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
@@ -77,13 +78,14 @@ export default function PromoPage() {
               </CardActionArea>
             </Card>
           </Grid>
-          <Grid item xs={3} sm={3}>
+          <Grid item xs={6}>
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
-                  className={classes.media}
+                className={classes.media}
                   title="Croque Monsieur"
-                  image="frontend\client\src\img\promoMonsieur.jpg"
+                  component="img"
+                  src='https://secureservercdn.net/198.71.189.253/b6d.5c9.myftpupload.com/wp-content/uploads/2019/10/inside-vegan-croissant-stacked.jpg'
                 />
                 <CardContent>
                   <Typography
@@ -97,7 +99,9 @@ export default function PromoPage() {
               </CardActionArea>
             </Card>
           </Grid>
-        </Grid>
+          </Grid>
+
+        
         <Container>
           <Footer />
         </Container>
@@ -105,3 +109,6 @@ export default function PromoPage() {
     </div>
   );
 }
+
+
+

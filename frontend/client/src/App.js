@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import Routes from "./components/routing/Routes";
-import ViewMenu from "./components/viewMenu/ViewMenu";
+import CreateMealOrder from "./components/createMealOrder/createMealOrder";
 
 export default function App() {
   return (
@@ -12,7 +12,7 @@ export default function App() {
     //   </Router>
     // </Provider>
     <div>
-      <ViewMenu />
+      <CreateMealOrder />
     </div>
   );
 }

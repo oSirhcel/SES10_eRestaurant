@@ -48,34 +48,10 @@ export default function Header() {
           <Link
             color="inherit"
             variant="body2"
-            to="/locations"
-            className={classes.toolbarLink}
-          >
-            LOCATIONS
-          </Link>
-          <Link
-            color="inherit"
-            variant="body2"
             to="/menu"
             className={classes.toolbarLink}
           >
             MENU
-          </Link>
-          <Link
-            color="inherit"
-            variant="body2"
-            to="/reserve"
-            className={classes.toolbarLink}
-          >
-            RESERVE
-          </Link>
-          <Link
-            color="inherit"
-            variant="body2"
-            to="/aboutus"
-            className={classes.toolbarLink}
-          >
-            ABOUT US
           </Link>
           <Link
             color="inherit"
@@ -88,19 +64,19 @@ export default function Header() {
           <Link
             color="inherit"
             variant="body2"
-            to="/dashboard"
+            to="/"
             className={classes.toolbarLink}
           >
-            MY ACCOUNT
+            HOME
           </Link>
           <Button
             component={Link}
             variant="contained"
             size="small"
             color="primary"
-            to="/"
+            to="/login"
           >
-            Home
+            login
           </Button>
         </Toolbar>
       </div>

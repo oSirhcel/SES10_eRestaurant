@@ -15,9 +15,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const mainFeaturedPost = {
-  title: "The Perfect Crossaint.",
+  title: "The Perfect Croissant.",
   description: "Experience the signature food of France at its finest.",
-  imgText: "crossaint",
+  imgText: "croissant",
   buttonText: "Join us",
 };
 

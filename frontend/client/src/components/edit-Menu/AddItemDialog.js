@@ -74,12 +74,9 @@ const ItemType = ({type, setType}) => {
 
 //The add item dialog.
 const AddItemDialog = ({
-  buttonIcon, handleSubmit, handleImageSelection, deleteButton, setItem,
-  item, description, price, type, img, imgPreview, defaultImg,
-  setDescription, setPrice, setType, error, setImgPreview}) => { 
+  handleSubmit, handleImageSelection, deleteButton, setItem, 
+  setDescription, setPrice, setType, type, error, imgPreview, setImgPreview}) => { 
   const classes = useStyles();
-  const [defaultImage, setDefaultImage] = React.useState(defaultImg);
-  const [defaultStage, setDefaultStage] = React.useState(defaultImg ? 1 : 0);
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -90,25 +87,13 @@ const AddItemDialog = ({
     setOpen(false);
   };
 
-  const handleCancel = () => {
-    setImgPreview(null);
-    handleClose();
-  }
 
-  const removeImg = () => {
-    setDefaultStage(0);
-    setImgPreview(null);
-  }
-
-/*imgPreview
-              ? `url("${imgPreview}") no-repeat center/cover`
-              : "#ffffff" */
 
   return (
     <div>
         
       <Button color="primary" onClick={handleClickOpen}>
-        {buttonIcon}
+        <AddIcon />
       </Button>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
@@ -127,17 +112,13 @@ const AddItemDialog = ({
         <div
           className={classes.imgPreview}
           style={{
-            background: defaultStage == 1
-            ? `url("${defaultImg}") no-repeat center/cover`
-            : (
-              imgPreview
+            background: imgPreview
               ? `url("${imgPreview}") no-repeat center/cover`
               : "#ffffff"
-            )
           }
         }
         >
-          {(!imgPreview && defaultStage != 1) && (
+          {!imgPreview && (
             <>
               <InputLabel htmlFor="fileUpload" className="customFileUpload">
                 <AddPhotoIcon/>               
@@ -149,8 +130,8 @@ const AddItemDialog = ({
           </div>
 
         
-        {(imgPreview || defaultStage == 1) && (
-          <Button onClick={removeImg}>Remove image</Button>
+        {imgPreview && (
+          <Button onClick={() => setImgPreview(null)}>Remove image</Button>
         )}
 
               <TextField
@@ -159,14 +140,12 @@ const AddItemDialog = ({
                 id="item"
                 label="Item Name"
                 fullWidth
-                defaultValue = {item}
                 onChange={(event) => setItem(event.target.value)}
               />
               <TextField
                 margin="dense"
                 id="description"
                 label="Description"
-                defaultValue = {description}
                 fullWidth
                 onChange = {(event) => setDescription(event.target.value)}
               />
@@ -174,7 +153,6 @@ const AddItemDialog = ({
                 label="Price"
                 id="price"
                 type="number"
-                defaultValue = {price}
                 inputProps={{ 
                   step: "0.01",                      
                 }}
@@ -193,7 +171,7 @@ const AddItemDialog = ({
 
 
             <DialogActions>
-              <Button onClick={handleCancel} color="primary">
+              <Button onClick={handleClose} color="primary">
                 Cancel
               </Button>
               <Button onClick={handleClose} color="primary" type="submit">

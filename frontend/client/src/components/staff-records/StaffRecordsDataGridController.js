@@ -9,15 +9,6 @@ const columns = [
     { field: 'position', headerName: 'Position', width: 130},
     { field: 'email', headerName: 'Email', flex: 1},
     { field: 'phone', headerName: 'Phone', width: 130},
-    {
-      field: 'fullName',
-      headerName: 'Full name',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
-      width: 160,
-      valueGetter: (params) =>
-        `${params.getValue('firstName') || ''} ${params.getValue('lastName') || ''}`,
-    },
   ];
   
   const rows = [
@@ -62,12 +53,12 @@ class StaffRecordsDataGridController extends React.Component {
         selectedCell.api.setCellMode(selectedCell.id, selectedCell.field, "edit");
     }
 
+    //Will probably need to store editValue in the state so it can be updated in the database.
     handleValueChange = () => {
         const selectedCell = this.state.selectedCell;
         const editValue = selectedCell.api.getEditCellValueParams(selectedCell.id, selectedCell.field).value;
         const id = selectedCell.id;
         const field = selectedCell.field;
-
         this.setState(state => ({
             rows: state.rows.map(
               (row) => {
@@ -79,9 +70,11 @@ class StaffRecordsDataGridController extends React.Component {
               }
           )}));
     }
+    /*The onKeyDownCapture prevents the user deleting/backspacing the cell's text without double clicking it */
     render() {
         return(
             <div
+            
             onKeyDownCapture={(e) => {
                 if (e.key === "Backspace" || e.key === "Delete") {
                   e.stopPropagation();

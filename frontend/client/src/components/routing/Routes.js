@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import MenuTabController from '../edit-Menu/MenuTabController';
 import { BrowserRouter as Router } from "react-router-dom";
 import Alert from "../layout/Alert";
 import Login from "../login/login";
@@ -17,7 +18,8 @@ const Routes = (props) => {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={RegisterCustomer} />
-        <Route exact path="/registerStaff" component={RegisterStaff} />  
+        <Route exact path="/registerStaff" component={RegisterStaff} />
+        <Route exact path="/staffMenuView" component={MenuTabController} />
         <Route exact path="/customerReservations" component={CustomerReservationsController} />
         <Route exact path="/staffRecords" component={StaffRecordsDataGridController} />
       </Router>

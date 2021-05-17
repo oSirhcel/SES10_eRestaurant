@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -45,15 +44,7 @@ export default function Header() {
           >
             Bistrot d'Andre
           </Typography>
-          <Button
-            component={Link}
-            color="inherit"
-            variant="body2"
-            to="/locations"
-            className={classes.toolbarLink}
-          >
-            LOCATIONS
-          </Button>
+          <Typography>
           <Button
             component={Link}
             color="inherit"
@@ -61,25 +52,8 @@ export default function Header() {
             to="/menu"
             className={classes.toolbarLink}
           >
+          
             MENU
-          </Button>
-          <Button
-            component={Link}
-            color="inherit"
-            variant="body2"
-            to="/reserve"
-            className={classes.toolbarLink}
-          >
-            RESERVE
-          </Button>
-          <Button
-            component={Link}
-            color="inherit"
-            variant="body2"
-            to="/aboutus"
-            className={classes.toolbarLink}
-          >
-            ABOUT US
           </Button>
           <Button
             component={Link}
@@ -94,20 +68,39 @@ export default function Header() {
             component={Link}
             color="inherit"
             variant="body2"
-            to="/"
+            to="/dashboard"
             className={classes.toolbarLink}
           >
-            MY ACCOUNT
+           DASHBOARD 
+          </Button>
+          <Button
+            component={Link}
+            color="inherit"
+            variant="body2"
+            to="/makeReservation"
+            className={classes.toolbarLink}
+          >
+           RESERVE
+          </Button>
+          <Button
+            component={Link}
+            color="inherit"
+            variant="body2"
+            to="/my-reservations"
+            className={classes.toolbarLink}
+          >
+           MY RESERVATIONS 
           </Button>
           <Button
             component={Link}
             variant="contained"
             size="small"
             color="primary"
-            to="/login"
+            to="/"
           >
-            login
+            logout
           </Button>
+          </Typography>
         </Toolbar>
       </div>
     </React.Fragment>

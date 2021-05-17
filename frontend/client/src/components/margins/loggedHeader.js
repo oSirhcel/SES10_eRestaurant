@@ -44,12 +44,14 @@ export default function Header() {
           >
             Bistrot d'Andre
           </Typography>
+          <Typography>
           <Link
             color="inherit"
             variant="body2"
             to="/menu"
             className={classes.toolbarLink}
           >
+          
             MENU
           </Link>
           <Link
@@ -93,6 +95,7 @@ export default function Header() {
           >
             logout
           </Button>
+          </Typography>
         </Toolbar>
       </div>
     </React.Fragment>

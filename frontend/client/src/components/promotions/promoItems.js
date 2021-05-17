@@ -20,4 +20,5 @@ const promo = [
         "https://www.goway.com/media/cache/70/22/702291eb1a1895e3bc3d124cc5ae4da9.jpg",
     },
   ];
+  
   export default promo;

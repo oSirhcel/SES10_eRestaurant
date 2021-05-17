@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CreateMealOrder() {
+const CreateMealOrder = ({nextStep, handleAdd, order, handleRemove, session, handleAddDiscount}) => {
   const classes = useStyles();
 
   const [selectedTab, setSelectedTab] = React.useState(0);
@@ -26,6 +26,8 @@ export default function CreateMealOrder() {
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
+
+  console.log(session);
 
   return (
     <React.Fragment>
@@ -44,25 +46,22 @@ export default function CreateMealOrder() {
         </Container>
       </div>
       <div>
-        <Tabs
-          value={selectedTab}
-          onChange={handleChange}
-          variant="fullWidth"
-          indicatorColor="primary"
-        >
-          <Tab label="Lunch" />
-          <Tab label="Dinner" />
-        </Tabs>
-        {selectedTab === 0 && <LunchMenu />}
-        {selectedTab === 1 && <DinnerMenu />}
+        {session === "Lunch"
+          ? (<LunchMenu handleAdd = {handleAdd} order = {order} handleRemove = {handleRemove}/>)
+          : (<DinnerMenu handleAdd = {handleAdd} order = {order} handleRemove = {handleRemove}/>)
+        }
       </div>
       <div className={classes.button}>
+        <Button onClick = {handleAddDiscount}>
+          Add Discount
+        </Button>
         <Button
           className={classes.button}
           size="large"
           fullWidth
           variant="contained"
           color="primary"
+          onClick={nextStep}
         >
           Create Meal Order
         </Button>
@@ -70,3 +69,4 @@ export default function CreateMealOrder() {
     </React.Fragment>
   );
 }
+export default CreateMealOrder;

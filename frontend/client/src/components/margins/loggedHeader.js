@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -45,69 +44,58 @@ export default function Header() {
           >
             Bistrot d'Andre
           </Typography>
-          <Button
-            component={Link}
-            color="inherit"
-            variant="body2"
-            to="/locations"
-            className={classes.toolbarLink}
-          >
-            LOCATIONS
-          </Button>
-          <Button
-            component={Link}
+          <Typography>
+          <Link
             color="inherit"
             variant="body2"
             to="/menu"
             className={classes.toolbarLink}
           >
+          
             MENU
-          </Button>
-          <Button
-            component={Link}
-            color="inherit"
-            variant="body2"
-            to="/reserve"
-            className={classes.toolbarLink}
-          >
-            RESERVE
-          </Button>
-          <Button
-            component={Link}
-            color="inherit"
-            variant="body2"
-            to="/aboutus"
-            className={classes.toolbarLink}
-          >
-            ABOUT US
-          </Button>
-          <Button
-            component={Link}
+          </Link>
+          <Link
             color="inherit"
             variant="body2"
             to="/promotions"
             className={classes.toolbarLink}
           >
             PROMOTIONS
-          </Button>
-          <Button
-            component={Link}
+          </Link>
+          <Link
             color="inherit"
             variant="body2"
-            to="/"
+            to="/dashboard"
             className={classes.toolbarLink}
           >
-            MY ACCOUNT
-          </Button>
+           DASHBOARD 
+          </Link>
+          <Link
+            color="inherit"
+            variant="body2"
+            to="/makeReservation"
+            className={classes.toolbarLink}
+          >
+           RESERVE
+          </Link>
+          <Link
+            color="inherit"
+            variant="body2"
+            to="/my-reservations"
+            className={classes.toolbarLink}
+          >
+           MY RESERVATIONS 
+          </Link>
           <Button
             component={Link}
             variant="contained"
             size="small"
             color="primary"
-            to="/login"
+            to="/"
           >
-            login
+            logout
           </Button>
+          </Typography>
         </Toolbar>
       </div>
     </React.Fragment>

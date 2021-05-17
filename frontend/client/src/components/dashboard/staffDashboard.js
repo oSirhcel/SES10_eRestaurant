@@ -131,7 +131,7 @@ function Dashboard() {
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-             <Card className={classes.card} onClick={() => {onClickRedirect("/registerStaff")}}>
+             <Card className={classes.card} onClick={() => {onClickRedirect("/staff-register")}}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}
@@ -141,6 +141,22 @@ function Dashboard() {
                 <CardContent>
                   <Typography gutterBottom variant="h5" component="h2">
                    Add Staff Account 
+                  </Typography>
+                </CardContent>
+              </CardActionArea>
+            </Card>
+          </Grid>
+          <Grid item xs={12} sm={6} md={4}>
+             <Card className={classes.card} onClick={() => {onClickRedirect("/staff-records")}}>
+              <CardActionArea>
+                <CardMedia
+                  className={classes.media}
+                  image="https://images.pexels.com/photos/357514/pexels-photo-357514.jpeg?cs=srgb&dl=pexels-pixabay-357514.jpg&fm=jpg"
+                  title="hired"
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="h5" component="h2">
+                   View Staff Details 
                   </Typography>
                 </CardContent>
               </CardActionArea>

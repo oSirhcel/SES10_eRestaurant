@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
 import ReservationForm from './ReservationForm';
-import CustomerViewFrame from '../viewFrames/CustomerViewFrame';
 import { format } from 'date-fns';
-/*import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { addPost, addReservation } from '../../actions/reservation';*/
+import Header from '../margins/loggedHeader';
+import Container from "@material-ui/core/Container";
+import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 
 export class ReservationController extends Component {
   state = {
     step: 1, //To move between steps
     session: 'Lunch', //Only required for showing the eligible times
-
+    mealOrder: [],
     /*These states will probably be stored as values in the database.
     Although, might be good idea to combine date and time (see handleSubmit)
     */
     date: new Date(),
     time: '',
     numPeople: 0,
+    test:'',
   };
 
   // Lunch: every 15 minutes between 11:30AM and 2:30PM (can change this of course)
@@ -30,6 +30,8 @@ export class ReservationController extends Component {
     start: new Date (0, 0, 0, 17),
     end: new Date (0, 0, 0, 21, 30),
   }
+
+  
 
   // Proceed to next step
   nextStep = () => {
@@ -71,9 +73,19 @@ export class ReservationController extends Component {
     this.setState({time: value});
   }
 
+  // Submit meal order
+  handleSubmitOrder = (rows) => {
+    console.log(rows);
+    this.setState({mealOrder: rows});
+    const { step } = this.state;
+    this.setState({
+      step: step + 1
+    });
+    console.log(this.state.mealOrder);
+  }
+
   //Dummy code for submit event handler. Might need a submitted dialog or page.
   handleOnSubmit = (e) => {
-    e.preventDefault();
     const dateTime = new Date(   
       //Thinking it might be easier to store the date and time together in the database. 
       format(this.state.date, 'y'), 
@@ -83,7 +95,7 @@ export class ReservationController extends Component {
       format(this.state.time, 'm')
       );
 
-      console.log({dateTime: dateTime, numPeople: this.state.numPeople})
+      console.log({dateTime: dateTime, numPeople: this.state.numPeople, mealOrder: this.state.mealOrder})
      // addReservation({dateTime: dateTime, numPeople: this.state.numPeople});
   }
 
@@ -94,6 +106,10 @@ export class ReservationController extends Component {
     
 
     return (
+      <div>
+        <Container maxWidth="lg">
+          <Header />
+        </Container>
       <ReservationForm 
         step = {step}
         date = {date}
@@ -102,24 +118,19 @@ export class ReservationController extends Component {
         numPeople = {numPeople}
         nextStep = {this.nextStep}
         prevStep = {this.prevStep}
+        handleSubmitOrder = {this.handleSubmitOrder}
         handleChange = {this.handleChange}
         handleDateSelect = {this.handleDateSelect}
         handleTimeSelect = {this.handleTimeSelect}
         handleOnSubmit = {this.handleOnSubmit}
         handleSession = {this.handleSession}
         timeBoundaries = {session == "Lunch" ? lunchTimes : dinnerTimes}
+        mealOrder = {this.state.mealOrder}
       />
+      </div>
     )
   }
 }
-
-
-//Uses temporary view frame. Can get rid of this later.
-/*const MakeReservationStage = () => {
-    return (
-      <CustomerViewFrame element = {<ReservationController />}/>
-    )
-}*/
 
 export default ReservationController;
 

@@ -9,7 +9,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 
-const DISCOUNT = 0.07;
+const DISCOUNT = 0.0;
 
 const useStyles = makeStyles({
   table: {

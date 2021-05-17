@@ -5,6 +5,9 @@ import Button from '@material-ui/core/Button';
 import { format } from 'date-fns';
 import ReservationDetailsForm from './ReservationDetailsForm';
 import ReviewTable from '../createMealOrder/ReviewTable';
+import MealOrderController from '../createMealOrder/MealOrderController';
+import EditMealOrder from './EditMealOrder';
+import AlertDialog from './AlertDialog';
 
 const TimeRange = (beginT, endT) => {
     const times=[];
@@ -42,6 +45,8 @@ const Timeslots = (lunchStart, lunchEnd, handleTimeSelection) => {
 }
 
 
+
+
 const ReservationDetailsController = ({reservationData}) => {
     const [selectedDate, handleDateSelect] = React.useState(reservationData.data.date);
     const [selectedTime, setSelectedTime] = React.useState(reservationData.data.date);
@@ -50,6 +55,12 @@ const ReservationDetailsController = ({reservationData}) => {
 
     const [currentlyEditing, setEdit] = React.useState(false);
     const [session, setSession] = React.useState(''); //Used to show which timeslots
+    const [oldSession, setOldSession] = React.useState(
+        parseInt(format(selectedTime, 'H')) <= 14 ? "Lunch" : "Dinner"
+    );
+    const [newSession, setNewSession] = React.useState(
+        parseInt(format(selectedTime, 'H')) <= 14 ? "Lunch" : "Dinner"
+    );
     
     const [timeClicked, setTimeClicked] = React.useState(false); //Flag for when user wants to see timeslots.
 
@@ -77,7 +88,39 @@ const ReservationDetailsController = ({reservationData}) => {
         }                  
         }
     />);
-    
+
+    //For Dialog
+    const [open, setOpen] = React.useState(false);
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleCancelDialog = () => {
+        setOpen(false);
+    }
+
+    const handleConfirm = () => {
+        setOpen(false);
+        setMealOrder([]);
+    }
+
+    /* 
+    if (event.target.value == "Lunch") {
+            if (oldSession == "Dinner") {
+                setOpen(true);
+            } else {
+                setTime(Timeslots(lunchStart, lunchEnd, handleTimeSelection));
+            }
+        } else {
+            if (oldSession == "Lunch") {
+                setOpen(true);
+            } else {
+                setTime(Timeslots(lunchStart, lunchEnd, handleTimeSelection));
+            }
+        }
+    */
+
     // Sets the timeslots shown depending on which session was selected.
     const handleSessionSelection = (event) => {
         if (event.target.value == "Lunch") {
@@ -85,7 +128,8 @@ const ReservationDetailsController = ({reservationData}) => {
         } else {
             setTime(Timeslots(dinnerStart, dinnerEnd, handleTimeSelection));
         }
-    }
+        setNewSession(event.target.value);
+    }    
 
     // If a new Date was selected then the time needs to be chosen again.
     const handleDateChange = (date, Session) => {
@@ -97,15 +141,23 @@ const ReservationDetailsController = ({reservationData}) => {
     }
 
     // Doesn't actually alert anything excepts objects. Just some dummy code for submitting stuff.
-    const handleSubmit = () => {
-        alert(
+    const handleSubmit = (e) => {
+        
+        console.log(oldSession);
+        console.log(session);
+        if (oldSession != newSession) {
+            e.preventDefault();
+            setOpen(true);
+        }
+        
+        /*
             <p>
                 Date: {format(selectedDate, 'd MMM yyyy')} <br />
                 Time: {format(selectedTime, 'h:mm a')} <br />
                 Number of People: {numPeople} <br />
                 Meal Order: {mealOrder} <br />
             </p>
-        );
+        */
     }
 
     //Resets all the states basically.
@@ -132,7 +184,9 @@ const ReservationDetailsController = ({reservationData}) => {
             />
         );
     }
-    console.log(mealOrder);
+
+    
+
     //Returns the view
     return (
         <div>
@@ -152,15 +206,19 @@ const ReservationDetailsController = ({reservationData}) => {
             handleCancel = {handleCancel}
             setMealOrder = {setMealOrder}
             />
-            {
-                mealOrder.length > 0
-                ? (
-                    <div>
-                    <p />
-                    <ReviewTable rows={mealOrder} title = "Meal Order" />
+            <AlertDialog 
+                open={open}
+                handleClose = {handleClose}
+                handleCancel = {handleCancelDialog}
+                handleConfirm = {handleConfirm}
+            />
+               <div>
+                    <EditMealOrder 
+                        mealOrder = {mealOrder} 
+                        session = {session}
+                        selectedDate = {selectedDate}
+                    />
                     </div>
-                ) : ''
-            }
             
         </div>
         

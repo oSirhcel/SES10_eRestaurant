@@ -92,15 +92,6 @@ export default function Header() {
           </Button>
           <Button
             component={Link}
-            color="inherit"
-            variant="body2"
-            to="/"
-            className={classes.toolbarLink}
-          >
-            MY ACCOUNT
-          </Button>
-          <Button
-            component={Link}
             variant="contained"
             size="small"
             color="primary"

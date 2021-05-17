@@ -10,7 +10,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline"; //resets CSS to a consistent baseline
 import TextField from "@material-ui/core/TextField";
-import Link from "@material-ui/core/Link";
+import { Link } from "react-router-dom";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -113,12 +113,12 @@ const Login = ({ login, isAuthenticated}) => {
           />
 
           <Button
-            type="submit"
+            component={Link}
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
-            onClick={onSubmit}
+            to="/staff-dashboard"
           >
             Sign In
           </Button>

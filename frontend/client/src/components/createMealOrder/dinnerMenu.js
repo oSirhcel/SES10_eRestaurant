@@ -10,6 +10,7 @@ import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardActions from "@material-ui/core/CardActions";
+import Button from "@material-ui/core/Button";
 
 const useStyles = makeStyles({
   gridContainer: {
@@ -23,11 +24,23 @@ const useStyles = makeStyles({
   media: {
     height: 140,
   },
+  status: {
+    paddingLeft: "20px",
+  }
 });
 
-export default function DinnerMenu() {
+const DinnerMenu = ({handleAdd, order, handleRemove}) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
+
+  const ordered = (itemName) => {
+    for (var i = 0; i < order.length; i++) {
+      if (order[i].item === itemName) {
+        return true;
+      }
+    }
+    return false;
+  }
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -57,11 +70,25 @@ export default function DinnerMenu() {
                 {item.description}
               </Typography>
               <Typography variant="h6" component="p">
-                {item.price}
+                ${item.price.toFixed(2)}
               </Typography>
             </CardContent>
             <CardActions>
-              <AddToOrder />
+              <AddToOrder 
+                name = {item.name}
+                price = {item.price}
+                handleAdd = {handleAdd}
+              />
+
+              {ordered(item.name) 
+                ? (
+                  <Button className = {classes.status} onClick = {() => handleRemove(item.name)}>
+                    Remove from Order
+                  </Button>
+                ) 
+                : ''
+              }
+
             </CardActions>
           </Card>
         </Grid>
@@ -85,11 +112,24 @@ export default function DinnerMenu() {
                 {item.description}
               </Typography>
               <Typography variant="h6" component="p">
-                {item.price}
+                ${item.price.toFixed(2)}
               </Typography>
             </CardContent>
             <CardActions>
-              <AddToOrder />
+              <AddToOrder 
+                name = {item.name}
+                price = {item.price}
+                handleAdd = {handleAdd}
+              />
+              {ordered(item.name) 
+                ? (
+                  <Button className = {classes.status} onClick = {() => handleRemove(item.name)}>
+                    Remove from Order
+                  </Button>
+                ) 
+                : ''
+              }
+
             </CardActions>
           </Card>
         </Grid>
@@ -113,11 +153,23 @@ export default function DinnerMenu() {
                 {item.description}
               </Typography>
               <Typography variant="h6" component="p">
-                {item.price}
+                ${item.price.toFixed(2)}
               </Typography>
             </CardContent>
             <CardActions>
-              <AddToOrder />
+              <AddToOrder 
+                name = {item.name}
+                price = {item.price}
+                handleAdd = {handleAdd}
+              />
+              {ordered(item.name) 
+                ? (
+                  <Button className = {classes.status} onClick = {() => handleRemove(item.name)}>
+                    Remove from Order
+                  </Button>
+                ) 
+                : ''
+              }
             </CardActions>
           </Card>
         </Grid>
@@ -125,3 +177,4 @@ export default function DinnerMenu() {
     </Grid>
   );
 }
+export default DinnerMenu;

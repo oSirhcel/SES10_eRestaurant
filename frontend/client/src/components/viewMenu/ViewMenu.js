@@ -7,7 +7,7 @@ import { Tabs, Tab } from "@material-ui/core";
 import LunchMenu from "./lunchMenu";
 import DinnerMenu from "./dinnerMenu";
 //Imports for margins
-import Header from "/Users/izzy/SES10_eResturant/frontend/client/src/components/margins/header.js";
+import Header from "../margins/header";
 import Footer from "../margins/footer";
 
 const useStyles = makeStyles((theme) => ({

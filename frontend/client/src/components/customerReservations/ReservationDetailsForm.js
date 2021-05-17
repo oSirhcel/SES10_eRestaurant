@@ -143,18 +143,7 @@ const ReservationDetailsForm = ({
                 )}
                 <p/>
 
-                <Typography>
-                    {/*Will need to add edit meal order stuff here */}
-                    Meal Order
-                </Typography>
-                {currentlyEditing ? (
-                    <TextField
-                        defaultValue={reservationData.data.mealOrder}
-                        onChange={(e) => setMealOrder(e.target.value)}
-                    />
-                    ) : (
-                        reservationData.data.mealOrder
-                )}
+                
 
 
                 <p/>
@@ -188,3 +177,16 @@ const ReservationDetailsForm = ({
 }
 
 export default ReservationDetailsForm;
+
+/*
+<Typography>
+                    Meal Order
+                </Typography>
+                {currentlyEditing ? (
+                    <TextField
+                        defaultValue={reservationData.data.mealOrder}
+                        onChange={(e) => setMealOrder(e.target.value)}
+                    />
+                    ) : (
+                        reservationData.data.mealOrder
+                )} */

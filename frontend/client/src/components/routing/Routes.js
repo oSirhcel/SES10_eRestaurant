@@ -13,7 +13,7 @@ import StaffRecordsDataGridController from "../staff-records/StaffRecordsDataGri
 import Dashboard from "../dashboard/dashboard";
 import StaffDashboard from "../dashboard/staffDashboard";
 import ViewMenu from "../viewMenu/ViewMenu";
-import CreateMealOrder from "../createMealOrder/createMealOrder";
+import MealOrderController from "../createMealOrder/MealOrderController";
 
 const Routes = (props) => {
   return (
@@ -43,7 +43,7 @@ const Routes = (props) => {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/staff-dashboard" component={StaffDashboard} />
         <Route exact path="/menu" component={ViewMenu} />
-        <Route exact path="/createMealOrder" component={CreateMealOrder} />
+        <Route exact path="/createMealOrder" component={MealOrderController} />
       </Router>
     </section>
   );

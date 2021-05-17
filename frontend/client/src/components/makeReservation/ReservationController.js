@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import ReservationForm from './ReservationForm';
-import CustomerViewFrame from '../viewFrames/CustomerViewFrame';
 import { format } from 'date-fns';
 import Header from '../margins/loggedHeader';
 import Container from "@material-ui/core/Container";
+import { withStyles, MuiThemeProvider } from "@material-ui/core/styles";
 
 export class ReservationController extends Component {
   state = {

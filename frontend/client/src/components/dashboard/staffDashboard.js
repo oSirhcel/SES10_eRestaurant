@@ -105,7 +105,7 @@ function Dashboard() {
                 </Card>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Card className={classes.card} onClick={() => {onClickRedirect("/editMenu")}}>
+              <Card className={classes.card} onClick={() => {onClickRedirect("/edit-menu")}}>
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}
@@ -121,7 +121,7 @@ function Dashboard() {
               </Card>
             </Grid>
             <Grid item xs={12} sm={6} md={4}>
-              <Card className={classes.card} onClick={() => {onClickRedirect("/editPromotions")}}>
+              <Card className={classes.card} onClick={() => {onClickRedirect("/edit-promotions")}}>
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}

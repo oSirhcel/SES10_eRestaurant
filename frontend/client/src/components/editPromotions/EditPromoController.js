@@ -2,10 +2,11 @@ import React from 'react';
 import MenuDataGrid from './MenuDataGrid';
 import AddPromoDialog from './AddPromoDialog';
 import EditPromoDialog from './EditPromoDialog';
-import { Button } from '@material-ui/core';
+import { Button, Container } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
+import Header from "../margins/staffHeader";
 
 const c =  
         [
@@ -182,6 +183,9 @@ const EditPromoController = ({tabValue}) => {
 
     return (
         <div>
+            <Container maxWidth ="lg ">
+            <Header/>
+            </Container>
             <AddPromoDialog 
                 buttonIcon = {<AddIcon/>}
                 handleSubmit = {handleSubmit}

@@ -9,6 +9,7 @@ import Alert from "../layout/Alert";
 import Login from "../login/login";
 import LandingPage from "../landingPage/landing";
 import CustomerReservationsController from "../customerReservations/CustomerReservationsController";
+import StaffReservationsController from "../viewReservationsStaff/StaffReservationsController";
 import StaffRecordsDataGridController from "../staff-records/StaffRecordsDataGridController";
 import Dashboard from "../dashboard/dashboard";
 import StaffDashboard from "../dashboard/staffDashboard";
@@ -34,6 +35,11 @@ const Routes = (props) => {
           exact
           path="/my-reservations"
           component={CustomerReservationsController}
+        />
+        <Route
+          exact
+          path="/staff-reservations"
+          component={StaffReservationsController}
         />
         <Route
           exact

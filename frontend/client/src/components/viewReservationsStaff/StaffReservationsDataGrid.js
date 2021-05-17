@@ -19,7 +19,7 @@ class StaffReservationsDataGrid extends React.Component {
 
               <Grid item xs={12} sm = {6}>
                 <Typography>
-                <h1> My Reservations </h1>
+                <h1> Customer Reservations </h1>
                 </Typography>
               </Grid>
 

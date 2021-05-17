@@ -1,5 +1,5 @@
 import React from 'react';
-import StaffRecordsDataGrid from './StaffRecordsDataGrid';
+import StaffRecordsDataGrid from './staff-recordsDataGrid';
 import AdminViewFrame from '../viewFrames/AdminViewFrame';
 
 const columns = [

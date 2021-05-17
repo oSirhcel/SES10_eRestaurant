@@ -141,7 +141,7 @@ function Dashboard() {
             </Card>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
-            <Card className={classes.card} onClick={() => {onClickRedirect("/customerReservations")}}>
+            <Card className={classes.card} onClick={() => {onClickRedirect("/my-reservations")}}>
               <CardActionArea>
                 <CardMedia
                   className={classes.media}

@@ -4,8 +4,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { format } from 'date-fns';
 import ReservationDetailsForm from './ReservationDetailsForm';
-import ReviewTable from '../createMealOrder/ReviewTable';
-import MealOrderController from '../createMealOrder/MealOrderController';
+import ReviewTable from '../create-meal-order/ReviewTable';
+import MealOrderController from '../create-meal-order/MealOrderController';
 import EditMealOrder from './EditMealOrder';
 import AlertDialog from './AlertDialog';
 

@@ -81,7 +81,7 @@ export default function Header() {
           <Link
             color="inherit"
             variant="body2"
-            to="/customerReservations"
+            to="/my-reservations"
             className={classes.toolbarLink}
           >
            MY RESERVATIONS 

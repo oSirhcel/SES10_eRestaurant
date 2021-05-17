@@ -6,7 +6,7 @@ import FormDate from './FormDate';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { format } from 'date-fns';
-import MealOrderController from '../createMealOrder/MealOrderController';
+import MealOrderController from '../create-meal-order/MealOrderController';
 
 export class ReservationForm extends Component {
   

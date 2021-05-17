@@ -3,8 +3,8 @@ import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import ReservationDetailsForm from './ReservationDetailsForm';
-import ReviewTable from '../createMealOrder/ReviewTable';
-import MealOrderController from '../createMealOrder/MealOrderController';
+import ReviewTable from '../create-meal-order/ReviewTable';
+import MealOrderController from '../create-meal-order/MealOrderController';
 import EditIcon from '@material-ui/icons/Edit';
 import { format, isBefore } from 'date-fns';
 

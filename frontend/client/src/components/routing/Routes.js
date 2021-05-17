@@ -8,12 +8,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Alert from "../layout/Alert";
 import Login from "../login/login";
 import LandingPage from "../landingPage/landing";
-import CustomerReservationsController from "../customerReservations/CustomerReservationsController";
-import StaffRecordsDataGridController from "../staff-records/StaffRecordsDataGridController";
+import CustomerReservationsController from "../my-reservations/my-reservationsController";
+import StaffRecordsDataGridController from "../staff-records/staff-recordsDataGridController";
 import Dashboard from "../dashboard/dashboard";
 import StaffDashboard from "../dashboard/staffDashboard";
 import ViewMenu from "../viewMenu/ViewMenu";
-import MealOrderController from "../createMealOrder/MealOrderController";
+import MealOrderController from "../create-meal-order/MealOrderController";
 
 const Routes = (props) => {
   return (
@@ -23,27 +23,27 @@ const Routes = (props) => {
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={RegisterCustomer} />
-        <Route exact path="/registerStaff" component={RegisterStaff} />
+        <Route exact path="/staff-register" component={RegisterStaff} />
         <Route
           exact
           path="/makeReservation"
           component={ReservationController}
         />
-        <Route exact path="/staffMenuView" component={MenuTabController} />
+        <Route exact path="/edit-menu" component={MenuTabController} />
         <Route
           exact
-          path="/customerReservations"
+          path="/my-reservations"
           component={CustomerReservationsController}
         />
         <Route
           exact
-          path="/staffRecords"
+          path="/staff-records"
           component={StaffRecordsDataGridController}
         />
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/staff-dashboard" component={StaffDashboard} />
         <Route exact path="/menu" component={ViewMenu} />
-        <Route exact path="/createMealOrder" component={MealOrderController} />
+        <Route exact path="/create-meal-order" component={MealOrderController} />
       </Router>
     </section>
   );

@@ -8,12 +8,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Alert from "../layout/Alert";
 import Login from "../login/login";
 import LandingPage from "../landingPage/landing";
-import CustomerReservationsController from "../my-reservations/my-reservationsController";
-import StaffRecordsDataGridController from "../staff-records/staff-recordsDataGridController";
+import CustomerReservationsController from "../customerReservations/CustomerReservationsController";
+import StaffRecordsDataGridController from "../staff-records/StaffRecordsDataGridController";
 import Dashboard from "../dashboard/dashboard";
 import StaffDashboard from "../dashboard/staffDashboard";
 import ViewMenu from "../viewMenu/ViewMenu";
-import MealOrderController from "../create-meal-order/MealOrderController";
+import MealOrderController from "../createMealOrder/MealOrderController";
 
 const Routes = (props) => {
   return (

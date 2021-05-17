@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Button from '@material-ui/core/Button';
-import CustomerReservationsDataGrid from './my-reservationsDataGrid';
+import CustomerReservationsDataGrid from './CustomerReservationsDataGrid';
 import ReservationDetailsController from './ReservationDetailsController';
 
 

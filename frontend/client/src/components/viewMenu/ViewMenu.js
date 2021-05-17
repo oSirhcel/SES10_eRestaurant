@@ -8,7 +8,7 @@ import LunchMenu from "./lunchMenu";
 import DinnerMenu from "./dinnerMenu";
 //Imports for margins
 import Header from "../margins/header";
-import Footer from "../margins/footer";
+import Footer from "../margins/loggedHeader";
 
 const useStyles = makeStyles((theme) => ({
   heroContent: {

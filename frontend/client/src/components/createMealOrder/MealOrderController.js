@@ -1,5 +1,5 @@
 import React from 'react';
-import CreateMealOrderStepper from './create-meal-orderStepper';
+import CreateMealOrderStepper from './CreateMealOrderStepper';
 import Button from '@material-ui/core/Button';
 
 class MealOrderController extends React.Component {

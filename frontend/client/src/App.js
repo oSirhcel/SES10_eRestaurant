@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./store";
 import Routes from "./components/routing/Routes";
-import CreateMealOrder from "./components/create-meal-order/create-meal-order";
+
 
 export default function App() {
   return (

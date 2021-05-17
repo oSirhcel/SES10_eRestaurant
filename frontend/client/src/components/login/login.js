@@ -3,7 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
-
+import Header from '../margins/header';
+import Footer from '../margins/footer';
 //Material-UI imports
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
@@ -30,10 +31,11 @@ const useStyles = makeStyles((theme) => ({
   //classes
   paper: {
     // background texture of the page
-    marginTop: theme.spacing(8),
+    marginTop: theme.spacing(20),
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    marginBottom: theme.spacing(80)
   },
   avatar: {
     //lock icon
@@ -70,7 +72,12 @@ const Login = ({ login, isAuthenticated}) => {
     return <Redirect to="/dashboard" />;
   }
   return (
+    <div>
+  <Container>
+      <Header/>
+      </Container>
     <Container component="main" maxWidth="xs">
+      
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>
@@ -124,10 +131,12 @@ const Login = ({ login, isAuthenticated}) => {
           </Grid>
         </form>
       </div>
-      <Box mt={8}>
-        <Copyright />
-      </Box>
+      <Container> 
+      <Footer/>
     </Container>
+    </Container>
+    </div>
+    
   );
 }
 

@@ -62,7 +62,7 @@ const columns = (nextStep) => {
 //Dummy Data
   const rows = [
       {id: 1, date: new Date(2020, 5, 19, 12, 45), numPeople: 2, mealOrder: []},
-      {id: 2, date: new Date(2020, 5, 20, 12, 15), numPeople: 3, mealOrder: []},
+      {id: 2, date: new Date(2021, 5, 20, 12, 15), numPeople: 3, mealOrder: []},
       {id: 3, date: new Date(2021, 5, 21, 18, 30), numPeople: 5, 
         mealOrder: [
           {item: "RISOTTO AUX CHAMPIGNONS SAUVAGES (GF)", qty: 1, unit: 40, price: 40},

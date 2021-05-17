@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     flexShrink: 0,
     overflowX: "auto",
-    marginRight: theme.spacing(2.5),
+    marginRight: theme.spacing(1.5),
     fontWeight: 700,
   },
 }));
@@ -89,17 +89,28 @@ export default function Header() {
             to="/staff-register"
             className={classes.toolbarLink}
           >
+<<<<<<< HEAD
+           ADD STAFF ACCOUNT
+          </Link>
+          <Link
+=======
            Add Staff Account
            </Button>
           <Button
             component={Link}
+>>>>>>> b38c9357ac50a09dd8fe5218aa524980aa83ec14
             color="inherit"
             variant="body2"
             to="/staff-records"
             className={classes.toolbarLink}
           >
+<<<<<<< HEAD
+           VIEW STAFF ACCOUNTS
+          </Link>
+=======
            View Staff Accounts
            </Button>
+>>>>>>> b38c9357ac50a09dd8fe5218aa524980aa83ec14
           <Button
             component={Link}
             variant="contained"

@@ -1,6 +1,8 @@
 import React from 'react';
 import MenuTabs from './MenuTabs';
 import EditMenuController from './EditMenuController';
+import Container from '@material-ui/core/Container';
+import Header from "../margins/staffHeader";
 
 const MenuTabController = () => {
     const [tabValue, setTabValue] = React.useState(0);
@@ -12,6 +14,9 @@ const MenuTabController = () => {
    
     return (
         <div>
+            <Container maxWidth="xl">
+                <Header/>
+            </Container>
             <MenuTabs 
                 tabValue = {tabValue}
                 handleTabChange = {handleTabChange}

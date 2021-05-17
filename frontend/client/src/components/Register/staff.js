@@ -18,7 +18,7 @@ import { setAlert } from "../../actions/alert";
 import { register } from "../../actions/auth";
 import PropTypes from "prop-types";
 //Imports for margins
-import Header from "../margins/header";
+import Header from "../margins/staffHeader";
 import Footer from "../margins/footer";
 
 
@@ -79,9 +79,10 @@ const RegisterStaff = ({ setAlert, register, isAuthenticated }) => {
 
   return (
     <div>
-      <Container maxWidth="lg">
+      <Container maxWidth="xl">
         <Header/>
       </Container>
+      <div />
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div style={paper}>

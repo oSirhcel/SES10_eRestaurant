@@ -45,7 +45,8 @@ export default function Header() {
             Bistrot d'Andre
           </Typography>
           <Typography>
-          <Link
+          <Button
+            component={Link}
             color="inherit"
             variant="body2"
             to="/edit-menu"
@@ -53,47 +54,63 @@ export default function Header() {
           >
           
            EDIT MENU
-          </Link>
-          <Link
+          </Button>
+          <Button
+            component={Link}
             color="inherit"
             variant="body2"
             to="/edit-promotions"
             className={classes.toolbarLink}
           >
             EDIT PROMOTIONS
-          </Link>
-          <Link
+            </Button>
+          <Button
+            component={Link}
             color="inherit"
             variant="body2"
             to="/staff-dashboard"
             className={classes.toolbarLink}
           >
            STAFF DASHBOARD 
-          </Link>
-          <Link
+           </Button>
+          <Button
+            component={Link}
             color="inherit"
             variant="body2"
             to="/view-reservations"
             className={classes.toolbarLink}
           >
            VIEW RESERVATIONS 
-          </Link>
-          <Link
+           </Button>
+          <Button
+            component={Link}
             color="inherit"
             variant="body2"
             to="/staff-register"
             className={classes.toolbarLink}
           >
+<<<<<<< HEAD
            ADD STAFF ACCOUNT
           </Link>
           <Link
+=======
+           Add Staff Account
+           </Button>
+          <Button
+            component={Link}
+>>>>>>> b38c9357ac50a09dd8fe5218aa524980aa83ec14
             color="inherit"
             variant="body2"
             to="/staff-records"
             className={classes.toolbarLink}
           >
+<<<<<<< HEAD
            VIEW STAFF ACCOUNTS
           </Link>
+=======
+           View Staff Accounts
+           </Button>
+>>>>>>> b38c9357ac50a09dd8fe5218aa524980aa83ec14
           <Button
             component={Link}
             variant="contained"

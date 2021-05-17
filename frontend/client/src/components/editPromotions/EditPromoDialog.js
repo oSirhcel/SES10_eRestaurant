@@ -31,12 +31,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
-
 //The edit item dialog.
-const EditPromoDialog = ({
-  handleSubmit, handleImageSelection, deleteButton,
-  description, img, imgPreview, defaultImg, disable,
+const EditItemDialog = ({
+  handleSubmit, handleImageSelection, deleteButton, description, img, imgPreview, defaultImg, disable,
   setDescription, error, setImgPreview}) => { 
   const classes = useStyles();
   const [defaultImage, setDefaultImage] = React.useState(defaultImg);
@@ -83,12 +80,12 @@ const EditPromoDialog = ({
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
           <form onSubmit={handleSubmit} autocomplete="off">
 
-            <DialogTitle id="form-dialog-title">Edit Menu Item</DialogTitle>
+            <DialogTitle id="form-dialog-title">Edit Promotion</DialogTitle>
 
             <DialogContent>
 
               <DialogContentText>
-                Edit Menu Item
+                Edit Promotion
               </DialogContentText>
 
 
@@ -127,9 +124,11 @@ const EditPromoDialog = ({
                 id="description"
                 label="Description"
                 defaultValue = {description}
+                autoComplete='off'
                 fullWidth
                 onChange = {(event) => setDescription(event.target.value)}
               />
+
             </DialogContent>
 
 
@@ -149,4 +148,4 @@ const EditPromoDialog = ({
   );
 }
 
-export default EditPromoDialog;
+export default EditItemDialog;

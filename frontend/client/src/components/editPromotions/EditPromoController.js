@@ -94,11 +94,39 @@ const EditPromoController = ({tabValue}) => {
     const [error, setError] = React.useState(false);
 
     // This is to handle when a new item is added. Need to update database.
-    const handleSubmit = (e) => {        
-        const newID = rows[rows.length-1].id + 1;
-        const newItem = {id: newID,description: description, image: img,};
-        setRows([...rows, newItem]);        
+    const handleSubmit = (e) => {   
         e.preventDefault();
+        console.log(img);
+        var added = false;
+        var data = [];
+        for (var i = 0; i < rows.length; i++) {
+            if (selectedRow == '') {
+                data.push(rows[i]);
+            } else {
+                if (selectedRow.data.id == rows[i].id) {
+                    var editThis = rows[i];
+                    if (description != '' && (description !== editThis.description)) {
+                        editThis.description = description;
+                    }
+                    
+                    if (img != null && (img !== editThis.image)) {
+                        editThis.image = img;
+                    }
+                    data.push(editThis);
+                    added = true;
+                } else {
+                    data.push(rows[i]);
+                }
+            }
+            
+        } 
+        if (!added) {
+            const newID = rows[rows.length-1].id + 1;
+            const newItem = {id: newID, description: description, image: img};
+            data.push(newItem);
+            
+        }    
+        setRows(data);   
         setImg(null);
     }
     const handleDelete = () => {

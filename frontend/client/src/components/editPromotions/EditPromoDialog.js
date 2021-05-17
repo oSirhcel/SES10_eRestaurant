@@ -15,7 +15,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import AddIcon from '@material-ui/icons/Add';
 import AddPhotoIcon from "@material-ui/icons/AddPhotoAlternate";
 import Typography from '@material-ui/core/Typography';
-
+import EditIcon from '@material-ui/icons/Edit';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -33,13 +33,16 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-//The add item dialog.
-const AddItemDialog = ({
-  handleSubmit, handleImageSelection, deleteButton, setItem, 
-  setDescription, setExpiry, error, imgPreview, setImgPreview}) => { 
+//The edit item dialog.
+const EditPromoDialog = ({
+  handleSubmit, handleImageSelection, deleteButton,
+  description, img, imgPreview, defaultImg, disable,
+  setDescription, error, setImgPreview}) => { 
   const classes = useStyles();
+  const [defaultImage, setDefaultImage] = React.useState(defaultImg);
+  const [defaultStage, setDefaultStage] = React.useState(1);
   const [open, setOpen] = React.useState(false);
-
+    
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -48,24 +51,44 @@ const AddItemDialog = ({
     setOpen(false);
   };
 
+  const handleCancel = () => {
+    setImgPreview(null);
+    handleClose();
+  }
 
+  const removeImg = () => {
+    setDefaultStage(0);
+    setImgPreview(null);
+  }
+
+/*style={{
+            background: defaultStage == 1
+            ? `url("${defaultImg}") no-repeat center/cover`
+            : (
+              imgPreview
+              ? `url("${imgPreview}") no-repeat center/cover`
+              : "#ffffff"
+            )
+          } */
+  console.log("default stage:");
+  console.log(defaultStage);
 
   return (
     <div>
         
-      <Button color="primary" onClick={handleClickOpen}>
-        <AddIcon />
+      <Button color="primary" onClick={handleClickOpen} disabled = {disable}>
+        <EditIcon />
       </Button>
 
       <Dialog open={open} onClose={handleClose} aria-labelledby="form-dialog-title">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} autocomplete="off">
 
-            <DialogTitle id="form-dialog-title">Add New Promotion</DialogTitle>
+            <DialogTitle id="form-dialog-title">Edit Menu Item</DialogTitle>
 
             <DialogContent>
 
               <DialogContentText>
-                Add a new promotion.
+                Edit Menu Item
               </DialogContentText>
 
 
@@ -73,13 +96,17 @@ const AddItemDialog = ({
         <div
           className={classes.imgPreview}
           style={{
-            background: imgPreview
+            background: defaultStage == 1
+            ? `url("${defaultImg}") no-repeat center/cover`
+            : (
+              imgPreview
               ? `url("${imgPreview}") no-repeat center/cover`
               : "#ffffff"
+            )
           }
         }
         >
-          {!imgPreview && (
+          {(!imgPreview && defaultStage != 1) && (
             <>
               <InputLabel htmlFor="fileUpload" className="customFileUpload">
                 <AddPhotoIcon/>               
@@ -91,39 +118,27 @@ const AddItemDialog = ({
           </div>
 
         
-        {imgPreview && (
-          <Button onClick={() => setImgPreview(null)}>Remove image</Button>
+        {(imgPreview || defaultStage == 1) && (
+          <Button onClick={removeImg}>Remove image</Button>
         )}
 
               <TextField
-                autoFocus
                 margin="dense"
                 id="description"
-                label="Promotion Description"
+                label="Description"
+                defaultValue = {description}
                 fullWidth
-                onChange={(event) => setDescription(event.target.value)}
+                onChange = {(event) => setDescription(event.target.value)}
               />
-              <TextField
-                id="date"
-                label="Birthday"
-                type="date"
-                defaultValue="2017-05-24"
-                className={classes.textField}
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                  onChange = {(event) => setExpiry(event.target.value)}
-              />         
-
             </DialogContent>
 
 
             <DialogActions>
-              <Button onClick={handleClose} color="primary">
+              <Button onClick={handleCancel} color="primary">
                 Cancel
               </Button>
               <Button onClick={handleClose} color="primary" type="submit">
-                Add
+                Save
               </Button>
             </DialogActions>
 
@@ -134,4 +149,4 @@ const AddItemDialog = ({
   );
 }
 
-export default AddItemDialog;
+export default EditPromoDialog;

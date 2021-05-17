@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     flexShrink: 0,
     overflowX: "auto",
-    marginRight: theme.spacing(2.5),
+    marginRight: theme.spacing(1.5),
     fontWeight: 700,
   },
 }));
@@ -84,7 +84,7 @@ export default function Header() {
             to="/staff-register"
             className={classes.toolbarLink}
           >
-           Add Staff Account
+           ADD STAFF ACCOUNT
           </Link>
           <Link
             color="inherit"
@@ -92,7 +92,7 @@ export default function Header() {
             to="/staff-records"
             className={classes.toolbarLink}
           >
-           View Staff Accounts
+           VIEW STAFF ACCOUNTS
           </Link>
           <Button
             component={Link}

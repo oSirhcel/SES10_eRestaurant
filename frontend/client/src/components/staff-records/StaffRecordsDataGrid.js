@@ -4,6 +4,8 @@ import { Button } from '@material-ui/core';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
+import Header from "../margins/staffHeader";
 
 class CustomerReservationsDataGrid extends React.Component {
     state = {
@@ -13,6 +15,10 @@ class CustomerReservationsDataGrid extends React.Component {
     render() {
       const { handleRowSelected, handleCellClicked, handleDelete, handleEdit, handleValueChange } = this.props;
         return (
+          <div>
+          <Container maxWidth="xl">
+            <Header/>
+          </Container>
             <div style={{ height: 350, width: '100%' }}>
               {/*positions the DataGrid title and delete Button*/}
               <Grid container spacing={3}>
@@ -41,7 +47,7 @@ class CustomerReservationsDataGrid extends React.Component {
               onCellDoubleClick={() => handleEdit()}
               onCellValueChange={() => handleValueChange()}
             />
-            
+          </div>  
         </div>
         )
     }

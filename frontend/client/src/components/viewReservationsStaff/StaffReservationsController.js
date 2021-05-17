@@ -4,7 +4,7 @@ import Button from '@material-ui/core/Button';
 import { format } from 'date-fns';
 import ViewReservationStepper from './ViewReservationStepper';
 import Container from "@material-ui/core/Container";
-import Header from "../margins/loggedHeader";
+import Header from "../margins/staffHeader";
 
 // The time is derived from the date. The details button is a separate column
 const columns = (nextStep) => {
@@ -130,7 +130,7 @@ class StaffReservationsController extends React.Component {
           }
         }}
       >
-        <Container maxWidth="lg">
+        <Container maxWidth="xl">
           <Header />
         </Container>
 

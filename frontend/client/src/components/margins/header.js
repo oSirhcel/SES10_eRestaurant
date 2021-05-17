@@ -76,7 +76,7 @@ export default function Header() {
             component={Link}
             color="inherit"
             variant="body2"
-            to="/aboutus"
+            to="/about-us"
             className={classes.toolbarLink}
           >
             ABOUT US

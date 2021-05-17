@@ -12,16 +12,8 @@ import CustomerReservationsController from "../customerReservations/CustomerRese
 import StaffRecordsDataGridController from "../staff-records/StaffRecordsDataGridController";
 import Dashboard from "../dashboard/dashboard";
 import StaffDashboard from "../dashboard/staffDashboard";
-<<<<<<< Updated upstream
 import ViewMenu from "../viewMenu/ViewMenu";
 import MealOrderController from "../createMealOrder/MealOrderController";
-=======
-import ViewMenu from '../viewMenu/ViewMenu';
-import CreateMealOrder from '../createMealOrder/createMealOrder';
-import PromoPage from '../promotions/promoPage';
-import EditMenuController from '../edit-Menu/EditMenuController'
-import EditPromotionController from '../editPromotions/EditPromotionController'
->>>>>>> Stashed changes
 
 const Routes = (props) => {
   return (
@@ -51,15 +43,7 @@ const Routes = (props) => {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/staff-dashboard" component={StaffDashboard} />
         <Route exact path="/menu" component={ViewMenu} />
-<<<<<<< Updated upstream
         <Route exact path="/create-meal-order" component={MealOrderController} />
-=======
-        <Route exact path="/createMealOrder" component={CreateMealOrder} />
-        <Route exact path="/promotions" component={PromoPage} />
-        <Route exact path="/editMenu" component={EditMenuController} />
-        <Route exact path="/edit-promotion" component={EditPromotionController} />
-
->>>>>>> Stashed changes
       </Router>
     </section>
   );

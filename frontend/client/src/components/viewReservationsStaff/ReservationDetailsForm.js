@@ -72,6 +72,19 @@ const ReservationDetailsForm = ({
                 <p/>
 
                 <Typography>
+                    Customer
+                </Typography>
+                {currentlyEditing ? (
+                    <TextField 
+                        defaultValue={reservationData.data.customer}
+                        disabled
+                    />
+                    ) : (
+                        reservationData.data.customer
+                    )}
+                <p/>
+
+                <Typography>
                     Date
                 </Typography>  
                 {currentlyEditing ? (

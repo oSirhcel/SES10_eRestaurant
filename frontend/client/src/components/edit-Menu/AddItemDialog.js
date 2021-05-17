@@ -136,6 +136,7 @@ const AddItemDialog = ({
 
               <TextField
                 autoFocus
+                autoComplete='off'
                 margin="dense"
                 id="item"
                 label="Item Name"
@@ -146,6 +147,7 @@ const AddItemDialog = ({
                 margin="dense"
                 id="description"
                 label="Description"
+                autoComplete='off'
                 fullWidth
                 onChange = {(event) => setDescription(event.target.value)}
               />

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreateMealOrder = ({nextStep, handleAdd, order, handleRemove, session}) => {
+const CreateMealOrder = ({nextStep, handleAdd, order, handleRemove, session, handleAddDiscount}) => {
   const classes = useStyles();
 
   const [selectedTab, setSelectedTab] = React.useState(0);
@@ -52,6 +52,9 @@ const CreateMealOrder = ({nextStep, handleAdd, order, handleRemove, session}) =>
         }
       </div>
       <div className={classes.button}>
+        <Button onClick = {handleAddDiscount}>
+          Add Discount
+        </Button>
         <Button
           className={classes.button}
           size="large"

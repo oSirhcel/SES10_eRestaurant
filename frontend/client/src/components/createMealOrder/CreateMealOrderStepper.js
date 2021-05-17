@@ -9,10 +9,7 @@ then details of the selected reservaiton in the second step.*/
 
 export class CreateMealOrderStepper extends Component {
   render() {
-    //const { step, columns, rows, reservationData } = this.props;
-    //const { prevStep, } = this.props;
-    //const { handleRowSelected, handleDelete } = this.props;
-    const { step } = this.props;
+    const { step, handleAddDiscount } = this.props;
     const { prevStep, nextStep, handleAdd, handleRemove, rows, submitOrder, session } = this.props;
     console.log(rows);
 
@@ -25,6 +22,7 @@ export class CreateMealOrderStepper extends Component {
               handleRemove = {handleRemove}
               order = {rows}
               session = {session}
+              handleAddDiscount = {handleAddDiscount}
             />         
         );
       case 2:

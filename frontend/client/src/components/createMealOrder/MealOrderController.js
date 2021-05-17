@@ -14,6 +14,10 @@ class MealOrderController extends React.Component {
         this.setState({data: data});
     }
 
+    handleAddDiscount = () => {
+      alert("open promotions page");
+    }
+
     handleRemove = (itemName) => {
       var data = this.state.data.filter((item)=>(item.item !== itemName));
       this.setState({data: data});
@@ -53,6 +57,7 @@ class MealOrderController extends React.Component {
             rows = {this.state.data}
             handleRemove = {this.handleRemove}
             session = {session}
+            handleAddDiscount = {this.handleAddDiscount}
           />
         </div>
               

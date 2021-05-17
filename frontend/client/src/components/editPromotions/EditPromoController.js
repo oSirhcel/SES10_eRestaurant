@@ -30,18 +30,51 @@ const c =
   
 //Dummy Data
   const lunchRows = [
-    { id: 1, description: 'A Speciality from Alsace, thin baked Bread Dough covered with Crème Fraîche, Onions, Speck and Gruyère Cheese', image: 'https://img.taste.com.au/WlcBsJrw/w1200-h630-cfill/taste/2020/01/tarte-flambee-158042-2.jpg ' },
-    { id: 2, description: 'Goat Cheese Salad with Pears, Walnuts and Seeded Mustard Dressing', image: 'https://images.unsplash.com/photo-1505576733088-f8a0f2f4b8a7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=676&q=80' },
-    { id: 3,  description: 'Steamed Black Mussels with White Wine, Thyme, Garlic, Butter and Parsley Served with Baguette (GF Bread on request)',  image: 'https://images.immediate.co.uk/production/volatile/sites/2/2018/02/moules_charlie-richards-4a780e0.jpg?quality=90&resize=960%2C408' },
-    { id: 4,  description: 'Hot Melted Raclette Cheese Served with Potatoes, Paris Ham, Coppa, Bresaola and Salami and Pickles', image: 'https://dairyfarmersofcanada.ca/sites/default/files/styles/recipe_image/public/image_file_browser/conso_recipe/smashed-potatoes-with-ham-raclette-cheese.jpg.jpeg?itok=2RA6B8T3' },
+    {
+        id: 1,
+        description: "Buy 1 Croissant Get 1 Free",
+        image:
+          "https://secureservercdn.net/198.71.189.253/b6d.5c9.myftpupload.com/wp-content/uploads/2019/10/inside-vegan-croissant-stacked.jpg",
+      },
+    
+      {
+        id: 2,
+        description: "Get 15% off when you spend $20",
+        image:
+          "https://www.kids-world-travel-guide.com/images/xfrench_food_macarons_shutterstock_62967172-2.jpg.pagespeed.ic.1_Cll_AGWX.jpg",
+      },
+    
+      {
+        id: 3,
+        description: "Add 1 Free Crêpe to your order",
+        image:
+          "https://www.goway.com/media/cache/70/22/702291eb1a1895e3bc3d124cc5ae4da9.jpg",
+      },
 
   ];
 
   const dinnerRows = [
-    { id: 1, description: 'A Speciality from Alsace, thin baked Bread Dough covered with Crème Fraîche, Onions, Speck and Gruyère Cheese', image: 'https://img.taste.com.au/WlcBsJrw/w1200-h630-cfill/taste/2020/01/tarte-flambee-158042-2.jpg ' },
-    { id: 2, description: 'Goat Cheese Salad with Pears, Walnuts and Seeded Mustard Dressing', image: 'https://images.unsplash.com/photo-1505576733088-f8a0f2f4b8a7?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=676&q=80' },
-    { id: 3,  description: 'Steamed Black Mussels with White Wine, Thyme, Garlic, Butter and Parsley Served with Baguette (GF Bread on request)',  image: 'https://images.immediate.co.uk/production/volatile/sites/2/2018/02/moules_charlie-richards-4a780e0.jpg?quality=90&resize=960%2C408' },
-    { id: 4,  description: 'Hot Melted Raclette Cheese Served with Potatoes, Paris Ham, Coppa, Bresaola and Salami and Pickles', image: 'https://dairyfarmersofcanada.ca/sites/default/files/styles/recipe_image/public/image_file_browser/conso_recipe/smashed-potatoes-with-ham-raclette-cheese.jpg.jpeg?itok=2RA6B8T3' },
+    {
+        id: 1,
+        description: "Buy 1 Croissant Get 1 Free",
+        image:
+          "https://secureservercdn.net/198.71.189.253/b6d.5c9.myftpupload.com/wp-content/uploads/2019/10/inside-vegan-croissant-stacked.jpg",
+      },
+    
+      {
+        id: 2,
+        description: "Get 15% off when you spend $20",
+        image:
+          "https://www.kids-world-travel-guide.com/images/xfrench_food_macarons_shutterstock_62967172-2.jpg.pagespeed.ic.1_Cll_AGWX.jpg",
+      },
+    
+      {
+        id: 3,
+        description: "Add 1 Free Crêpe to your order",
+        image:
+          "https://www.goway.com/media/cache/70/22/702291eb1a1895e3bc3d124cc5ae4da9.jpg",
+      },
+      
 
   ];
 

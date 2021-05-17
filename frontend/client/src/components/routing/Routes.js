@@ -12,8 +12,8 @@ import CustomerReservationsController from "../customerReservations/CustomerRese
 import StaffReservationsController from "../viewReservationsStaff/StaffReservationsController";
 import StaffRecordsDataGridController from "../staff-records/StaffRecordsDataGridController";
 import Dashboard from "../dashboard/dashboard";
-import StaffDashboard from "../dashboard/staffDashboard";
 import EditPromoController from '../editPromotions/EditPromoController'
+import Locations from '../filler/locations';
 import ViewMenu from "../viewMenu/ViewMenu";
 import MealOrderController from "../createMealOrder/MealOrderController";
 import PromoPage from "../promotions/promoPage"
@@ -52,6 +52,7 @@ const Routes = (props) => {
         <Route exact path="/dashboard" component={Dashboard} />
         <Route exact path="/staff-dashboard" component={StaffDashboard} />
         <Route exact path="/menu" component={ViewMenu} />
+        <Route exact path="/locations" component={Locations} />
         <Route exact path="/promotions" component={PromoPage} />
         <Route exact path="/edit-promotions" component={EditPromoController} />
         <Route exact path="/edit-menu" component={EditMenuController} />

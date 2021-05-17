@@ -163,6 +163,7 @@ const EditItemDialog = ({
 
               <TextField
                 autoFocus
+                autoComplete='off'
                 margin="dense"
                 id="item"
                 label="Item Name"
@@ -175,6 +176,7 @@ const EditItemDialog = ({
                 id="description"
                 label="Description"
                 defaultValue = {description}
+                autoComplete='off'
                 fullWidth
                 onChange = {(event) => setDescription(event.target.value)}
               />

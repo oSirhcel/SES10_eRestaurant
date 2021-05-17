@@ -11,6 +11,7 @@ const columns = (nextStep) => {
     return (
     [
       { field: 'id', headerName: 'Reservation ID', type: 'number', width: 200},
+      { field: 'customer', headerName: 'Customer', type: 'string', width: 150},
       { 
         field: 'date', 
         headerName: 'Date', 
@@ -61,9 +62,9 @@ const columns = (nextStep) => {
   
 //Dummy Data
   const rows = [
-      {id: 1, date: new Date(2020, 5, 19, 12, 45), numPeople: 2, mealOrder: []},
-      {id: 2, date: new Date(2021, 5, 20, 12, 15), numPeople: 3, mealOrder: []},
-      {id: 3, date: new Date(2021, 5, 21, 18, 30), numPeople: 5, 
+      {id: 1, customer: "tom", date: new Date(2020, 5, 19, 12, 45), numPeople: 2, mealOrder: []},
+      {id: 2, customer: "tom", date: new Date(2021, 5, 20, 12, 15), numPeople: 3, mealOrder: []},
+      {id: 3, customer: "tom", date: new Date(2021, 5, 21, 18, 30), numPeople: 5, 
         mealOrder: [
           {item: "RISOTTO AUX CHAMPIGNONS SAUVAGES (GF)", qty: 1, unit: 40, price: 40},
           {item: "MEDAILLONS DE PORC AUX CÈPES", qty: 2, unit: 42, price: 84},
@@ -72,7 +73,7 @@ const columns = (nextStep) => {
           {item: "CLASSIC CRÈME BRÛLÉE", qty: 5, unit: 16, price: 80},
         ]
       },
-      {id: 4, date: new Date(2021, 5, 26, 11, 30), numPeople: 13, 
+      {id: 4, customer: "tom", date: new Date(2021, 5, 26, 11, 30), numPeople: 13, 
         mealOrder: [
           {item: "MOULES MARINIÈRE", qty: 3, unit: 22, price: 66},
           {item: "CONFIT DE CANARD", qty: 2, unit: 41, price: 82},
@@ -86,7 +87,7 @@ const columns = (nextStep) => {
   
 
 // In order to edit reservations have to view the details first.
-class CustomerReservationsController extends React.Component {
+class StaffReservationsController extends React.Component {
   state = {
     step: 1,
     columns: columns(),
@@ -155,4 +156,4 @@ class CustomerReservationsController extends React.Component {
   )
 }*/
 
-export default CustomerReservationsController;
+export default StaffReservationsController;

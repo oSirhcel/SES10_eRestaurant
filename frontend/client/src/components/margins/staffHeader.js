@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 import { makeStyles, MuiThemeProvider } from "@material-ui/core/styles";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
@@ -23,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1),
     flexShrink: 0,
     overflowX: "auto",
-    marginRight: theme.spacing(2.5),
+    marginRight: theme.spacing(1.5),
     fontWeight: 700,
   },
 }));
@@ -45,69 +44,72 @@ export default function Header() {
           >
             Bistrot d'Andre
           </Typography>
+          <Typography>
           <Button
             component={Link}
             color="inherit"
             variant="body2"
-            to="/locations"
+            to="/edit-menu"
             className={classes.toolbarLink}
           >
-            LOCATIONS
+          
+           EDIT MENU
           </Button>
           <Button
             component={Link}
             color="inherit"
             variant="body2"
-            to="/menu"
+            to="/edit-promotions"
             className={classes.toolbarLink}
           >
-            MENU
-          </Button>
+            EDIT PROMOTIONS
+            </Button>
           <Button
             component={Link}
             color="inherit"
             variant="body2"
-            to="/reserve"
+            to="/staff-dashboard"
             className={classes.toolbarLink}
           >
-            RESERVE
-          </Button>
+           STAFF DASHBOARD 
+           </Button>
           <Button
             component={Link}
             color="inherit"
             variant="body2"
-            to="/aboutus"
+            to="/view-reservations"
             className={classes.toolbarLink}
           >
-            ABOUT US
-          </Button>
+           VIEW RESERVATIONS 
+           </Button>
           <Button
             component={Link}
             color="inherit"
             variant="body2"
-            to="/promotions"
+            to="/staff-register"
             className={classes.toolbarLink}
           >
-            PROMOTIONS
-          </Button>
+           Add Staff Account
+           </Button>
           <Button
             component={Link}
             color="inherit"
             variant="body2"
-            to="/"
+            to="/staff-records"
             className={classes.toolbarLink}
           >
-            MY ACCOUNT
-          </Button>
+           View Staff Accounts
+           </Button>
           <Button
             component={Link}
             variant="contained"
             size="small"
             color="primary"
-            to="/login"
+            to="/"
           >
-            login
+            logout
           </Button>
+          </Typography>
         </Toolbar>
       </div>
     </React.Fragment>

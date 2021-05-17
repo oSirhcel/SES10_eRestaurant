@@ -10,6 +10,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import { Redirect } from 'react-router-dom';
+import Header from "../margins/staffHeader";
+import Footer from "../margins/footer";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -75,79 +77,100 @@ function Dashboard() {
 
   return (
     <div>
-      <AppBar className={classes.appBar} position="static">
-      </AppBar>
-      <Box className={classes.hero}>
-        <Box>Staff Dashboard</Box>
-      </Box>
-      <Container maxWidth="lg" className={classes.blogsContainer}>
-        <Grid container spacing={4}>
-          <Grid item xs={12} sm={6} md={4}>
-              <Card className={classes.card} onClick={() => {onClickRedirect("/viewReservations")}}>
+      <Container maxWidth="xl">
+        <Header/>
+      </Container>
+      <div>
+        <AppBar className={classes.appBar} position="static">
+        </AppBar>
+        <Box className={classes.hero}>
+          <Box>Staff Dashboard</Box>
+        </Box>
+        <Container maxWidth="lg" className={classes.blogsContainer}>
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={6} md={4}>
+                <Card className={classes.card} onClick={() => {onClickRedirect("/staff-reservations")}}>
+                  <CardActionArea>
+                    <CardMedia
+                      className={classes.media}
+                      image="https://images.pexels.com/photos/2962035/pexels-photo-2962035.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                      title="restaurant"
+                    />
+                    <CardContent>
+                      <Typography gutterBottom variant="h5" component="h2">
+                      View Reservations 
+                      </Typography>
+                    </CardContent>
+                  </CardActionArea>
+                </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <Card className={classes.card} onClick={() => {onClickRedirect("/editMenu")}}>
                 <CardActionArea>
                   <CardMedia
                     className={classes.media}
-                    image="https://images.pexels.com/photos/2962035/pexels-photo-2962035.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-                    title="restaurant"
+                    image="https://images.pexels.com/photos/709840/pexels-photo-709840.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    title="menu"
                   />
                   <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                     View Reservations 
+                      Edit Menu
                     </Typography>
                   </CardContent>
                 </CardActionArea>
               </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <Card className={classes.card} onClick={() => {onClickRedirect("/editPromotions")}}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image="https://images.pexels.com/photos/5632397/pexels-photo-5632397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+                    title="baby trolly"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                    Edit Promotions 
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <Card className={classes.card} onClick={() => {onClickRedirect("/staff-register")}}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image="https://images.pexels.com/photos/5668859/pexels-photo-5668859.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+                    title="hired"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                    Add Staff Account 
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
+            <Grid item xs={12} sm={6} md={4}>
+              <Card className={classes.card} onClick={() => {onClickRedirect("/staff-records")}}>
+                <CardActionArea>
+                  <CardMedia
+                    className={classes.media}
+                    image="https://images.pexels.com/photos/357514/pexels-photo-357514.jpeg?cs=srgb&dl=pexels-pixabay-357514.jpg&fm=jpg"
+                    title="hired"
+                  />
+                  <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                    View Staff Details 
+                    </Typography>
+                  </CardContent>
+                </CardActionArea>
+              </Card>
+            </Grid>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Card className={classes.card} onClick={() => {onClickRedirect("/editMenu")}}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image="https://images.pexels.com/photos/709840/pexels-photo-709840.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                  title="menu"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                    Edit Menu
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <Card className={classes.card} onClick={() => {onClickRedirect("/editPromotions")}}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image="https://images.pexels.com/photos/5632397/pexels-photo-5632397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-                  title="baby trolly"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                   Edit Promotions 
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-             <Card className={classes.card} onClick={() => {onClickRedirect("/registerStaff")}}>
-              <CardActionArea>
-                <CardMedia
-                  className={classes.media}
-                  image="https://images.pexels.com/photos/5668859/pexels-photo-5668859.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-                  title="hired"
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="h2">
-                   Add Staff Account 
-                  </Typography>
-                </CardContent>
-              </CardActionArea>
-            </Card>
-          </Grid>
-        </Grid>
-      </Container>
+        </Container>
+        </div>
     </div>
   );
 }

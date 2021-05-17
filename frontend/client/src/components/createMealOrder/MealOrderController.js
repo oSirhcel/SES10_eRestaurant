@@ -41,7 +41,7 @@ class MealOrderController extends React.Component {
   
  
     render() {
-      const {handleSubmitOrder} = this.props;
+      const {handleSubmitOrder, session} = this.props;
       return(
         <div>
           <CreateMealOrderStepper
@@ -52,6 +52,7 @@ class MealOrderController extends React.Component {
             handleAdd = {this.handleAdd}
             rows = {this.state.data}
             handleRemove = {this.handleRemove}
+            session = {session}
           />
         </div>
               

@@ -18,7 +18,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const CreateMealOrder = ({nextStep, handleAdd, order, handleRemove}) => {
+const CreateMealOrder = ({nextStep, handleAdd, order, handleRemove, session}) => {
   const classes = useStyles();
 
   const [selectedTab, setSelectedTab] = React.useState(0);
@@ -26,6 +26,8 @@ const CreateMealOrder = ({nextStep, handleAdd, order, handleRemove}) => {
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
+
+  console.log(session);
 
   return (
     <React.Fragment>
@@ -44,17 +46,10 @@ const CreateMealOrder = ({nextStep, handleAdd, order, handleRemove}) => {
         </Container>
       </div>
       <div>
-        <Tabs
-          value={selectedTab}
-          onChange={handleChange}
-          variant="fullWidth"
-          indicatorColor="primary"
-        >
-          <Tab label="Lunch" />
-          <Tab label="Dinner" />
-        </Tabs>
-        {selectedTab === 0 && <LunchMenu handleAdd = {handleAdd} order = {order} handleRemove = {handleRemove}/>}
-        {selectedTab === 1 && <DinnerMenu handleAdd = {handleAdd} order = {order} handleRemove = {handleRemove}/>}
+        {session === "Lunch"
+          ? (<LunchMenu handleAdd = {handleAdd} order = {order} handleRemove = {handleRemove}/>)
+          : (<DinnerMenu handleAdd = {handleAdd} order = {order} handleRemove = {handleRemove}/>)
+        }
       </div>
       <div className={classes.button}>
         <Button

@@ -105,7 +105,7 @@ export class ReservationForm extends Component {
       case 4:
         return (
           <div>
-            <MealOrderController handleSubmitOrder={handleSubmitOrder}/> 
+            <MealOrderController handleSubmitOrder={handleSubmitOrder} session={session}/> 
             <Button onClick={prevStep} color="primary"> Cancel Meal Order </Button>           
           </div>
           

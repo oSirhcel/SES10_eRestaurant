@@ -86,7 +86,6 @@ export class ReservationController extends Component {
 
   //Dummy code for submit event handler. Might need a submitted dialog or page.
   handleOnSubmit = (e) => {
-    e.preventDefault();
     const dateTime = new Date(   
       //Thinking it might be easier to store the date and time together in the database. 
       format(this.state.date, 'y'), 

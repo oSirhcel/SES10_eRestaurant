@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 class MealOrderController extends React.Component {
     state = {
       step: 1,
-      data: [],
+      data: this.props.currentOrder != undefined ? this.props.currentOrder : [],
     }
 
     handleAdd = (dish) => {
@@ -45,7 +45,7 @@ class MealOrderController extends React.Component {
   
  
     render() {
-      const {handleSubmitOrder, session} = this.props;
+      const {handleSubmitOrder, session, currentOrder} = this.props;
       return(
         <div>
           <CreateMealOrderStepper

@@ -67,7 +67,7 @@ export default function Header() {
             component={Link}
             color="inherit"
             variant="body2"
-            to="/reserve"
+            to="/makeReservation"
             className={classes.toolbarLink}
           >
             RESERVE

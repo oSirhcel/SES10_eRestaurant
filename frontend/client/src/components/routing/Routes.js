@@ -20,6 +20,7 @@ import PromoPage from "../promotions/promoPage"
 import EditMenuController from "../edit-Menu/EditMenuController"
 import StaffDashboard from "../dashboard/staffDashboard";
 import AboutUs from "../filler/about";
+
 const Routes = (props) => {
   return (
     <section className="container">
@@ -56,7 +57,7 @@ const Routes = (props) => {
         <Route exact path="/locations" component={Locations} />
         <Route exact path="/promotions" component={PromoPage} />
         <Route exact path="/edit-promotions" component={EditPromoController} />
-        <Route exact path="/edit-menu" component={EditMenuController} />
+        
         <Route exact path="/create-meal-order" component={MealOrderController} />
         <Route exact path="/about-us" component={AboutUs} />
       </Router>

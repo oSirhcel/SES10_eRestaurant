@@ -215,7 +215,7 @@ const ReservationDetailsController = ({reservationData}) => {
                <div>
                     <EditMealOrder 
                         mealOrder = {mealOrder} 
-                        session = {session}
+                        session = {format(reservationData.data.date, 'h') <= format(lunchEnd, 'h') ? 'Lunch' : 'Dinner'}
                         selectedDate = {selectedDate}
                     />
                     </div>

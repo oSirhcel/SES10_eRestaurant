@@ -32,8 +32,6 @@ const useStyles = makeStyles({
 
 
 const LunchMenu = ({handleAdd, order, handleRemove}) => {
-  console.log("Order");
-  console.log(order);
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 

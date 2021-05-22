@@ -15,7 +15,7 @@ const AlertDialog = ({open, handleConfirm, handleClose, handleCancel}) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alert-dialog-title">{"Use Google's location service?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">{"Will need to change Meal Order"}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             Are you sure you want to select this session? You will have to change your meal order since the menu is different.

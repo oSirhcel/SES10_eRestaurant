@@ -62,9 +62,9 @@ const columns = (nextStep) => {
   
 //Dummy Data
   const rows = [
-      {id: 1, customer: "tom", date: new Date(2020, 5, 19, 12, 45), numPeople: 2, mealOrder: []},
-      {id: 2, customer: "tom", date: new Date(2021, 5, 20, 12, 15), numPeople: 3, mealOrder: []},
-      {id: 3, customer: "tom", date: new Date(2021, 5, 21, 18, 30), numPeople: 5, 
+      {id: 1, customer: "tom", date: new Date(2020, 5-1, 19, 12, 45), numPeople: 2, mealOrder: []},
+      {id: 2, customer: "tom", date: new Date(2021, 5-1, 20, 12, 15), numPeople: 3, mealOrder: []},
+      {id: 3, customer: "tom", date: new Date(2021, 5-1, 21, 18, 30), numPeople: 5, 
         mealOrder: [
           {item: "RISOTTO AUX CHAMPIGNONS SAUVAGES (GF)", qty: 1, unit: 40, price: 40},
           {item: "MEDAILLONS DE PORC AUX CÈPES", qty: 2, unit: 42, price: 84},
@@ -73,7 +73,7 @@ const columns = (nextStep) => {
           {item: "CLASSIC CRÈME BRÛLÉE", qty: 5, unit: 16, price: 80},
         ]
       },
-      {id: 4, customer: "tom", date: new Date(2021, 5, 26, 11, 30), numPeople: 13, 
+      {id: 4, customer: "tom", date: new Date(2021, 5-1, 26, 11, 30), numPeople: 13, 
         mealOrder: [
           {item: "MOULES MARINIÈRE", qty: 3, unit: 22, price: 66},
           {item: "CONFIT DE CANARD", qty: 2, unit: 41, price: 82},

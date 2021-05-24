@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/HimalayanPanda/SES10_eRestaurant">
-    <img src="frontend/client/public/favicon.png" alt="Logo" width="80" height="80">
+    <img src="./frontend/client/public/favicon.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Software Engineering Studio 1A</h3>

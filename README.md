@@ -71,7 +71,7 @@ Node.js needs to be installed.
 
 ## License
 
-Distributed under the MIT License. See [LICENSE](https://github.com/HimalayanPanda/SES10_eRestaurant/blob/main/LICENSE.md) for more information.
+Distributed under the MIT License.
 
 ## Authors
 

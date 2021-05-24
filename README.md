@@ -77,5 +77,5 @@ Distributed under the MIT License.
 
 * **Aditya Raj Pandey** - *Software Engineering Student* - [GitHub](https://github.com/HimalayanPanda)
 * **Tamsin Low** - *Software Engineering Student* - [GitHub](https://github.com/tam-debug)
-* **Isobel Bennet** - *Software Engineering Student* - [GitHub](https://github.com/isbennett)
+* **Isobel Bennett** - *Software Engineering Student* - [GitHub](https://github.com/isbennett)
 * **Christopher Le** - *Software Engineering Student* - [GitHub](https://github.com/oSirhcel) 
